@@ -1,9 +1,9 @@
 "use client";
 
 import {
-  Activity, Bell, BookOpen, Bookmark, CalendarDays, ChartNoAxesColumnIncreasing,
+  Activity, Bell, BookOpen, Bookmark, CalendarDays, BarChart3,
   CheckCircle2, ChevronRight, Clock3, Compass, FileText, Flame, GraduationCap,
-  House, Layers3, LibraryBig, ListChecks, Search, Target, Trophy, Video,
+  House, Layers3, Library, ListChecks, Search, Target, Trophy, Video,
 } from "lucide-react";
 
 const nav = [
