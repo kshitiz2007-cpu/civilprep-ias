@@ -1,0 +1,15 @@
+{
+  "expo": {
+    "name": "CivilPrep IAS",
+    "slug": "civilprep-ias",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "in.civilprep.ias",
+      "adaptiveIcon": {
+        "backgroundColor": "#F7F2E9"
+      }
+    }
+  }
+}
