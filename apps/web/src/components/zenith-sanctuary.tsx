@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowDownRight, ArrowRight, BookOpen, Compass, Layers3, Moon, Search, Sparkles, Sun, X } from "lucide-react";
+import { ArrowDownRight, ArrowRight, BookOpen, Compass, Layers3, Search, Sparkles } from "lucide-react";
 import { ZenithThemeControl } from "./zenith-theme-provider";
 import "./zenith-sanctuary.css";
 
