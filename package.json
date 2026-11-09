@@ -7,7 +7,9 @@
     "dev:web": "pnpm --filter @civilprep/web dev",
     "build:web": "pnpm --filter @civilprep/web build",
     "lint:web": "pnpm --filter @civilprep/web lint",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "dev:android": "pnpm --filter @civilprep/mobile start",
+    "typecheck:android": "pnpm --filter @civilprep/mobile typecheck"
   },
   "devDependencies": {
     "typescript": "^5.9.0"
