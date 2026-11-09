@@ -1,5 +1,2 @@
-import { HomeDashboard } from "@/components/home-dashboard";
-
-export default function HomePage() {
-  return <HomeDashboard />;
-}
+import { PublicHome } from "@/components/public-home";
+export default function HomePage() { return <PublicHome />; }
