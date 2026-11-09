@@ -1,0 +1,36 @@
+:root {
+  color-scheme: light;
+  --cp-canvas: #f7f2e9;
+  --cp-surface: #fffdf8;
+  --cp-surface-warm: #f4e9d9;
+  --cp-surface-muted: #eee4d6;
+  --cp-terracotta: #c95724;
+  --cp-orange: #e87524;
+  --cp-orange-soft: #fbe4d1;
+  --cp-sage: #a7b99a;
+  --cp-sage-soft: #e8eee2;
+  --cp-forest: #2f7d32;
+  --cp-indigo: #77738c;
+  --cp-ink: #242522;
+  --cp-ink-muted: #68675f;
+  --cp-border: #e4d8c8;
+  --cp-border-strong: #d5c4b0;
+  --cp-radius-sm: 10px;
+  --cp-radius-md: 16px;
+  --cp-radius-lg: 22px;
+  --cp-radius-xl: 26px;
+  --cp-shadow-soft: 0 3px 12px rgb(70 52 34 / 7%);
+  --cp-shadow-raised: 0 8px 24px rgb(70 52 34 / 10%);
+  --cp-font-ui: "Plus Jakarta Sans", "Noto Sans Devanagari", system-ui, sans-serif;
+  --cp-font-editorial: "Newsreader", Georgia, serif;
+  --cp-space-1: 4px;
+  --cp-space-2: 8px;
+  --cp-space-3: 12px;
+  --cp-space-4: 16px;
+  --cp-space-6: 24px;
+  --cp-space-8: 32px;
+  --cp-space-12: 48px;
+  --cp-motion-fast: 140ms;
+  --cp-motion-normal: 220ms;
+  --cp-motion-slow: 320ms;
+}
