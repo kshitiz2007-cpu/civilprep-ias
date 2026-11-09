@@ -1,0 +1,16 @@
+@import "@civilprep/design-tokens/tokens.css";
+
+* { box-sizing: border-box; }
+html { min-width: 320px; background: var(--cp-canvas); }
+body {
+  margin: 0;
+  color: var(--cp-ink);
+  background: var(--cp-canvas);
+  font-family: var(--cp-font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+button, input { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+::selection { color: white; background: var(--cp-terracotta); }
+:focus-visible { outline: 3px solid var(--cp-orange); outline-offset: 3px; }
