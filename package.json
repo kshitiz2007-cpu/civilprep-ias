@@ -1,0 +1,15 @@
+{
+  "name": "civilprep-ias",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.0.0",
+  "scripts": {
+    "dev:web": "pnpm --filter @civilprep/web dev",
+    "build:web": "pnpm --filter @civilprep/web build",
+    "lint:web": "pnpm --filter @civilprep/web lint",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0"
+  }
+}
