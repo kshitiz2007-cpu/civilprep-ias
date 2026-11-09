@@ -69,3 +69,20 @@ using (exists (
 ));
 
 -- No client insert/update/delete policies are intentionally created here.
+
+
+-- Prevent a new canonical path from taking over a historical alias.
+create or replace function public.prevent_slug_canonical_alias_collision()
+returns trigger language plpgsql as $$
+begin
+  if exists (select 1 from public.slug_aliases where alias_path = new.slug_path) then
+    raise exception 'Canonical path already exists as a historical alias: %', new.slug_path;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists slug_canonical_alias_guard on public.slug_registry;
+create trigger slug_canonical_alias_guard
+before insert or update of slug_path on public.slug_registry
+for each row execute function public.prevent_slug_canonical_alias_collision();
