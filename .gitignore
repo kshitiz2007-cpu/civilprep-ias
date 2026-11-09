@@ -1,0 +1,16 @@
+node_modules
+.pnpm-store
+.next
+out
+dist
+build
+.expo
+.expo-shared
+coverage
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+*.tsbuildinfo
+.next-env.d.ts
