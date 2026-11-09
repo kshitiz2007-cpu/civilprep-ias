@@ -15,12 +15,10 @@ export function ZenithOnboarding({ initialStep = 1 }: { initialStep?: number }) 
   const [exam, setExam] = useState("upsc");
   const [language, setLanguage] = useState("bi");
   const [focus, setFocus] = useState("foundation");
-  const [saved, setSaved] = useState(false);
 
   const finish = () => {
     const profile = { exam, language, focus, completedAt: new Date().toISOString() };
     try { window.localStorage.setItem("civilprep-onboarding-preview", JSON.stringify(profile)); } catch { /* local preview remains usable */ }
-    setSaved(true);
     router.push("/app");
   };
 
