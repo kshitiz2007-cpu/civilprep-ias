@@ -1,95 +1,42 @@
 "use client";
 
 import { useState } from "react";
-import {
-  ArrowDownRight, ArrowRight, BookOpen, Bookmark, CalendarDays, Check,
-  ChevronRight, Clock3, Compass, Flame, Globe2, Layers3, ListChecks,
-  NotebookPen, Play, Sparkles, Target, Trophy
-} from "lucide-react";
+import { Activity, ArrowRight, Bell, BookOpen, Bookmark, CalendarDays, Check, ChevronRight, Clock3, Flame, Globe2, Layers3, ListChecks, NotebookPen, Play, Search, Target, Trophy, TrendingUp, Users } from "lucide-react";
 
-const tasks = [
-  { id: "rights", title: "Revise Fundamental Rights", meta: "POLITY · 25 MIN", time: "TODAY" },
-  { id: "drill", title: "Attempt Daily Drill", meta: "CURRENT AFFAIRS · 15 Q", time: "15 MIN" },
-  { id: "mains", title: "Write one GS-II answer", meta: "GOVERNANCE · 150 WORDS", time: "MAINS" },
+const actions=[
+ {id:"rights",title:"Revise Fundamental Rights",meta:"POLITY · 25 MIN",time:"TODAY"},
+ {id:"drill",title:"Attempt Daily Drill",meta:"CURRENT AFFAIRS · 15 Q",time:"15 MIN"},
+ {id:"mains",title:"Write one GS-II answer",meta:"GOVERNANCE · 150 WORDS",time:"MAINS"}
 ];
-
-const subjects = [
-  { name: "Polity & Governance", value: 82, color: "sage", code: "01" },
-  { name: "Economy", value: 68, color: "terracotta", code: "02" },
-  { name: "History & Culture", value: 74, color: "indigo", code: "03" },
-  { name: "Geography", value: 61, color: "saffron", code: "04" },
+const subjects=[
+ {name:"Polity & Governance",value:88,tone:"green",mark:"01"},
+ {name:"Economy",value:76,tone:"orange",mark:"02"},
+ {name:"History & Culture",value:72,tone:"purple",mark:"03"},
+ {name:"Geography",value:69,tone:"blue",mark:"04"},
+ {name:"Environment",value:81,tone:"green",mark:"05"},
+ {name:"Science & Tech",value:78,tone:"orange",mark:"06"}
 ];
-
-const paths = [
-  { code: "GS II", title: "Fundamental Rights", note: "PART III · ARTICLES 12–35", progress: 64, color: "sage" },
-  { code: "GS I", title: "The making of modern India", note: "HISTORY · 1857–1947", progress: 38, color: "terracotta" },
-  { code: "GS III", title: "India’s monsoon system", note: "GEOGRAPHY · CLIMATE", progress: 21, color: "indigo" },
+const pathways=[
+ {code:"GS II",title:"Fundamental Rights",detail:"PART III · ARTICLES 12–35",progress:64,tone:"orange"},
+ {code:"GS I",title:"The making of modern India",detail:"HISTORY · 1857–1947",progress:38,tone:"purple"},
+ {code:"GS III",title:"India's monsoon system",detail:"GEOGRAPHY · CLIMATE",progress:21,tone:"green"}
 ];
-
-function IndiaMark() {
-  return <svg viewBox="0 0 240 210" role="img" aria-label="Abstract Indian cartographic motif" className="cc-india-mark">
-    <path d="M104 12 133 27 149 48 170 55 164 76 182 93 164 111 155 135 137 145 127 169 108 196 93 178 85 153 66 138 72 117 54 99 68 81 62 61 83 48 86 29Z" fill="none" stroke="currentColor" strokeWidth="2.2"/>
-    <path d="M104 12 133 27 149 48 170 55M68 81 164 76 182 93M54 99 164 111 155 135M72 117 137 145 127 169M85 153 108 196" fill="none" stroke="currentColor" strokeWidth="1.1" opacity=".6"/>
-    <circle cx="104" cy="82" r="7" fill="currentColor"/><circle cx="137" cy="145" r="5" fill="currentColor"/><circle cx="85" cy="153" r="4" fill="currentColor"/>
-    <path d="M16 182h55M24 192h38M178 28h42M190 38h30" stroke="currentColor" strokeWidth="2"/>
-    <text x="16" y="20" fill="currentColor" fontSize="9" letterSpacing="2">INDIA / 01</text>
-  </svg>;
-}
-
-export function StudentHomeConcept02() {
-  const [done, setDone] = useState<string[]>([]);
-  const [activePath, setActivePath] = useState(0);
-  const [saved, setSaved] = useState(false);
-  const toggle = (id: string) => setDone(current => current.includes(id) ? current.filter(x => x !== id) : [...current, id]);
-  return <main className="cc-home">
-    <div className="cc-home-meta"><span><i/> YOUR PREPARATION / 09 NOVEMBER 2026</span><span>UPSC CSE · 2027</span></div>
-    <section className="cc-opening">
-      <div className="cc-opening-copy">
-        <span className="cc-kicker">A PERSONAL LEARNING ATLAS <b>01—04</b></span>
-        <h2>Make knowledge<br/><em>move.</em></h2>
-        <p>Good preparation is not a pile of notes. It is a map of ideas, connections and deliberate practice.</p>
-        <div className="cc-opening-actions"><a href="/app/plan" className="cc-primary">Open my plan <ArrowRight size={16}/></a><a href="/app/discover" className="cc-text-link">Explore the atlas <ArrowDownRight size={16}/></a></div>
-        <div className="cc-streak"><Flame size={17}/><b>12</b><span>DAY STREAK</span><i/><Clock3 size={16}/><b>2h 40m</b><span>THIS WEEK</span></div>
-      </div>
-      <div className="cc-opening-art"><div className="cc-art-orbit cc-orbit-one"/><div className="cc-art-orbit cc-orbit-two"/><div className="cc-sun"/><IndiaMark/><span className="cc-art-note">ज्ञान / विवेक / सेवा</span><span className="cc-art-index">BHARAT · 26°N</span></div>
-      <div className="cc-vertical-note">LEARN WITH INTENTION · 2026—27</div>
-    </section>
-
-    <section className="cc-signal-row" aria-label="Learning indicators">
-      <div className="cc-signal cc-signal-major"><span className="cc-kicker">PREPARATION PULSE</span><strong>72<small>%</small></strong><div className="cc-signal-foot"><span>+4% THIS MONTH</span><span className="cc-sparkline">╱╲╱╱╲╱╱</span></div></div>
-      <div className="cc-signal"><span className="cc-kicker">TESTS ATTEMPTED</span><strong>48</strong><span className="cc-signal-foot">06 THIS MONTH</span></div>
-      <div className="cc-signal"><span className="cc-kicker">MAINS AVERAGE</span><strong>12.8<small>/20</small></strong><span className="cc-signal-foot">+1.2 IMPROVEMENT</span></div>
-      <div className="cc-signal cc-signal-last"><span className="cc-kicker">PERSONAL BEST</span><strong>18<small> days</small></strong><span className="cc-signal-foot">STREAK RECORD</span></div>
-    </section>
-
-    <section className="cc-today">
-      <div className="cc-section-intro"><span className="cc-kicker">02 / THE DAY AHEAD</span><h3>Today's<br/><em>coordinates.</em></h3><p>Three purposeful moves. One more step forward.</p><a href="/app/plan">View full plan <ArrowRight size={14}/></a></div>
-      <div className="cc-task-board">
-        <div className="cc-task-head"><span>YOUR FIELD NOTES</span><span>{done.length.toString().padStart(2,"0")} / 03 COMPLETE</span></div>
-        {tasks.map((task,index)=><label className={done.includes(task.id)?"cc-task cc-task-done":"cc-task"} key={task.id}>
-          <input type="checkbox" checked={done.includes(task.id)} onChange={()=>toggle(task.id)}/>
-          <span className="cc-task-check"><Check size={14}/></span><span className="cc-task-number">0{index+1}</span>
-          <span className="cc-task-copy"><b>{task.title}</b><small>{task.meta}</small></span><span className="cc-task-time">{task.time}</span>
-        </label>)}
-        <div className="cc-task-progress"><span style={{width:(done.length/3*100)+"%"}}/></div>
-      </div>
-      <aside className="cc-day-aside"><CalendarDays size={21}/><span className="cc-kicker">MONDAY / WEEK 46</span><b>Consistency<br/>over intensity.</b><p>Small, repeated efforts compound into exam-ready understanding.</p><span className="cc-day-quote">“धीरे-धीरे रे मना…”</span></aside>
-    </section>
-
-    <section className="cc-learning-map">
-      <div className="cc-map-heading"><div><span className="cc-kicker">03 / CONTINUE YOUR EXPLORATION</span><h3>Learning <em>pathways.</em></h3></div><a href="/app/library">All pathways <ArrowRight size={15}/></a></div>
-      <div className="cc-path-layout">
-        <div className="cc-path-list">{paths.map((path,index)=><button className={activePath===index?"cc-path-option active":"cc-path-option"} onClick={()=>setActivePath(index)} key={path.title}><span className="cc-path-code">{path.code}</span><span><b>{path.title}</b><small>{path.note}</small></span><ChevronRight size={17}/></button>)}</div>
-        <div className={"cc-path-feature cc-"+paths[activePath].color}><div className="cc-feature-top"><span>SELECTED MODULE / 0{activePath+1}</span><button onClick={()=>setSaved(!saved)} aria-label="Save module"><Bookmark size={17} fill={saved?"currentColor":"none"}/></button></div><span className="cc-feature-code">{paths[activePath].code}</span><h4>{paths[activePath].title}</h4><p>{paths[activePath].note}</p><div className="cc-feature-progress"><span style={{width:paths[activePath].progress+"%"}}/></div><div className="cc-feature-bottom"><span>{paths[activePath].progress}% EXPLORED</span><a href="/app/library">Resume module <ArrowRight size={15}/></a></div><div className="cc-feature-decoration">ज्ञान</div></div>
-      </div>
-    </section>
-
-    <section className="cc-subjects">
-      <div className="cc-subject-heading"><span className="cc-kicker">04 / YOUR KNOWLEDGE TERRITORY</span><h3>See the whole <em>landscape.</em></h3><p>Progress across the subjects that shape your preparation.</p></div>
-      <div className="cc-subject-grid">{subjects.map(subject=><div className={"cc-subject cc-subject-"+subject.color} key={subject.name}><span className="cc-subject-code">{subject.code}</span><b>{subject.name}</b><strong>{subject.value}<small>%</small></strong><div className="cc-subject-track"><span style={{width:subject.value+"%"}}/></div></div>)}</div>
-    </section>
-
-    <section className="cc-explore"><div className="cc-explore-lead"><span className="cc-kicker">05 / KNOWLEDGE IN MOTION</span><h3>Choose your<br/><em>next direction.</em></h3></div><a href="/app/practice/daily-drill"><Target/><b>Daily Drill</b><small>Test today's understanding</small><ArrowRight className="cc-explore-arrow"/></a><a href="/app/current-affairs"><Globe2/><b>Daily Crux</b><small>Connect news with concepts</small><ArrowRight className="cc-explore-arrow"/></a><a href="/app/mains"><NotebookPen/><b>Mains Studio</b><small>Turn ideas into answers</small><ArrowRight className="cc-explore-arrow"/></a></section>
-    <footer className="cc-home-footer"><span>CIVILPREP IAS / PREPARE WITH PERSPECTIVE</span><span>सीखना · समझना · आगे बढ़ना</span><span>YOUR JOURNEY, IN YOUR HANDS ↗</span></footer>
-  </main>;
+function ParliamentScene(){return <div className="cp-student-scene" aria-label="Illustrated Indian Parliament landscape"><div className="cp-scene-sun"/><div className="cp-scene-cloud cloud-a"/><div className="cp-scene-cloud cloud-b"/><div className="cp-scene-hill hill-a"/><div className="cp-scene-hill hill-b"/><div className="cp-parliament"><div className="cp-flag"><i/></div><div className="cp-dome"/><div className="cp-roof"/><div className="cp-columns">{Array.from({length:8},(_,i)=><i key={i}/>)}</div><div className="cp-steps"/></div><div className="cp-scene-tree tree-a"/><div className="cp-scene-tree tree-b"/><span className="cp-scene-caption">ज्ञान · विवेक · सेवा</span></div>}
+export function StudentHomeConcept02(){
+ const [done,setDone]=useState<string[]>([]),[selected,setSelected]=useState(0),[saved,setSaved]=useState(false);
+ const current=pathways[selected];
+ const toggle=(id:string)=>setDone(v=>v.includes(id)?v.filter(x=>x!==id):[...v,id]);
+ return <main className="cp-student-home">
+  <div className="cp-home-intro"><div><span className="cp-overline"><i/> YOUR PREPARATION · MONDAY, 09 NOVEMBER 2026</span><h1>Your learning, <em>in focus.</em></h1><p>A clear view of what you've built, what matters today, and where to go next.</p></div><div className="cp-home-context"><span>UPSC CSE</span><b>2027</b><small>PREPARATION TRACK</small></div></div>
+  <section className="cp-home-hero"><div className="cp-home-hero-copy"><span className="cp-hero-tag">YOUR PERSONAL LEARNING SPACE</span><h2>Build clarity.<br/><em>Make progress.</em></h2><p>Strong preparation is built one connected idea, one thoughtful practice and one consistent day at a time.</p><div className="cp-hero-buttons"><a href="/app/plan" className="cp-primary-link">Open my plan <ArrowRight size={16}/></a><a href="/app/discover" className="cp-secondary-link">Explore learning <ChevronRight size={16}/></a></div><div className="cp-hero-meta"><span><Flame size={16}/> <b>12 days</b> study streak</span><span><Clock3 size={16}/> <b>2h 40m</b> this week</span></div></div><ParliamentScene/><div className="cp-hero-vertical">CIVILPREP IAS · PREPARE WITH PERSPECTIVE</div></section>
+  <section className="cp-home-metrics"><article className="cp-metric cp-metric-progress"><span>PREPARATION PROGRESS</span><b>72<small>%</small></b><div className="cp-metric-track"><i style={{width:"72%"}}/></div><em><TrendingUp size={13}/> +4% THIS MONTH</em></article><article className="cp-metric"><span>TESTS ATTEMPTED</span><b>48</b><em><ListChecks size={13}/> 06 THIS MONTH</em></article><article className="cp-metric"><span>MAINS AVERAGE</span><b>12.8<small>/20</small></b><em><TrendingUp size={13}/> +1.2 IMPROVEMENT</em></article><article className="cp-metric"><span>STUDY STREAK</span><b>12<small> days</small></b><em><Flame size={13}/> BEST: 18 DAYS</em></article></section>
+  <section className="cp-home-grid">
+   <article className="cp-home-panel cp-today-panel"><div className="cp-panel-heading"><div><span className="cp-section-label">01 / THE DAY AHEAD</span><h3>Today's focus</h3></div><a href="/app/plan">Full plan <ArrowRight size={14}/></a></div><div className="cp-task-list">{actions.map((item,i)=><label className={done.includes(item.id)?"cp-task cp-task-complete":"cp-task"} key={item.id}><input type="checkbox" checked={done.includes(item.id)} onChange={()=>toggle(item.id)}/><span className="cp-task-check"><Check size={13}/></span><span className="cp-task-no">0{i+1}</span><span className="cp-task-content"><b>{item.title}</b><small>{item.meta}</small></span><span className="cp-task-time">{item.time}</span></label>)}</div><div className="cp-task-footer"><span>{done.length} OF 03 COMPLETED</span><div><i style={{width:(done.length/3*100)+"%"}}/></div></div></article>
+   <article className="cp-home-panel cp-continue-panel"><div className="cp-panel-heading"><div><span className="cp-section-label">02 / PICK UP WHERE YOU LEFT OFF</span><h3>Continue learning</h3></div><BookOpen size={20}/></div><div className="cp-continue-feature"><div className="cp-continue-art"><span>GS II</span><BookOpen size={35}/><small>POLITY</small></div><div className="cp-continue-copy"><span className="cp-content-tag">POLITY & GOVERNANCE</span><h4>Fundamental Rights</h4><p>Part III · Articles 12–35</p><div className="cp-inline-progress"><i style={{width:"64%"}}/></div><small>64% explored · 18 min remaining</small></div></div><a className="cp-continue-action" href="/app/library">Resume this module <ArrowRight size={15}/></a></article>
+   <article className="cp-home-panel cp-subject-panel"><div className="cp-panel-heading"><div><span className="cp-section-label">03 / YOUR KNOWLEDGE TERRITORY</span><h3>Subject mastery</h3></div><a href="/app/performance">View all <ArrowRight size={14}/></a></div><div className="cp-subject-list">{subjects.map(s=><div className="cp-subject-row" key={s.name}><span className="cp-subject-mark">{s.mark}</span><b>{s.name}</b><div className="cp-subject-track"><i className={"tone-"+s.tone} style={{width:s.value+"%"}}/></div><strong>{s.value}%</strong></div>)}</div></article>
+   <article className="cp-home-panel cp-next-panel"><div className="cp-panel-heading"><div><span className="cp-section-label">04 / YOUR NEXT LEARNING PATH</span><h3>Keep the momentum.</h3></div><Layers3 size={20}/></div><div className="cp-path-tabs">{pathways.map((p,i)=><button key={p.code} className={selected===i?"active":""} onClick={()=>setSelected(i)}>{p.code}</button>)}</div><div className={"cp-path-feature tone-"+current.tone}><div><span>{current.code} · SELECTED MODULE</span><button onClick={()=>setSaved(!saved)} aria-label="Save module"><Bookmark size={17} fill={saved?"currentColor":"none"}/></button></div><h4>{current.title}</h4><small>{current.detail}</small><div className="cp-inline-progress"><i style={{width:current.progress+"%"}}/></div><footer><b>{current.progress}% EXPLORED</b><a href="/app/library">Open module <ArrowRight size={14}/></a></footer></div></article>
+  </section>
+  <section className="cp-home-explore"><div className="cp-explore-title"><span className="cp-section-label">05 / KNOWLEDGE IN MOTION</span><h3>Choose your <em>next direction.</em></h3></div><a href="/app/practice/daily-drill"><span><Target/></span><b>Daily Drill</b><small>Test today's understanding</small><ArrowRight/></a><a href="/app/current-affairs"><span><Globe2/></span><b>Daily Crux</b><small>Connect news with concepts</small><ArrowRight/></a><a href="/app/mains"><span><NotebookPen/></span><b>Mains Studio</b><small>Turn ideas into answers</small><ArrowRight/></a></section>
+  <footer className="cp-home-footer"><span>CIVILPREP IAS / UPSC · PCS · BEYOND</span><span>सीखना · समझना · आगे बढ़ना</span><span>YOUR JOURNEY, IN YOUR HANDS ↗</span></footer>
+ </main>;
 }
