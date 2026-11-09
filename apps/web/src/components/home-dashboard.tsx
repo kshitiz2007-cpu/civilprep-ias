@@ -2,7 +2,7 @@
 
 import {
   Activity, Bell, BookOpen, Bookmark, CalendarDays, BarChart3,
-  CheckCircle2, ChevronRight, Clock3, Compass, FileText, Flame, GraduationCap,
+  ChevronRight, Clock3, Compass, FileText, Flame, GraduationCap,
   House, Layers3, Library, ListChecks, Search, Target, Trophy, Video,
 } from "lucide-react";
 
@@ -15,9 +15,9 @@ const nav = [
   { label: "Tests", icon: ListChecks },
   { label: "Mains Studio", icon: FileText },
   { label: "Revision", icon: Layers3 },
-  { label: "Performance", icon: ChartNoAxesColumnIncreasing },
+  { label: "Performance", icon: BarChart3 },
   { label: "Classroom", icon: Video },
-  { label: "Resource Centre", icon: LibraryBig },
+  { label: "Resource Centre", icon: Library },
 ];
 
 const tasks = [
