@@ -1,36 +1,30 @@
-:root {
+/* CivilPrep IAS — Zenith Atelier semantic themes */
+:root,
+[data-theme="dawn"] {
   color-scheme: light;
-  --cp-canvas: #eee6d8;
-  --cp-surface: #fff9ef;
-  --cp-surface-warm: #f4e8d6;
-  --cp-surface-muted: #e6dccb;
-  --cp-terracotta: #bf4e24;
-  --cp-orange: #e47725;
-  --cp-orange-soft: #f8e1ca;
-  --cp-sage: #a8b99a;
-  --cp-sage-soft: #e5ecdf;
-  --cp-forest: #28783c;
-  --cp-indigo: #75639b;
-  --cp-ink: #28251f;
-  --cp-ink-muted: #625d53;
-  --cp-border: #d8cbb8;
-  --cp-border-strong: #c9b79e;
-  --cp-radius-sm: 9px;
-  --cp-radius-md: 14px;
-  --cp-radius-lg: 19px;
-  --cp-radius-xl: 25px;
-  --cp-shadow-soft: 0 3px 12px rgb(58 43 27 / 8%);
-  --cp-shadow-raised: 0 9px 25px rgb(58 43 27 / 12%);
+  --cp-canvas: #FAF7F2; --cp-surface: #F2ECE1; --cp-surface-warm: #EDE4D6; --cp-surface-muted: #E8E0D4;
+  --cp-ink: #1C242B; --cp-ink-muted: #58636A; --cp-sage: #1F4E43; --cp-sage-soft: #E2EBE5;
+  --cp-terracotta: #C85A32; --cp-orange: #C85A32; --cp-orange-soft: #F4E3DA; --cp-indigo: #2B4C7E;
+  --cp-border: #DED6CA; --cp-border-strong: #C9BDAE;
+  --cp-shadow-soft: 0 3px 14px rgb(28 36 43 / 5%); --cp-shadow-raised: 0 12px 32px rgb(28 36 43 / 9%);
+}
+[data-theme="midnight"] {
+  color-scheme: dark;
+  --cp-canvas: #11181C; --cp-surface: #182228; --cp-surface-warm: #202C31; --cp-surface-muted: #26343A;
+  --cp-ink: #E6E1D6; --cp-ink-muted: #B3B9B5; --cp-sage: #52B788; --cp-sage-soft: #203B33;
+  --cp-terracotta: #F4A261; --cp-orange: #F4A261; --cp-orange-soft: #443326; --cp-indigo: #7494EA;
+  --cp-border: #344249; --cp-border-strong: #4A5B62;
+  --cp-shadow-soft: 0 3px 14px rgb(0 0 0 / 16%); --cp-shadow-raised: 0 12px 32px rgb(0 0 0 / 26%);
+}
+:root {
+  --cp-radius-sm: 10px; --cp-radius-md: 16px; --cp-radius-lg: 22px; --cp-radius-xl: 26px;
   --cp-font-ui: "Plus Jakarta Sans", "Noto Sans Devanagari", system-ui, sans-serif;
-  --cp-font-editorial: "Newsreader", Georgia, serif;
-  --cp-space-1: 4px;
-  --cp-space-2: 8px;
-  --cp-space-3: 12px;
-  --cp-space-4: 16px;
-  --cp-space-6: 24px;
-  --cp-space-8: 32px;
-  --cp-space-12: 48px;
-  --cp-motion-fast: 140ms;
-  --cp-motion-normal: 220ms;
-  --cp-motion-slow: 320ms;
+  --cp-font-editorial: "Instrument Serif", "Noto Serif", Georgia, serif;
+  --cp-font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --cp-space-1: 4px; --cp-space-2: 8px; --cp-space-3: 12px; --cp-space-4: 16px;
+  --cp-space-6: 24px; --cp-space-8: 32px; --cp-space-12: 48px;
+  --cp-motion-fast: 140ms; --cp-motion-normal: 220ms; --cp-motion-slow: 320ms;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root { --cp-motion-fast: 0ms; --cp-motion-normal: 0ms; --cp-motion-slow: 0ms; }
 }
