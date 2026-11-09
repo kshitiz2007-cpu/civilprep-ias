@@ -24,5 +24,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
       - name: Typecheck web
         run: pnpm --filter @civilprep/web typecheck
+      - name: Typecheck Android app
+        run: pnpm --filter @civilprep/mobile typecheck
       - name: Build web
         run: pnpm --filter @civilprep/web build
