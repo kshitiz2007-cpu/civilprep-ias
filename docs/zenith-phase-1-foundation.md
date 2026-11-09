@@ -72,3 +72,21 @@ A separate alias table should retain prior paths and point to canonical UUIDs. E
 - Landing widgets are explorable without login.
 - Onboarding can be completed with keyboard and touch.
 - Command palette supports keyboard navigation and canonical slug lookup.
+
+
+## Implementation status — 9 November 2026
+
+### Added to `zenith/phase-1-foundation`
+
+- Circadian theme provider with Auto, Dawn Sanctuary and Midnight Study modes; Auto follows local time (06:00–17:59 Dawn, otherwise Midnight).
+- Persistent manual preference, with graceful in-memory fallback if browser storage is unavailable.
+- Isolated Sanctuary preview at `/zenith`; the existing public homepage remains unchanged.
+- Interactive three-depth Editorial Lens and searchable GS subject constellation preview.
+- Three-step onboarding at `/onboarding/1` through `/onboarding/3`; the current flow is explicitly a local preview and stores only device-local preferences.
+- Global command palette, opened with Cmd/Ctrl + K, with keyboard navigation and module destination shortcuts.
+- Canonical slug normalizer, path validator and canonical/alias resolver exported from `@civilprep/domain/slug-registry`.
+- Draft PostgreSQL schema migration for canonical slugs and aliases. It is a design artifact only and has not been applied to any database.
+
+### Verification boundary
+
+GitHub confirms the files are committed to this feature branch. A local install, TypeScript check, production build, browser smoke test, accessibility audit and SQL migration run have not yet been executed in this environment. Do not treat the preview onboarding, module shortcuts or sample syllabus data as production-connected features.
