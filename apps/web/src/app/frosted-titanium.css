@@ -44,3 +44,22 @@
 @media(max-width:390px){.cp-home-context{display:none}.cp-metric{padding:11px}.cp-metric>span{font-size:8px}.cp-metric>b{font-size:26px}.cp-home-explore{grid-template-columns:1fr}.cp-continue-feature{align-items:flex-start}.cp-continue-art{flex-basis:74px;height:94px}}
 @media(prefers-reduced-motion:reduce){.cp-student-home *{transition:none!important;animation:none!important}}
 @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.cp-metric,.cp-home-panel,.cp-home-explore>a{background:#242a30}}
+
+/* Workspace chrome joins the same titanium material system */
+.workspace-ui{background:#111316!important;color:#eef1f4!important}
+.workspace-sidebar,.workspace-topbar,.mobile-nav-panel{background:rgba(34,39,45,.82)!important;border-color:rgba(224,231,239,.13)!important;color:#e9edf0!important;box-shadow:inset 0 1px rgba(255,255,255,.08),0 16px 38px #0004!important;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+.workspace-logo,.workspace-user,.workspace-nav-label,.breadcrumbs,.workspace-top-actions{color:#e8ecf0!important}
+.workspace-logo small,.workspace-user small,.workspace-nav-label,.breadcrumbs a{color:#9da7b1!important}
+.workspace-nav a{color:#b9c1c9!important;border:1px solid transparent}
+.workspace-nav a:hover{background:rgba(255,255,255,.06)!important;color:#f3f5f7!important}
+.workspace-nav a.active{background:linear-gradient(135deg,rgba(226,232,237,.2),rgba(150,160,170,.09))!important;border-color:rgba(235,240,245,.2)!important;color:#f4f6f8!important;box-shadow:inset 0 1px rgba(255,255,255,.15)}
+.workspace-nav a svg{color:#b8c1ca!important}
+.workspace-content{color:#eef1f4}
+.page-heading h1{color:#f3f5f7!important;letter-spacing:-.045em}
+.page-heading p,.section-kicker{color:#a2acb6!important}
+.workspace-search,.ui-icon-button,.ui-button-quiet{border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.055)!important;color:#e7ebef!important}
+.workspace-search input{color:#f2f4f6!important}
+.workspace-search input::placeholder{color:#8e99a4!important}
+.workspace-avatar{border:1px solid rgba(255,255,255,.22)!important;box-shadow:0 5px 16px #0005}
+.workspace-logo .brand-mark{background:linear-gradient(145deg,#e1e5e9,#7e8994)!important;color:#1b2025!important;box-shadow:inset 0 1px #fff}
+@media(max-width:700px){.workspace-ui{background:#111316!important}.workspace-topbar{border-radius:0 0 16px 16px}}
