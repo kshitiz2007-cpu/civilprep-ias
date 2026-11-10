@@ -1,5 +1,6 @@
 @import "@civilprep/design-tokens/tokens.css";
 @import "./dashboard.css";
+@import "./frosted-titanium.css";
 
 * { box-sizing: border-box; }
 html { min-width: 320px; background: var(--cp-canvas); }
