@@ -1,7 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowDownRight, ArrowRight, BookOpen, Compass, Layers3, Search, Sparkles } from "lucide-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { ArrowDownRight01Icon, ArrowRight01Icon, BookOpen01Icon, CompassIcon, Layers01Icon, Search01Icon, SparklesIcon } from "@hugeicons/core-free-icons";
+
+const ArrowRight = ({ size = 16 }: { size?: number }) => <HugeiconsIcon icon={ArrowRight01Icon} size={size} strokeWidth={1.7} />;
+const ArrowDownRight = ({ size = 16 }: { size?: number }) => <HugeiconsIcon icon={ArrowDownRight01Icon} size={size} strokeWidth={1.7} />;
+const BookOpen = ({ size = 16 }: { size?: number }) => <HugeiconsIcon icon={BookOpen01Icon} size={size} strokeWidth={1.7} />;
+const Compass = ({ size = 16 }: { size?: number }) => <HugeiconsIcon icon={CompassIcon} size={size} strokeWidth={1.7} />;
+const Layers3 = ({ size = 16 }: { size?: number }) => <HugeiconsIcon icon={Layers01Icon} size={size} strokeWidth={1.7} />;
+const Search = ({ size = 16 }: { size?: number }) => <HugeiconsIcon icon={Search01Icon} size={size} strokeWidth={1.7} />;
+const Sparkles = ({ size = 16 }: { size?: number }) => <HugeiconsIcon icon={SparklesIcon} size={size} strokeWidth={1.7} />;
 import { ZenithThemeControl } from "./zenith-theme-provider";
 import "./zenith-sanctuary.css";
 
@@ -41,19 +50,21 @@ export function ZenithSanctuary() {
       <section className="zenith-hero">
         <div className="zenith-hero-copy">
           <div className="zenith-overline"><span /> A calmer way to prepare for what matters</div>
-          <h1>Knowledge is not a pile.<br /><em>It is a connected world.</em></h1>
+          <h1><span className="zenith-title-line">Knowledge is not</span><span className="zenith-title-line zenith-title-emphasis"><em>a pile of facts.</em></span><span className="zenith-title-line zenith-title-last">It is a connected world<span className="zenith-title-period">.</span></span></h1>
           <p>One knowledge identity. Multiple learning experiences. A living study space for UPSC and State PCS—built to help you understand deeply, connect ideas and write with clarity.</p>
           <div className="zenith-hero-actions"><a className="zenith-primary" href="/onboarding/1">Enter your sanctuary <ArrowRight size={16} /></a><a className="zenith-secondary" href="#constellation">Explore the knowledge map <ArrowDownRight size={16} /></a></div>
           <div className="zenith-proof"><span><BookOpen size={15} /> Bilingual by design</span><span><Compass size={15} /> Syllabus-connected</span><span><Sparkles size={15} /> Built for understanding</span></div>
         </div>
-        <div className="zenith-hero-art" aria-label="Abstract connected knowledge illustration">
-          <div className="zenith-orbit orbit-one" /><div className="zenith-orbit orbit-two" /><div className="zenith-orbit orbit-three" />
-          <div className="zenith-orbit-core"><span>CP</span><small>KNOWLEDGE<br />GRAPH</small></div>
-          <div className="zenith-node node-one"><BookOpen size={18} /><small>SYLLABUS</small></div>
-          <div className="zenith-node node-two"><Sparkles size={18} /><small>INSIGHT</small></div>
-          <div className="zenith-node node-three"><Layers3 size={18} /><small>REVISION</small></div>
-          <div className="zenith-node node-four"><Compass size={18} /><small>PYQs</small></div>
-          <div className="zenith-art-note">A map, not a maze.</div>
+        <div className="zenith-hero-art" aria-label="Illustrated learning pathways connecting syllabus, editorial analysis, revision and previous-year questions">
+          <div className="zenith-map-header"><span>THE CIVILPREP ATLAS</span><span>01 / 04</span></div>
+          <div className="zenith-map-main">
+            <div className="zenith-map-spine" aria-hidden="true" />
+            <div className="zenith-map-card zenith-map-card-main"><span className="zenith-map-number">01 / FOUNDATION</span><BookOpen size={27} /><strong>Learn the<br />essentials.</strong><small>Concepts · Syllabus</small></div>
+            <div className="zenith-map-card zenith-map-card-editorial"><span className="zenith-map-number">02 / CONTEXT</span><Sparkles size={24} /><strong>Connect<br />the dots.</strong><small>Editorial · Analysis</small></div>
+            <div className="zenith-map-card zenith-map-card-practice"><span className="zenith-map-number">03 / PRACTICE</span><Compass size={24} /><strong>Think. Apply.<br />Reflect.</strong><small>PYQs · Mains</small></div>
+            <div className="zenith-map-card zenith-map-card-revision"><span className="zenith-map-number">04 / RETENTION</span><Layers3 size={24} /><strong>Make it<br />your own.</strong><small>Notes · Revision</small></div>
+          </div>
+          <div className="zenith-map-bottom"><span>ONE CONNECTED LEARNING JOURNEY</span><span className="zenith-map-star">✳</span></div>
         </div>
       </section>
 
@@ -74,7 +85,7 @@ export function ZenithSanctuary() {
       </section>
 
       <section className="zenith-section constellation-section" id="constellation">
-        <div className="zenith-section-heading"><div><span className="zenith-kicker">THE SYLLABUS CONSTELLATION / 02</span><h2>See the whole. Find your next idea.</h2><p>Explore a connected preview of the General Studies knowledge map. Select a domain to reveal its learning territory.</p></div><span className="zenith-index">GS / CORE</span></div>
+        <div className="zenith-section-heading"><div><span className="zenith-kicker">THE KNOWLEDGE ATLAS / 02</span><h2>See the whole. Find your next idea.</h2><p>Explore a connected preview of the General Studies knowledge map. Select a domain to reveal its learning territory.</p></div><span className="zenith-index">GS / CORE</span></div>
         <div className="zenith-constellation-shell">
           <div className="zenith-constellation-toolbar"><div><span className="zenith-live-dot" /> KNOWLEDGE MAP PREVIEW</div><label><Search size={15} /><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Find a subject or theme" aria-label="Find a subject or theme" /></label></div>
           <div className="zenith-constellation-grid">
