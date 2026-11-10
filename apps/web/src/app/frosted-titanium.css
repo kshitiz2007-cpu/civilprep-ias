@@ -63,3 +63,38 @@
 .workspace-avatar{border:1px solid rgba(255,255,255,.22)!important;box-shadow:0 5px 16px #0005}
 .workspace-logo .brand-mark{background:linear-gradient(145deg,#e1e5e9,#7e8994)!important;color:#1b2025!important;box-shadow:inset 0 1px #fff}
 @media(max-width:700px){.workspace-ui{background:#111316!important}.workspace-topbar{border-radius:0 0 16px 16px}}
+
+/* Phase 2 — kinetic type, purposeful motion and accessible states */
+.cp-home-intro h1,.cp-home-hero-copy h2,.cp-panel-heading h3,.cp-explore-title h3{ text-wrap:balance; font-kerning:normal; }
+.cp-home-intro h1{font-size:clamp(2rem,3.65vw,3.35rem);line-height:.99}
+.cp-home-hero-copy h2{font-size:clamp(2.35rem,4.3vw,3.65rem);line-height:.96}
+.cp-panel-heading h3{font-size:clamp(1.05rem,1.5vw,1.35rem)}
+.cp-home-intro,.cp-home-hero,.cp-metric,.cp-home-panel,.cp-home-explore>a{animation:cp-frost-rise .58s cubic-bezier(.2,.7,.2,1) both}
+.cp-home-hero{animation-delay:.06s}
+.cp-home-metrics .cp-metric:nth-child(1){animation-delay:.1s}
+.cp-home-metrics .cp-metric:nth-child(2){animation-delay:.15s}
+.cp-home-metrics .cp-metric:nth-child(3){animation-delay:.2s}
+.cp-home-metrics .cp-metric:nth-child(4){animation-delay:.25s}
+.cp-home-grid .cp-home-panel:nth-child(1){animation-delay:.2s}
+.cp-home-grid .cp-home-panel:nth-child(2){animation-delay:.25s}
+.cp-home-grid .cp-home-panel:nth-child(3){animation-delay:.3s}
+.cp-home-grid .cp-home-panel:nth-child(4){animation-delay:.35s}
+.cp-home-explore>a:nth-of-type(1){animation-delay:.3s}
+.cp-home-explore>a:nth-of-type(2){animation-delay:.35s}
+.cp-home-explore>a:nth-of-type(3){animation-delay:.4s}
+@keyframes cp-frost-rise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:translateY(0)}}
+.cp-metric,.cp-home-panel{transition:transform .28s cubic-bezier(.2,.7,.2,1),border-color .28s,box-shadow .28s}
+.cp-metric:hover,.cp-home-panel:hover{transform:translateY(-2px);border-color:rgba(230,237,244,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.17),0 18px 38px #0005}
+.cp-task:focus-within .cp-task-check{outline:2px solid #d9e0e6;outline-offset:3px}
+.cp-path-tabs button{transition:background .2s,color .2s,border-color .2s,transform .2s}
+.cp-path-tabs button:hover{transform:translateY(-1px);border-color:#ffffff45;color:#e7ebef}
+.cp-path-feature>div:first-child button{cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.cp-path-feature>div:first-child button:hover{transform:scale(1.06);background:#ffffff1b;border-color:#ffffff55}
+.cp-path-feature>div:first-child button.is-saved{color:#171c21;background:linear-gradient(145deg,#edf0f3,#b8c1ca);border-color:#edf0f3;box-shadow:0 5px 15px #0004}
+.cp-path-feature>div:first-child button:focus-visible,.cp-path-tabs button:focus-visible,.cp-task:focus-within .cp-task-check{outline:2px solid #e5e9ed;outline-offset:3px}
+.cp-home-explore>a:focus-visible,.cp-primary-link:focus-visible,.cp-secondary-link:focus-visible,.cp-continue-action:focus-visible{outline:2px solid #e5e9ed;outline-offset:4px}
+.cp-continue-action{transition:transform .22s,border-color .22s,background .22s}
+.cp-continue-action:hover{transform:translateY(-2px);border-color:#ffffff45;background:#ffffff10}
+.cp-student-home svg{flex-shrink:0}
+@media(max-width:760px){.cp-home-intro h1{font-size:clamp(2rem,8vw,2.5rem)}.cp-home-hero-copy h2{font-size:clamp(2.25rem,9vw,2.7rem)}}
+@media(prefers-reduced-motion:reduce){.cp-home-intro,.cp-home-hero,.cp-metric,.cp-home-panel,.cp-home-explore>a{animation:none!important}.cp-metric,.cp-home-panel,.cp-home-explore>a,.cp-path-tabs button,.cp-continue-action{transition:none!important}}
