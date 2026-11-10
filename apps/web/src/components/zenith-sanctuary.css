@@ -2,3 +2,44 @@
 @media(max-width:900px){.zenith-nav{padding-inline:22px}.zenith-nav-links{display:none}.zenith-hero{grid-template-columns:1fr;gap:22px;padding-block:65px}.zenith-hero-copy{max-width:750px}.zenith-hero-art{width:min(76vw,410px)}.zenith-principles{padding-inline:20px}.zenith-section{padding:65px 24px}.zenith-editorial-card{grid-template-columns:220px 1fr}}
 @media(max-width:620px){.zenith-nav{height:66px;padding-inline:15px}.zenith-theme-control>span{display:none}.zenith-theme-control select{max-width:116px}.zenith-nav-actions{gap:10px}.zenith-login{font-size:0}.zenith-login svg{width:19px;height:19px}.zenith-hero{min-height:0;padding:55px 22px 45px}.zenith-hero h1{font-size:49px;letter-spacing:-1.8px}.zenith-hero-copy>p{font-size:13px}.zenith-proof{gap:10px;font-size:9px}.zenith-hero-art{width:min(88vw,360px);margin-top:12px}.zenith-node{padding:8px 9px}.zenith-node small{font-size:7px}.zenith-node svg{width:15px}.zenith-principles{grid-template-columns:1fr;padding:0}.zenith-principles>div{padding:21px 24px}.zenith-principles small{max-width:none}.zenith-section{padding:55px 17px}.zenith-section-heading{align-items:start}.zenith-section-heading h2{font-size:38px}.zenith-index{display:none}.zenith-editorial-card{grid-template-columns:1fr}.zenith-layer-list{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;padding:8px;border-right:0;border-bottom:1px solid var(--z-line)}.zenith-layer-list button{display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:12px 8px;border:0;border-radius:9px}.zenith-layer-list button span{font-size:11px}.zenith-layer-list button b{font-size:9px}.zenith-layer-list button svg{display:none}.zenith-layer-content{padding:25px 20px}.zenith-layer-content h3,.zenith-topic-detail h3{font-size:31px}.zenith-reading-meta{gap:10px;font-size:7px}.zenith-constellation-toolbar{align-items:flex-start;flex-direction:column}.zenith-constellation-toolbar label,.zenith-constellation-toolbar input{width:100%}.zenith-constellation-grid{grid-template-columns:1fr}.zenith-topic-list{grid-template-columns:1fr 1fr;border-right:0;border-bottom:1px solid var(--z-line);padding:10px}.zenith-topic-list button{grid-template-columns:1fr 14px;gap:5px;padding:11px 9px}.zenith-topic-list button>span{grid-column:1/-1;font-size:11px}.zenith-topic-list button>b{font-size:9px}.zenith-topic-list button svg{grid-column:2;grid-row:2}.zenith-topic-detail{padding:25px 20px}.zenith-topic-footer{align-items:flex-start;flex-direction:column}.zenith-footer{flex-wrap:wrap;padding:20px}.zenith-footer p{order:3;width:100%;margin:0}}
 @media(prefers-reduced-motion:reduce){.zenith-page *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Zenith Sanctuary visual upgrade — typographic scale and architectural knowledge atlas */
+.zenith-page{--zenith-ease:cubic-bezier(.2,.8,.2,1);overflow-x:clip}
+.zenith-hero{grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:clamp(30px,5vw,90px);padding-block:clamp(76px,9vw,132px);min-height:720px;background:radial-gradient(ellipse at 80% 35%,var(--cp-sage-soft),transparent 46%),radial-gradient(ellipse at 5% 100%,var(--cp-orange-soft),transparent 42%),var(--cp-canvas)}
+.zenith-hero-copy{max-width:850px}
+.zenith-hero h1{font-size:clamp(3.7rem,6.15vw,7.6rem);line-height:.98;letter-spacing:-.065em;margin:32px 0 29px;text-wrap:balance}
+.zenith-title-line{display:block;animation:zenith-rise .85s var(--zenith-ease) both}
+.zenith-title-line:nth-child(2){animation-delay:.12s}
+.zenith-title-line:nth-child(3){animation-delay:.24s}
+.zenith-title-emphasis{color:var(--cp-terracotta)}
+.zenith-title-emphasis em{color:inherit!important;font-weight:400}
+.zenith-title-last{font-size:.76em;letter-spacing:-.055em;color:var(--cp-sage)}
+.zenith-title-period{color:var(--cp-terracotta)}
+.zenith-overline{letter-spacing:.18em;text-transform:uppercase}
+.zenith-hero-copy>p{font-size:clamp(14px,1.15vw,17px);max-width:610px}
+.zenith-primary,.zenith-secondary,.zenith-topic-list button,.zenith-layer-list button{transition:transform .3s var(--zenith-ease),background .3s,color .3s,box-shadow .3s}
+.zenith-primary:hover{transform:translateY(-3px)}
+.zenith-topic-list button:hover,.zenith-layer-list button:hover{transform:translateX(3px)}
+.zenith-hero-art{width:min(100%,560px);aspect-ratio:1/1.04;border-radius:28px;background:var(--cp-surface-warm);border:1px solid var(--cp-border);box-shadow:0 28px 80px color-mix(in srgb,var(--cp-ink) 9%,transparent);padding:22px;display:flex;flex-direction:column;transform:rotate(1.5deg);transition:transform .7s var(--zenith-ease)}
+.zenith-hero-art:hover{transform:rotate(0deg) translateY(-5px)}
+.zenith-map-header,.zenith-map-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--cp-ink-muted);font-size:9px;letter-spacing:.15em;font-weight:800}
+.zenith-map-header{padding-bottom:18px;border-bottom:1px solid var(--cp-border)}
+.zenith-map-bottom{padding-top:18px;border-top:1px solid var(--cp-border)}
+.zenith-map-star{font-size:24px;color:var(--cp-terracotta)}
+.zenith-map-main{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px;flex:1;min-height:0;padding:18px 0}
+.zenith-map-spine{position:absolute;z-index:1;top:50%;left:50%;width:54px;height:54px;border:8px solid var(--cp-surface-warm);border-radius:50%;background:var(--cp-terracotta);transform:translate(-50%,-50%);box-shadow:0 0 0 1px var(--cp-border)}
+.zenith-map-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:8px;min-height:150px;padding:clamp(14px,2vw,24px);border-radius:17px;border:1px solid var(--cp-border);background:var(--cp-surface);color:var(--cp-sage);transition:transform .4s var(--zenith-ease),box-shadow .4s}
+.zenith-map-card:hover{transform:translateY(-5px);box-shadow:var(--cp-shadow-raised)}
+.zenith-map-card strong{font:400 clamp(20px,2.3vw,32px)/1.05 var(--cp-font-editorial);letter-spacing:-.04em;color:var(--cp-ink)}
+.zenith-map-card small{font-size:10px;color:var(--cp-ink-muted)}
+.zenith-map-number{font-size:9px;font-weight:900;letter-spacing:.12em;color:var(--cp-ink-muted)}
+.zenith-map-card-editorial{background:var(--cp-sage-soft)}
+.zenith-map-card-practice{background:var(--cp-orange-soft);color:var(--cp-terracotta)}
+.zenith-map-card-revision{background:color-mix(in srgb,var(--cp-indigo) 9%,var(--cp-surface));color:var(--cp-indigo)}
+.zenith-section-heading h2{font-size:clamp(2.5rem,4.6vw,4.7rem);line-height:1.03;letter-spacing:-.045em;text-wrap:balance}
+.zenith-principles b{font-size:clamp(22px,2vw,30px)}
+.zenith-editorial-card,.zenith-constellation-shell{border-radius:24px}
+@keyframes zenith-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:900px){.zenith-hero{grid-template-columns:1fr;min-height:0}.zenith-hero h1{font-size:clamp(3.4rem,9vw,6.8rem)}.zenith-hero-art{width:min(100%,540px)}}
+@media(max-width:620px){.zenith-hero{padding:56px 20px 50px}.zenith-hero h1{font-size:clamp(3.05rem,11vw,4.9rem);letter-spacing:-.06em}.zenith-title-last{font-size:.8em}.zenith-hero-art{padding:14px;aspect-ratio:1/1.1}.zenith-map-card{padding:13px;min-height:140px}.zenith-map-card strong{font-size:clamp(18px,5vw,24px)}.zenith-map-card small{font-size:9px}.zenith-map-number{font-size:8px}.zenith-map-header,.zenith-map-bottom{font-size:8px}.zenith-map-main{gap:8px;padding-block:12px}.zenith-map-spine{width:40px;height:40px;border-width:6px}.zenith-section-heading h2{font-size:clamp(2.25rem,9vw,3.4rem)}}
+@media(prefers-reduced-motion:reduce){.zenith-title-line{animation:none}.zenith-hero-art,.zenith-hero-art:hover{transform:none}}
