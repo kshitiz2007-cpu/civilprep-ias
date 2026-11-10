@@ -16,7 +16,7 @@ const constellation=[
  {id:"history",code:"GS I",name:"History & Society",topics:"Modern India · Culture · Social change",tone:"indigo",icon:Notification03Icon},
  {id:"ethics",code:"GS IV",name:"Ethics & Integrity",topics:"Thinkers · Case studies · Aptitude",tone:"sand",icon:UserIcon},
 ] as const;
-function Icon({icon,size=20}:{icon:typeof Home01Icon;size?:number}){return <HugeiconsIcon icon={icon} size={size} color="currentColor" strokeWidth={1.65} aria-hidden="true"/>}
+type SanctuaryIcon = typeof Home01Icon | typeof Notification03Icon | typeof SearchIcon | typeof Settings01Icon | typeof UserIcon;\nfunction Icon({icon,size=20}:{icon:SanctuaryIcon;size?:number}){return <HugeiconsIcon icon={icon} size={size} color="currentColor" strokeWidth={1.65} aria-hidden="true"/>}
 
 export function ZenithSanctuary(){
  const [layer,setLayer]=useState<(typeof editorialLayers)[number]["id"]>("surface");
