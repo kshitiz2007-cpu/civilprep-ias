@@ -24,7 +24,7 @@ const pathways=[
 ];
 function ParliamentScene(){return <div className="cp-student-scene" aria-label="Illustrated Indian Parliament landscape"><div className="cp-scene-sun"/><div className="cp-scene-cloud cloud-a"/><div className="cp-scene-cloud cloud-b"/><div className="cp-scene-hill hill-a"/><div className="cp-scene-hill hill-b"/><div className="cp-parliament"><div className="cp-flag"><i/></div><div className="cp-dome"/><div className="cp-roof"/><div className="cp-columns">{Array.from({length:8},(_,i)=><i key={i}/>)}</div><div className="cp-steps"/></div><div className="cp-scene-tree tree-a"/><div className="cp-scene-tree tree-b"/><span className="cp-scene-caption">ज्ञान · विवेक · सेवा</span></div>}
 export function StudentHomeConcept02(){
- const today = new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "2-digit", month: "short", year: "numeric" }).format(new Date()).toUpperCase();
+ const today = new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "2-digit", month: "short", year: "numeric", timeZone: "Asia/Kolkata" }).format(new Date()).toUpperCase();
  const [done,setDone]=useState<string[]>([]),[selected,setSelected]=useState(0),[saved,setSaved]=useState(false);
  const current=pathways[selected];
  const toggle=(id:string)=>setDone(v=>v.includes(id)?v.filter(x=>x!==id):[...v,id]);
