@@ -1352,3 +1352,9 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
     to { opacity: 1; transform: translateY(0); }
   }
 }
+
+.student-page .student-page-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:nowrap}
+.student-page .student-signout{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 13px;border:1px solid rgba(112,54,52,.28);border-radius:999px;background:rgba(255,250,241,.88);color:#68243a;font-size:12px;font-weight:700;white-space:nowrap;transition:background .18s ease,transform .18s ease,border-color .18s ease}
+.student-page .student-signout:hover{background:#f4e5d6;border-color:#8e2345;transform:translateY(-1px)}
+.student-page .student-signout svg{width:15px;height:15px}
+@media(max-width:480px){.student-page .student-signout{width:39px;height:39px;min-height:39px;padding:0}.student-page .student-signout span{display:none}.student-page .student-page-actions{gap:6px}.student-page .student-page-actions .theme-control{min-height:39px;padding:8px 10px}.student-page .student-page-actions .theme-control span{display:none}}
