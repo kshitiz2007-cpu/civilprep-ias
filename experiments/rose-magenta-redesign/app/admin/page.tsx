@@ -546,6 +546,38 @@ export default function AdminPage() {
         </div>
       </main>
 
+      <nav aria-label="Quick admin navigation" className="admin-mobile-dock md:hidden">
+        {[
+          { id: 'overview', label: 'Home', icon: LayoutDashboard },
+          { id: 'quizzes', label: 'Tests', icon: FileQuestion },
+          { id: 'students', label: 'Students', icon: Users },
+          { id: 'inbox', label: 'Inbox', icon: MessageSquare },
+          { id: 'resources', label: 'Vault', icon: FileText },
+        ].map((item) => {
+          const Icon = item.icon;
+          const active = activeTab === item.id;
+          return (
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => setActiveTab(item.id)}
+              aria-current={active ? 'page' : undefined}
+              className={`admin-dock-item ${active ? 'is-active' : ''}`}
+            >
+              <span className="relative">
+                <Icon className="h-[19px] w-[19px]" />
+                {item.id === 'inbox' && totalUnreadMessages > 0 && (
+                  <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-[#bd2d70] px-1 text-[9px] font-bold text-white">
+                    {totalUnreadMessages > 9 ? '9+' : totalUnreadMessages}
+                  </span>
+                )}
+              </span>
+              <span>{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+
       {notificationMessage && (
         <button
           type="button"
