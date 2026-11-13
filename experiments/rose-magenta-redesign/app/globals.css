@@ -603,3 +603,25 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 @media(prefers-reduced-motion:reduce){.kinetic-title,.kinetic-gradient,.gradient-text,.page-enter,main>section,main>div{animation:none!important}.glass-card,.theme-surface,.atelier-card{transition:none!important}}
 html[data-theme=champagne]{--app-accent:#ad7942;--app-accent-strong:#946331;--app-accent-soft:rgba(173,121,66,.11)}
 html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-accent-soft:rgba(189,45,131,.11)}
+
+
+/* Stage 1 — adaptive navigation and touch ergonomics */
+.admin-nav-rail{scrollbar-width:none;scroll-snap-type:x proximity}
+.admin-nav-rail::-webkit-scrollbar{display:none}
+.admin-nav-item{scroll-snap-align:start;min-height:42px}
+.admin-mobile-dock{
+ position:fixed;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));
+ z-index:60;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;
+ padding:7px;border:1px solid rgba(174,105,132,.22);border-radius:22px;
+ background:rgba(255,255,255,.88);box-shadow:0 16px 44px rgba(91,38,63,.18),inset 0 1px rgba(255,255,255,.95);
+ backdrop-filter:blur(24px) saturate(1.25);-webkit-backdrop-filter:blur(24px) saturate(1.25)
+}
+.admin-dock-item{display:flex;min-width:0;min-height:53px;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;border-radius:15px;background:transparent;color:#927b88;font-size:9px;font-weight:700;letter-spacing:.01em}
+.admin-dock-item.is-active{background:linear-gradient(145deg,rgba(200,62,125,.13),rgba(222,179,119,.12));color:#a92b69}
+.admin-dock-item:focus-visible{outline:2px solid #c83e7d;outline-offset:1px}
+@media(max-width:767px){
+ .admin-nav-rail{padding-bottom:10px}
+ .admin-nav-item{min-height:39px;padding:9px 12px}
+ .admin-nav-item span{font-size:11px}
+}
+@media(min-width:768px){.admin-mobile-dock{display:none}}
