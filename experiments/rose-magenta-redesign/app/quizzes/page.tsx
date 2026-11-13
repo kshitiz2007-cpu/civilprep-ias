@@ -1,7 +1,7 @@
 'use client';
 export const dynamic = 'force-dynamic';
 
-import ThemeSelector from '@/components/ThemeSelector';
+import StudentPageActions from '@/components/StudentPageActions';
 import StudentBottomNav from '@/components/StudentBottomNav';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
@@ -269,7 +269,7 @@ export default function StudentQuizzesPage() {
               </h1>
             </div>
           </div>
-          <ThemeSelector />
+          <StudentPageActions />
         </header>
 
         {/* View 1: Subject Pillars */}
