@@ -30,7 +30,7 @@ import {
   ChevronRight,
   Trophy,
 } from 'lucide-react';
-import ThemeSelector from '@/components/ThemeSelector';
+import StudentPageActions from '@/components/StudentPageActions';
 
 interface Resource {
   id: string;
@@ -229,7 +229,7 @@ export default function StudentResourcesPage() {
               </h1>
             </div>
           </div>
-          <ThemeSelector />
+          <StudentPageActions />
         </header>
 
         {!activeSubject && (
