@@ -36,6 +36,7 @@ import BrandMark from '@/components/BrandMark';
 import StudentChatWidget from '@/components/StudentChatWidget';
 import DailyContentCarousel from '@/components/DailyContentCarousel';
 import ThemeSelector from '@/components/ThemeSelector';
+import StudentBottomNav from '@/components/StudentBottomNav';
 
 type Attempt = {
   id: string;
@@ -920,34 +921,8 @@ export default function DashboardPage() {
       )}
 
       {/* Mobile Bottom Navigation */}
-      <nav className="student-mobile-dock theme-surface-solid fixed inset-x-3 bottom-3 z-30 flex justify-around rounded-2xl p-2 shadow-2xl md:hidden">
-        <MobileItem
-          icon={Activity}
-          label="Sanctuary"
-          active
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        />
-        <MobileItem
-          icon={Layers}
-          label="Tests"
-          onClick={() => router.push('/quizzes')}
-        />
-        <MobileItem
-          icon={Zap}
-          label="Drill"
-          onClick={() => setShowDrillModal(true)}
-        />
-        <MobileItem
-          icon={History}
-          label="Results"
-          onClick={() => router.push('/history')}
-        />
-        <MobileItem
-          icon={Trophy}
-          label="Merit"
-          onClick={() => router.push('/leaderboard')}
-        />
-      </nav>
+      <StudentBottomNav />
+
 
       <StudentChatWidget user={user} />
     </div>
