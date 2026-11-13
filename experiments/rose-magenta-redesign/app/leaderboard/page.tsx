@@ -160,7 +160,7 @@ export default function LeaderboardPage() {
   }
 
   return (
-    <div className="app-theme min-h-screen px-4 py-6 sm:px-6 md:py-10 text-[var(--app-text)]">
+    <div className="app-theme student-page min-h-screen px-4 py-6 sm:px-6 md:py-10 text-[var(--app-text)]">
       <div className="max-w-4xl mx-auto pb-20">
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
           <div className="flex items-center gap-3.5">
