@@ -754,3 +754,82 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
  .landing-page:before,.landing-page:after,.landing-title,.landing-title .kinetic-gradient{animation:none!important}
  .landing-features>div{transition:none!important}
 }
+
+
+/* ADMIN CONSOLE — responsive workspace architecture */
+.admin-shell{min-height:100svh;align-items:stretch}
+.admin-sidebar{width:17.5rem;min-width:17.5rem;background:rgba(255,255,255,.78);border-color:rgba(174,105,132,.16);box-shadow:12px 0 42px -38px rgba(91,38,63,.28);backdrop-filter:blur(24px) saturate(1.12);-webkit-backdrop-filter:blur(24px) saturate(1.12)}
+.admin-sidebar>div:first-child{padding:1.35rem 1.25rem 1rem}
+.admin-sidebar nav{gap:.35rem;padding:1rem .85rem}
+.admin-sidebar .admin-nav-item{min-height:44px;padding:.72rem .9rem;border-radius:13px;font-size:.78rem;letter-spacing:-.01em}
+.admin-sidebar .admin-nav-item[aria-current=page]{background:linear-gradient(100deg,rgba(200,62,125,.13),rgba(222,179,119,.09));border-color:rgba(200,62,125,.12);box-shadow:inset 2px 0 #c83e7d;color:#a92b69}
+.admin-sidebar .admin-nav-item:not([aria-current=page]):hover{background:rgba(200,62,125,.055);border-color:rgba(200,62,125,.08)}
+.admin-workspace{min-width:0;min-height:100svh;padding:clamp(1.15rem,2.8vw,2.6rem);background:radial-gradient(ellipse at 96% 0%,rgba(234,203,155,.12),transparent 32%),radial-gradient(ellipse at 0% 0%,rgba(246,190,207,.16),transparent 36%)}
+.admin-workspace>div{max-width:1440px}
+.admin-workspace header{min-width:0}
+.admin-workspace header>p:first-child{font-size:.64rem;letter-spacing:.16em;font-weight:800;color:#a44b73}
+.admin-workspace h1,.admin-workspace h2{letter-spacing:-.055em;line-height:1.12}
+.admin-workspace h2{font-size:clamp(1.45rem,2.5vw,2.1rem)}
+.admin-workspace h3{letter-spacing:-.035em}
+.admin-workspace .theme-surface,.admin-workspace .glass-card{border-radius:1.35rem;background:linear-gradient(145deg,rgba(255,255,255,.86),rgba(255,250,250,.72));border:1px solid rgba(255,255,255,.92);box-shadow:0 18px 48px -34px rgba(111,48,79,.28),inset 0 1px rgba(255,255,255,.98);backdrop-filter:blur(22px) saturate(1.12);-webkit-backdrop-filter:blur(22px) saturate(1.12)}
+.admin-workspace .glass-input,.admin-workspace input:not([type=checkbox]):not([type=radio]),.admin-workspace select,.admin-workspace textarea{min-height:42px;border-radius:12px;background:rgba(255,255,255,.84);border:1px solid rgba(174,105,132,.18);color:#38202d;box-shadow:inset 0 1px rgba(255,255,255,.9);transition:border-color .2s,box-shadow .2s}
+.admin-workspace textarea{min-height:100px}
+.admin-workspace .glass-input:focus,.admin-workspace input:focus,.admin-workspace select:focus,.admin-workspace textarea:focus{border-color:rgba(200,62,125,.55);box-shadow:0 0 0 4px rgba(200,62,125,.075);outline:none}
+.admin-workspace button{transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+.admin-workspace button:not(:disabled):hover{filter:saturate(1.04)}
+.admin-workspace button:focus-visible{outline:3px solid rgba(200,62,125,.3);outline-offset:2px}
+.admin-workspace form{min-width:0}
+.admin-workspace table{width:100%;border-collapse:separate;border-spacing:0}
+.admin-workspace th{font-size:.64rem;letter-spacing:.09em;text-transform:uppercase;color:#967d8b;font-weight:800}
+.admin-workspace td{font-size:.78rem;color:#574252}
+.admin-workspace tbody tr{transition:background .18s}
+.admin-workspace tbody tr:hover{background:rgba(200,62,125,.035)}
+.admin-workspace tbody tr+tr td{border-top:1px solid rgba(174,105,132,.1)}
+.admin-workspace [class*=overflow-x-auto]{max-width:100%;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:rgba(200,62,125,.25) transparent}
+.admin-workspace [class*=overflow-x-auto]::-webkit-scrollbar{height:6px}
+.admin-workspace [class*=overflow-x-auto]::-webkit-scrollbar-thumb{background:rgba(200,62,125,.24);border-radius:99px}
+.admin-workspace .rounded-3xl{border-radius:1.4rem}
+.admin-workspace .rounded-2xl{border-radius:1.1rem}
+.admin-workspace .bg-rose-500{background:#c83e7d}
+.admin-workspace .text-rose-500{color:#b33270}
+.admin-workspace .text-emerald-300{color:#23866a}
+.admin-workspace .text-amber-300{color:#a87528}
+.admin-workspace .border-b{border-color:rgba(174,105,132,.13)}
+.admin-workspace .min-h-\[calc\(100dvh-7\.5rem\)\]{min-height:0}
+
+/* Tablet and narrow desktop: keep navigation above the work area, never beside a squeezed page. */
+@media(max-width:1100px){
+ .admin-shell{display:flex;flex-direction:column}
+ .admin-sidebar{position:sticky;top:0;width:100%;min-width:0;height:auto;max-height:none;border-right:0;border-bottom:1px solid rgba(174,105,132,.16);box-shadow:0 12px 30px -28px rgba(91,38,63,.28)}
+ .admin-sidebar>div:first-child{padding:.75rem 1rem}
+ .admin-sidebar nav{display:flex;flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:.4rem;padding:.45rem .8rem .7rem;scroll-snap-type:x proximity}
+ .admin-sidebar .admin-nav-item{width:auto;flex:0 0 auto;min-height:40px;padding:.58rem .8rem;scroll-snap-align:start}
+ .admin-sidebar .admin-nav-item[aria-current=page]{box-shadow:inset 0 -2px #c83e7d}
+ .admin-workspace{width:100%;min-height:calc(100svh - 130px);height:auto;overflow:visible;padding:1.25rem clamp(1rem,3vw,2rem) 6rem}
+}
+@media(max-width:640px){
+ .admin-sidebar>div:first-child{padding:.65rem .85rem}
+ .admin-sidebar>div:first-child h1{font-size:.9rem}
+ .admin-sidebar>div:first-child p{font-size:.55rem}
+ .admin-sidebar nav{padding:.35rem .75rem .6rem}
+ .admin-sidebar .admin-nav-item{min-height:38px;padding:.5rem .7rem;border-radius:11px}
+ .admin-sidebar .admin-nav-item span{font-size:.68rem}
+ .admin-workspace{padding:1rem .85rem 6.5rem}
+ .admin-workspace>div{width:100%;max-width:none}
+ .admin-workspace h2{font-size:1.45rem;line-height:1.14}
+ .admin-workspace header p{line-height:1.55}
+ .admin-workspace .theme-surface,.admin-workspace .glass-card{border-radius:1.1rem;padding:1rem}
+ .admin-workspace .grid{min-width:0}
+ .admin-workspace form .grid{grid-template-columns:minmax(0,1fr)}
+ .admin-workspace form [class*=col-span]{grid-column:auto}
+ .admin-workspace input,.admin-workspace select,.admin-workspace textarea{max-width:100%;font-size:16px}
+ .admin-workspace table{min-width:620px}
+ .admin-workspace th,.admin-workspace td{padding:.7rem .65rem;white-space:nowrap}
+ .admin-workspace .flex.flex-wrap{row-gap:.6rem}
+ .admin-workspace button{min-height:40px}
+ .admin-workspace .rounded-3xl{border-radius:1.1rem}
+ .admin-workspace .space-y-6>*+*{margin-top:1rem}
+}
+@media(prefers-reduced-motion:reduce){
+ .admin-workspace *, .admin-sidebar *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
