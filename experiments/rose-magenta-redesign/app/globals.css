@@ -1093,3 +1093,5 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
  .student-page .dashboard-header .theme-selector{max-width:42px}
  .student-page .dashboard-header button[aria-label="Sign out of your account"]{padding:9px}
 }
+
+.student-page .dashboard-header>div:first-child{display:flex!important;align-items:center;gap:10px}
