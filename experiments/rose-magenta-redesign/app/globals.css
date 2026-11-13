@@ -1095,3 +1095,120 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
 }
 
 .student-page .dashboard-header>div:first-child{display:flex!important;align-items:center;gap:10px}
+
+
+/* Rose Editorial refinement — deliberate spacing, type scale and hierarchy */
+.student-page{
+  --sanctuary-ink:#4d2030;
+  --sanctuary-wine:#68182f;
+  --sanctuary-rose:#b83b70;
+  --sanctuary-gold:#edc978;
+}
+.student-page .dashboard-main{max-width:1180px;padding-top:30px}
+.student-page .dashboard-header{margin-bottom:24px}
+.student-page .sanctuary-welcome{
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:86px;margin-bottom:20px!important;padding:4px 8px 8px;
+}
+.student-page .sanctuary-welcome h2{font-size:clamp(2rem,4vw,3.15rem);letter-spacing:-.055em}
+.student-page .sanctuary-welcome>p:last-child{font-size:15px}
+.student-page .sanctuary-welcome-seal{
+  display:grid;place-items:center;width:62px;height:62px;border-radius:50%;
+  color:#8b304b;border:1px solid #e5cdb8;background:linear-gradient(145deg,#fff8e9,#f0dfca);
+  box-shadow:0 8px 24px rgba(91,35,49,.1)
+}
+.student-page .sanctuary-mission{
+  min-height:270px;padding:30px 36px;border-radius:24px;
+  background:
+    radial-gradient(circle at 86% 42%,rgba(241,202,133,.22),transparent 23%),
+    linear-gradient(112deg,#591526 0%,#762039 54%,#4a1426 100%);
+}
+.student-page .sanctuary-mission-copy{width:66%}
+.student-page .sanctuary-mission h2{font-size:clamp(2rem,4vw,2.85rem);max-width:480px}
+.student-page .sanctuary-pills span{padding:8px 17px;font-size:13px}
+.student-page .sanctuary-gold-button{padding:13px 23px;font-size:15px}
+.student-page .sanctuary-books-art{right:6%;width:31%;height:178px}
+.student-page .sanctuary-book{height:39px;font-size:14px}
+.student-page .sanctuary-globe{width:58px;height:58px;font-size:39px}
+.student-page .sanctuary-duo-grid{gap:18px}
+.student-page .sanctuary-paper-card{padding:21px 23px;border-radius:19px}
+.student-page .sanctuary-card-heading h3{font-size:19px}
+.student-page .sanctuary-big-number{font-size:43px}
+.student-page .sanctuary-editorial{min-height:220px;padding:25px 30px;border-radius:21px}
+.student-page .sanctuary-editorial h2{font-size:clamp(1.55rem,3vw,2.1rem)}
+.student-page .sanctuary-editorial-copy>p:not(.sanctuary-eyebrow){font-size:15px;max-width:570px}
+.student-page .sanctuary-parliament-art{width:32%}
+.student-page .sanctuary-stat-grid{gap:14px}
+.student-page .sanctuary-stat{padding:17px 18px;border-radius:17px;grid-template-columns:27px 1fr;column-gap:11px}
+.student-page .sanctuary-stat svg{width:24px;height:24px}
+.student-page .sanctuary-stat span{font-size:13px}
+.student-page .sanctuary-stat strong{font-size:30px}
+.student-page .sanctuary-topic-list{gap:15px}
+.student-page .sanctuary-topic-row{grid-template-columns:88px minmax(40px,1fr) 40px;font-size:14px}
+.student-page .sanctuary-bars{height:125px;gap:13px}
+.student-page .sanctuary-bars span{font-size:12px}
+.student-page .sanctuary-recommended{padding:22px 25px}
+.student-page .sanctuary-test-row{padding:15px 7px;gap:14px}
+.student-page .sanctuary-test-icon{width:46px;height:46px}
+.student-page .sanctuary-test-copy strong{font-size:15px}
+.student-page .sanctuary-test-copy span{font-size:12px}
+.student-page .sanctuary-test-row>button{font-size:12px;padding:11px 17px}
+.student-page .student-bottom-nav{max-width:690px;padding:8px}
+.student-page .student-bottom-nav a{min-height:56px;font-size:11px;gap:5px}
+.student-page .student-bottom-nav a svg{width:20px;height:20px}
+
+@media(max-width:640px){
+ .student-page .dashboard-main{padding:13px 14px 7.6rem!important}
+ .student-page .dashboard-header{margin-bottom:17px}
+ .student-page .sanctuary-welcome{min-height:70px;margin-bottom:15px!important;padding:0 2px 5px}
+ .student-page .sanctuary-welcome h2{font-size:clamp(1.85rem,7vw,2.25rem);line-height:1.04}
+ .student-page .sanctuary-welcome>div>p:last-child{font-size:12px;line-height:1.4}
+ .student-page .sanctuary-welcome-seal{width:44px;height:44px;flex:none}
+ .student-page .sanctuary-welcome-seal svg{width:21px;height:21px}
+ .student-page .sanctuary-mission{min-height:220px;padding:20px 18px;border-radius:19px;margin-bottom:15px!important}
+ .student-page .sanctuary-mission-copy{width:76%}
+ .student-page .sanctuary-mission h2{font-size:clamp(1.65rem,7vw,2rem);line-height:1.02}
+ .student-page .sanctuary-mission-kicker{font-size:8px;letter-spacing:.13em}
+ .student-page .sanctuary-target{font-size:9px;padding:6px 8px}
+ .student-page .sanctuary-pills{margin-top:14px}
+ .student-page .sanctuary-pills span{font-size:10px;padding:6px 11px}
+ .student-page .sanctuary-gold-button{font-size:12px;padding:11px 14px;margin-top:15px}
+ .student-page .sanctuary-books-art{right:1%;width:31%;height:126px;bottom:19px}
+ .student-page .sanctuary-book{height:28px;font-size:9px}
+ .student-page .sanctuary-globe{width:39px;height:39px;font-size:26px}
+ .student-page .sanctuary-duo-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:15px!important}
+ .student-page .sanctuary-paper-card{padding:14px 13px;border-radius:16px}
+ .student-page .sanctuary-card-heading{gap:7px}
+ .student-page .sanctuary-card-heading h3{font-size:14px;line-height:1.12}
+ .student-page .sanctuary-card-heading>svg:first-child{width:18px;height:18px}
+ .student-page .sanctuary-card-heading>svg:last-child{width:13px;height:13px}
+ .student-page .sanctuary-big-number{font-size:32px;margin-top:11px}
+ .student-page .sanctuary-muted{font-size:10px;line-height:1.4}
+ .student-page .sanctuary-radar-wrap{height:83px}
+ .student-page .sanctuary-editorial{min-height:196px;padding:17px 16px;border-radius:17px;margin-bottom:15px!important}
+ .student-page .sanctuary-editorial-copy{max-width:88%}
+ .student-page .sanctuary-editorial h2{font-size:20px;line-height:1.1}
+ .student-page .sanctuary-editorial-copy>p:not(.sanctuary-eyebrow){font-size:11px;line-height:1.45}
+ .student-page .sanctuary-actions{margin-top:13px}
+ .student-page .sanctuary-actions button{font-size:10px;padding:9px 11px}
+ .student-page .sanctuary-parliament-art{width:27%;opacity:.32}
+ .student-page .sanctuary-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:15px!important}
+ .student-page .sanctuary-stat{padding:12px 11px;border-radius:15px;grid-template-columns:20px 1fr;column-gap:7px}
+ .student-page .sanctuary-stat svg{width:18px;height:18px}
+ .student-page .sanctuary-stat span{font-size:10px;line-height:1.2}
+ .student-page .sanctuary-stat strong{font-size:24px;margin-top:3px}
+ .student-page .sanctuary-topic-row{grid-template-columns:54px minmax(22px,1fr) 29px;gap:5px;font-size:10px}
+ .student-page .sanctuary-bars{height:91px;gap:6px}
+ .student-page .sanctuary-bars span{font-size:9px}
+ .student-page .sanctuary-recommended{padding:15px 13px;margin-bottom:0!important}
+ .student-page .sanctuary-card-heading p{font-size:10px}
+ .student-page .sanctuary-test-row{padding:12px 0;gap:8px}
+ .student-page .sanctuary-test-icon{width:35px;height:35px;border-radius:10px}
+ .student-page .sanctuary-test-icon svg{width:17px;height:17px}
+ .student-page .sanctuary-test-copy strong{font-size:11px;line-height:1.25;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+ .student-page .sanctuary-test-copy span{font-size:9px}
+ .student-page .sanctuary-test-row>button{font-size:9px;padding:8px 9px;white-space:nowrap}
+ .student-page .student-bottom-nav{bottom:max(8px,env(safe-area-inset-bottom));width:calc(100% - 24px);border-radius:22px;padding:7px}
+ .student-page .student-bottom-nav a{min-height:49px;font-size:9px}
+ .student-page .student-bottom-nav a svg{width:18px;height:18px}
+}
