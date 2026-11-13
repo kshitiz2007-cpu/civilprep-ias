@@ -82,6 +82,7 @@ export default function QuizPlayerPage() {
   // Modals & Drawers
   const [showSubmitModal, setShowSubmitModal] = useState(false);
   const [showScratchpad, setShowScratchpad] = useState(false);
+  const [showMobilePalette, setShowMobilePalette] = useState(false);
   const [showShortcutsModal, setShowShortcutsModal] = useState(false);
   const [tabWarnings, setTabWarnings] = useState(0);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
@@ -655,7 +656,7 @@ export default function QuizPlayerPage() {
       )}
 
       {/* Top Examination Command Bar */}
-      <header className="theme-surface-solid sticky top-0 z-30 border-b border-[var(--app-border)]">
+      <header className="cbt-topbar theme-surface-solid sticky top-0 z-30 border-b border-[var(--app-border)]">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
           <div className="flex items-center gap-3">
             <button
@@ -836,7 +837,7 @@ export default function QuizPlayerPage() {
 
       {/* Main Examination Workspace */}
       <main
-        className={`relative z-10 mx-auto w-full flex-1 px-4 py-6 sm:px-6 ${
+        className={`cbt-workspace relative z-10 mx-auto w-full flex-1 px-4 py-6 sm:px-6 ${
           zenMode
             ? 'max-w-4xl'
             : 'grid max-w-7xl gap-6 lg:grid-cols-[minmax(0,1fr)_320px]'
@@ -846,7 +847,7 @@ export default function QuizPlayerPage() {
         <section className="flex flex-col justify-between">
           <div>
             {/* Question Telemetry & Action Bar */}
-            <div className="mb-4 flex flex-wrap items-center justify-between gap-2.5">
+            <div className="cbt-question-meta mb-4 flex flex-wrap items-center justify-between gap-2.5">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="rounded-xl bg-[var(--app-accent-soft)] border border-[var(--app-border)] px-3 py-1.5 text-xs font-bold text-[var(--app-accent)]">
                   Q {current + 1} / {questions.length}
@@ -932,7 +933,7 @@ export default function QuizPlayerPage() {
             </div>
 
             {/* Question Statement & Options Card */}
-            <article className="theme-surface rounded-3xl p-5 sm:p-8">
+            <article className="cbt-question-card theme-surface rounded-3xl p-5 sm:p-8">
               {/* Interactive Statement Parser */}
               {language === 'split' && hasHindi ? (
                 <div className="grid gap-5 md:grid-cols-2 border-b border-[var(--app-border)] pb-6">
@@ -1016,7 +1017,7 @@ export default function QuizPlayerPage() {
               </div>
 
               {/* Options List */}
-              <div className="mt-4 grid gap-3">
+              <div className="cbt-question-options mt-4 grid gap-3">
                 {(question.options || []).map((optEn: string, index: number) => {
                   const optHi = question.optionsHi?.[index];
                   const selected = answers[question.id] === index;
@@ -1112,7 +1113,7 @@ export default function QuizPlayerPage() {
               </div>
 
               {/* Conviction Tagging & Tutor Instant Explanation Controls */}
-              <div className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface-muted)] px-4 py-3">
+              <div className="cbt-confidence mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface-muted)] px-4 py-3">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="flex items-center gap-1.5 text-xs font-semibold text-[var(--app-muted)]">
                     <Sparkles className="h-3.5 w-3.5 text-[var(--app-accent)]" />
@@ -1227,7 +1228,10 @@ export default function QuizPlayerPage() {
           </div>
 
           {/* Bottom Navigation Bar */}
-          <div className="mt-5 grid grid-cols-3 gap-3">
+          <div className="cbt-bottom-actions mt-5 grid grid-cols-3 gap-3">
+            <button type="button" className="cbt-mobile-palette-toggle" onClick={() => setShowMobilePalette((open) => !open)} aria-expanded={showMobilePalette}>
+              <Layers className="mr-1 inline h-4 w-4" /> {showMobilePalette ? "Close Grid" : "Q Grid"}
+            </button>
             <button
               onClick={goPrevious}
               disabled={!current}
@@ -1263,7 +1267,7 @@ export default function QuizPlayerPage() {
 
         {/* Right UPSC 6-State Smart Question Palette */}
         {!zenMode && (
-          <aside className="theme-surface h-fit rounded-3xl p-5 lg:sticky lg:top-20 space-y-4">
+          <aside className={"cbt-omr-panel theme-surface h-fit rounded-3xl p-5 lg:sticky lg:top-20 space-y-4 " + (showMobilePalette ? "cbt-mobile-palette-open" : "")}>
             <div className="flex items-center justify-between border-b border-[var(--app-border)] pb-3">
               <div>
                 <h2 className="text-sm font-bold">Smart OMR Palette</h2>
