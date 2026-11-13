@@ -923,3 +923,158 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
  .exam-room button{min-height:42px}
  .exam-room [role=button]{min-height:44px}
 }
+
+
+/* Rose Editorial — student homepage visual language */
+.student-page{
+ --sanctuary-ink:#552334;--sanctuary-wine:#711b38;--sanctuary-rose:#bd397b;
+ --sanctuary-gold:#e8bd68;--sanctuary-paper:#fffaf0;--sanctuary-line:#ead8ce;
+ color:var(--sanctuary-ink);
+ background:
+  radial-gradient(ellipse at 12% 4%,rgba(239,190,194,.24),transparent 34%),
+  radial-gradient(ellipse at 88% 20%,rgba(242,220,180,.27),transparent 35%),
+  linear-gradient(145deg,#fff7f3 0%,#fbf1e8 52%,#fff9f5 100%);
+}
+.student-page .dashboard-main{max-width:1120px}
+.student-page .dashboard-header{margin-bottom:1.2rem;align-items:center}
+.student-page .dashboard-header>div:first-child{display:none}
+.student-page .dashboard-header>div:last-child{width:100%;justify-content:flex-end}
+.student-page .dashboard-header button{border-radius:999px}
+.sanctuary-welcome{padding:.35rem .3rem .5rem}
+.sanctuary-eyebrow{font-size:9px;letter-spacing:.2em;font-weight:800;color:#9b536c}
+.sanctuary-welcome h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.65rem,4vw,2.55rem);line-height:1.1;letter-spacing:-.045em;color:#552334;font-weight:700}
+.sanctuary-welcome h2 em{font-style:normal;color:#8b263e}
+.sanctuary-welcome>p:last-child{font-family:Georgia,serif;font-size:clamp(.85rem,2vw,1rem);color:#856b70;margin-top:.35rem}
+.sanctuary-mission{min-height:220px;position:relative;overflow:hidden;border-radius:22px;padding:24px 28px;color:#fff4df;background:
+ radial-gradient(ellipse at 82% 90%,rgba(239,183,99,.25),transparent 30%),
+ linear-gradient(110deg,#64192d 0%,#751d36 58%,#451624 100%);
+ box-shadow:0 15px 32px -24px rgba(80,22,42,.6),inset 0 1px rgba(255,255,255,.16);display:flex;align-items:center}
+.sanctuary-mission:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 40%,rgba(255,255,255,.035));pointer-events:none}
+.sanctuary-mission-copy{position:relative;z-index:2;width:68%}
+.sanctuary-mission-kicker{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:9px;font-weight:800;letter-spacing:.2em;color:#f4d8bd}
+.sanctuary-target{display:inline-flex;align-items:center;gap:6px;padding:7px 11px;border:1px solid rgba(255,232,201,.3);border-radius:99px;letter-spacing:0;font-size:10px}
+.sanctuary-mission h2{font-family:Georgia,serif;font-size:clamp(1.5rem,3.8vw,2.25rem);font-weight:700;line-height:1.08;margin-top:10px;color:#fff1d8}
+.sanctuary-pills{display:flex;gap:8px;margin-top:16px}
+.sanctuary-pills span{padding:6px 14px;border-radius:99px;border:1px solid rgba(255,238,218,.3);background:rgba(255,255,255,.08);font:12px Georgia,serif}
+.sanctuary-gold-button{margin-top:17px;display:inline-flex;align-items:center;gap:12px;border-radius:99px;padding:11px 19px;background:linear-gradient(110deg,#f6d88e,#e4ad4d);color:#552334;font-family:Georgia,serif;font-size:14px;font-weight:700;box-shadow:0 5px 16px rgba(23,5,11,.18)}
+.sanctuary-books-art{position:absolute;right:5%;bottom:20px;width:34%;height:145px;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;filter:drop-shadow(0 12px 12px rgba(15,4,8,.3))}
+.sanctuary-book{display:flex;align-items:center;justify-content:center;width:80%;height:34px;border:1px solid rgba(246,210,148,.38);border-radius:4px 8px 8px 4px;color:#f6d99d;font:12px Georgia,serif;letter-spacing:.1em;background:linear-gradient(180deg,#9b5c3e,#542c2b 55%,#321b21);box-shadow:inset 0 2px rgba(255,255,255,.18),0 4px 5px rgba(0,0,0,.2)}
+.sanctuary-book.book-two{width:90%;background:linear-gradient(180deg,#b17a48,#65402c 55%,#38211e)}
+.sanctuary-book.book-three{width:84%;background:linear-gradient(180deg,#75412e,#47232a 55%,#29171f)}
+.sanctuary-globe{position:absolute;right:0;top:0;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;border:2px solid #e8c27b;color:#f5d99c;font-size:35px;background:radial-gradient(circle at 30% 25%,#d9b778,#79502e 70%,#37221f);box-shadow:inset -8px -7px 12px rgba(0,0,0,.35)}
+.sanctuary-duo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.sanctuary-paper-card{min-width:0;padding:17px 19px;border:1px solid rgba(211,178,154,.55);border-radius:17px;background:linear-gradient(145deg,rgba(255,253,247,.97),rgba(255,247,239,.93));box-shadow:0 8px 20px -19px rgba(88,37,51,.4),inset 0 1px rgba(255,255,255,.9)}
+.sanctuary-card-heading{display:flex;align-items:center;gap:10px;color:#75253f}
+.sanctuary-card-heading>svg:first-child{width:22px;height:22px;flex:none;stroke-width:1.9}
+.sanctuary-card-heading h3{font:700 17px Georgia,serif;color:#592637;flex:1}
+.sanctuary-card-heading>svg:last-child{width:17px;height:17px}
+.sanctuary-big-number{font:700 37px Georgia,serif;color:#70223d;margin-top:14px;letter-spacing:-.04em}
+.sanctuary-muted{font:12px Georgia,serif;color:#927b77;margin-top:4px}
+.sanctuary-progress-track{height:9px;border-radius:99px;background:#ead9c9;overflow:hidden;margin-top:12px}
+.sanctuary-progress-track span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#a3224c,#c44778)}
+.sanctuary-footnote{font-size:9px;color:#a48d86;margin-top:7px}
+.sanctuary-radar-wrap{height:91px;display:grid;place-items:center;padding-top:5px}
+.sanctuary-radar-ring{width:118px;height:65px;border:11px solid #ead7c6;border-bottom:0;border-radius:100px 100px 0 0;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:13px}
+.sanctuary-radar-ring:before{content:"";position:absolute;inset:-11px;border:11px solid transparent;border-top-color:#8d2345;border-left-color:#8d2345;border-radius:100px 100px 0 0;clip-path:inset(0 0 0 0)}
+.sanctuary-radar-ring strong{font:700 22px Georgia,serif;color:#69233d}
+.sanctuary-radar-ring span{font:10px Georgia,serif;color:#8e7774;white-space:nowrap}
+.sanctuary-editorial{position:relative;overflow:hidden;min-height:194px;padding:20px 24px;border:1px solid #e6d1bc;border-radius:18px;background:linear-gradient(100deg,rgba(255,249,237,.98) 0%,rgba(255,248,235,.95) 64%,rgba(238,218,194,.8) 100%);box-shadow:0 8px 22px -20px rgba(83,36,42,.4)}
+.sanctuary-editorial-copy{position:relative;z-index:2;max-width:72%}
+.sanctuary-editorial h2{font:700 clamp(1.25rem,3vw,1.8rem)/1.12 Georgia,serif;color:#582435;margin-top:7px}
+.sanctuary-editorial-copy>p:not(.sanctuary-eyebrow){font:13px/1.5 Georgia,serif;color:#795f5a;margin-top:8px}
+.sanctuary-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
+.sanctuary-actions button,.sanctuary-test-row>button{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:99px;padding:9px 15px;background:#8a1f42;color:#fff6e8;font:700 12px Georgia,serif;box-shadow:0 5px 12px rgba(111,29,59,.13)}
+.sanctuary-actions button.secondary{background:rgba(255,255,255,.55);color:#592637;border:1px solid #d9c1ae;box-shadow:none}
+.sanctuary-parliament-art{position:absolute;right:0;bottom:0;width:30%;height:100%;display:grid;place-items:center;color:#a77957;background:linear-gradient(90deg,transparent,rgba(222,194,164,.18));opacity:.65}
+.sanctuary-parliament-art span{position:absolute;right:22%;top:32%;font:700 10px Georgia,serif;color:#a32c42}
+.sanctuary-stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.sanctuary-stat{min-width:0;display:grid;grid-template-columns:24px 1fr;column-gap:9px;align-items:center;padding:14px;border:1px solid #e6d4c6;border-radius:15px;background:rgba(255,251,244,.9);box-shadow:0 8px 18px -18px #6b3446}
+.sanctuary-stat svg{grid-row:span 2;width:22px;height:22px;color:#8b2948}
+.sanctuary-stat span{font:11px Georgia,serif;color:#74565b}
+.sanctuary-stat strong{font:700 25px Georgia,serif;color:#63263b;margin-top:4px}
+.sanctuary-topic-list{margin-top:14px;display:grid;gap:12px}
+.sanctuary-topic-row{display:grid;grid-template-columns:78px minmax(35px,1fr) 34px;gap:8px;align-items:center;font:12px Georgia,serif;color:#5b343d}
+.sanctuary-topic-row b{text-align:right;font-weight:400}
+.sanctuary-topic-bar{height:6px;border-radius:99px;background:#eaded2;overflow:hidden}
+.sanctuary-topic-bar i{display:block;height:100%;border-radius:99px;background:#9d294e}
+.sanctuary-bars{height:105px;display:flex;align-items:flex-end;gap:10px;margin-top:13px;border-bottom:1px solid #e5d6ca;padding:0 4px}
+.sanctuary-bars>div{flex:1;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;min-width:0}
+.sanctuary-bars span{font:10px Georgia,serif;color:#6e5158}
+.sanctuary-bars i{display:block;width:100%;max-width:36px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#b53d69,#d88b9b)}
+.sanctuary-empty-chart{height:100px;display:grid;place-items:center;text-align:center;font:12px Georgia,serif;color:#9b8580}
+.sanctuary-recommended{padding:18px 20px}
+.sanctuary-card-heading>div{flex:1}
+.sanctuary-card-heading p{font:11px Georgia,serif;color:#927b77;margin-top:3px}
+.sanctuary-card-heading>button{display:inline-flex;align-items:center;gap:4px;color:#8d2949;font:12px Georgia,serif}
+.sanctuary-test-list{margin-top:13px}
+.sanctuary-test-row{display:flex;align-items:center;gap:12px;padding:12px 5px;border-top:1px solid #efe2d8}
+.sanctuary-test-icon{width:42px;height:42px;flex:none;display:grid;place-items:center;border-radius:11px;background:#f8e9e7;color:#8b2948}
+.sanctuary-test-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.sanctuary-test-copy strong{font:700 14px Georgia,serif;color:#572738;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sanctuary-test-copy span{font:10px Georgia,serif;color:#927b77}
+.sanctuary-daily-content{border-radius:18px;overflow:hidden}
+.sanctuary-daily-content>div{margin-top:0!important}
+.student-page .student-bottom-nav{background:linear-gradient(110deg,#65172f,#741b39 55%,#4b1428);border:1px solid rgba(255,255,255,.5);box-shadow:0 15px 35px rgba(86,28,48,.23);padding:7px}
+.student-page .student-bottom-nav a{color:#f9e8db}
+.student-page .student-bottom-nav a.is-active{background:linear-gradient(135deg,#f5d98f,#e5b85f);color:#5b2639;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+.student-page .student-bottom-nav a svg{stroke-width:1.7}
+@media(min-width:768px){
+ .student-page .dashboard-main{padding-top:28px}
+ .sanctuary-welcome{padding-top:10px}
+}
+@media(max-width:640px){
+ .student-page .dashboard-main{padding:12px 14px 8rem!important}
+ .student-page .dashboard-header{margin-bottom:8px}
+ .student-page .dashboard-header>div:last-child{gap:7px}
+ .student-page .dashboard-header>div:last-child>button:first-child{display:none}
+ .sanctuary-welcome{padding:4px 2px 10px}
+ .sanctuary-welcome h2{font-size:27px}
+ .sanctuary-welcome>p:last-child{font-size:12px}
+ .sanctuary-mission{min-height:205px;padding:17px 16px;border-radius:17px}
+ .sanctuary-mission-copy{width:75%}
+ .sanctuary-mission-kicker{font-size:8px;letter-spacing:.14em}
+ .sanctuary-target{font-size:9px;padding:5px 7px}
+ .sanctuary-mission h2{font-size:25px;max-width:260px}
+ .sanctuary-pills{gap:5px;margin-top:13px}
+ .sanctuary-pills span{font-size:10px;padding:5px 10px}
+ .sanctuary-gold-button{font-size:12px;padding:10px 13px;margin-top:14px}
+ .sanctuary-books-art{right:1%;width:30%;height:120px;bottom:17px;opacity:.9}
+ .sanctuary-book{height:26px;font-size:9px}
+ .sanctuary-globe{width:37px;height:37px;font-size:25px}
+ .sanctuary-duo-grid{gap:9px}
+ .sanctuary-paper-card{padding:13px 12px;border-radius:14px}
+ .sanctuary-card-heading{gap:6px}
+ .sanctuary-card-heading>svg:first-child{width:18px;height:18px}
+ .sanctuary-card-heading h3{font-size:14px}
+ .sanctuary-card-heading>svg:last-child{width:14px}
+ .sanctuary-big-number{font-size:30px;margin-top:10px}
+ .sanctuary-muted{font-size:10px}
+ .sanctuary-editorial{padding:16px;min-height:190px}
+ .sanctuary-editorial-copy{max-width:88%}
+ .sanctuary-editorial h2{font-size:19px}
+ .sanctuary-editorial-copy>p:not(.sanctuary-eyebrow){font-size:11px;max-width:95%}
+ .sanctuary-actions{gap:6px}
+ .sanctuary-actions button{font-size:10px;padding:8px 10px}
+ .sanctuary-parliament-art{width:25%;opacity:.28}
+ .sanctuary-parliament-art svg{width:70px}
+ .sanctuary-stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .sanctuary-stat{padding:11px;grid-template-columns:20px 1fr;column-gap:7px}
+ .sanctuary-stat svg{width:18px;height:18px}
+ .sanctuary-stat span{font-size:10px}
+ .sanctuary-stat strong{font-size:22px}
+ .sanctuary-topic-row{grid-template-columns:55px minmax(24px,1fr) 29px;font-size:10px;gap:5px}
+ .sanctuary-bars{gap:6px;height:95px}
+ .sanctuary-recommended{padding:14px 12px}
+ .sanctuary-test-row{gap:8px;padding:10px 0}
+ .sanctuary-test-icon{width:34px;height:34px}
+ .sanctuary-test-copy strong{font-size:11px}
+ .sanctuary-test-copy span{font-size:9px}
+ .sanctuary-test-row>button{font-size:9px;padding:8px 9px;white-space:nowrap}
+}
+@media(max-width:360px){
+ .sanctuary-duo-grid{grid-template-columns:1fr}
+ .sanctuary-mission-copy{width:82%}
+ .sanctuary-books-art{opacity:.48}
+ .sanctuary-editorial-copy{max-width:100%}
+ .sanctuary-parliament-art{display:none}
+}
