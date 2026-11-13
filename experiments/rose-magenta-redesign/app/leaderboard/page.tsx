@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 
 import { useEffect, useState } from 'react';
+import StudentBottomNav from '@/components/StudentBottomNav';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import {
@@ -248,6 +249,7 @@ export default function LeaderboardPage() {
           })}
         </div>
       </div>
-    </div>
+          <StudentBottomNav />
+</div>
   );
 }
