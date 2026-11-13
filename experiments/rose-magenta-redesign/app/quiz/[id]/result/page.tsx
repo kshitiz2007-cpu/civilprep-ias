@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 
 import { useEffect, useMemo, useState } from 'react';
+import StudentBottomNav from '@/components/StudentBottomNav';
 import { useRouter, useParams } from 'next/navigation';
 import {
   Trophy,
@@ -683,6 +684,7 @@ export default function QuizResultPage() {
           </button>
         </div>
       </div>
-    </main>
+          <StudentBottomNav />
+</main>
   );
 }
