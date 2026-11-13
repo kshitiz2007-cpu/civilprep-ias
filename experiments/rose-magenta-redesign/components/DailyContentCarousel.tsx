@@ -9,6 +9,7 @@ import {
   CircleCheck,
   CircleX,
   Loader2,
+  RotateCcw,
   Target,
 } from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
@@ -139,7 +140,7 @@ export default function DailyContentCarousel() {
           ) : loadError ? (
             <p className="daily-mission-status">Today's content is temporarily unavailable.</p>
           ) : activeItem ? (
-            <p className="daily-mission-body">{activeItem.body}</p>
+            activeSlide.type === 'mcq' ? <p className="daily-mission-body">Choose the correct option and submit to reveal the answer with its explanation.</p> : <p className="daily-mission-body">{activeItem.body}</p>
           ) : (
             <p className="daily-mission-body">A focused topic, a thoughtful question and one MCQ — your daily step towards mastery.</p>
           )}
@@ -167,36 +168,31 @@ export default function DailyContentCarousel() {
         </div>
 
         {activeSlide.type === 'mcq' && activeItem && (
-          <div className="daily-mission-mcq">
-            {activeItem.options.map((option, index) => {
-              const correct = index === activeItem.correct_option;
-              const selected = selectedOption === index;
-              const stateClass = answerSubmitted
-                ? correct ? 'correct' : selected ? 'incorrect' : ''
-                : selected ? 'selected' : '';
-              return (
-                <button
-                  key={`${activeItem.id}-${index}`}
-                  type="button"
-                  disabled={answerSubmitted}
-                  onClick={() => setSelectedOption(index)}
-                  className={stateClass}
-                >
-                  <span>{String.fromCharCode(65 + index)}</span>
-                  <span>{option}</span>
-                  {answerSubmitted && correct && <CircleCheck size={16} />}
-                  {answerSubmitted && selected && !correct && <CircleX size={16} />}
-                </button>
-              );
-            })}
-            {!answerSubmitted ? (
-              <button type="button" className="daily-mission-check" disabled={selectedOption === null} onClick={() => setAnswerSubmitted(true)}>Check answer</button>
-            ) : (
-              <p className="daily-mission-explanation">
-                {selectedOption === activeItem.correct_option ? 'Correct answer.' : 'Review the correct answer.'}
-                {activeItem.explanation ? ` ${activeItem.explanation}` : ''}
-              </p>
-            )}
+          <div className={'daily-flip-scene ' + (answerSubmitted ? 'is-flipped' : '')} aria-live="polite">
+            <div className="daily-flip-inner">
+              <div className="daily-flip-face daily-flip-front">
+                <div className="daily-flip-card-top"><span className="daily-flip-label">DAILY KNOWLEDGE CHECK</span><span className="daily-flip-count">01 / 01</span></div>
+                <h3 className="daily-flip-question">{activeItem.body || activeItem.title}</h3>
+                <p className="daily-flip-instruction">Select one answer</p>
+                <div className="daily-flip-options">
+                  {(activeItem.options || []).slice(0, 4).map((option, index) => (
+                    <button key={activeItem.id + '-' + index} type="button" aria-pressed={selectedOption === index} onClick={() => setSelectedOption(index)} className={selectedOption === index ? 'selected' : ''}>
+                      <span className="daily-flip-option-letter">{String.fromCharCode(65 + index)}</span><span className="daily-flip-option-text">{option}</span><span className="daily-flip-radio" />
+                    </button>
+                  ))}
+                </div>
+                <div className="daily-flip-submit-row"><span className="daily-flip-hint">One correct answer</span>
+                  <button type="button" className="daily-flip-submit" disabled={selectedOption === null || (activeItem.options || []).length < 4 || activeItem.correct_option === null} onClick={() => setAnswerSubmitted(true)}>Submit answer <ArrowRight size={16} /></button>
+                </div>
+                {(activeItem.options || []).length < 4 ? <p className="daily-flip-validation">This MCQ needs four options before it can be attempted.</p> : null}
+              </div>
+              <div className="daily-flip-face daily-flip-back">
+                <div className="daily-flip-result-heading"><span className={selectedOption === activeItem.correct_option ? 'daily-flip-result-icon correct' : 'daily-flip-result-icon incorrect'}>{selectedOption === activeItem.correct_option ? <CircleCheck size={22} /> : <CircleX size={22} />}</span><div><span className="daily-flip-label">ANSWER REVEALED</span><h3>{selectedOption === activeItem.correct_option ? 'Excellent work!' : 'Keep learning.'}</h3></div></div>
+                <div className="daily-flip-correct-answer"><span>CORRECT ANSWER</span><strong>{String.fromCharCode(65 + (activeItem.correct_option === null ? 0 : activeItem.correct_option))}. {(activeItem.options || [])[activeItem.correct_option === null ? 0 : activeItem.correct_option]}</strong></div>
+                <div className="daily-flip-explanation"><span>EXPLANATION</span><p>{activeItem.explanation || 'No explanation has been added for this question yet.'}</p></div>
+                <div className="daily-flip-back-actions"><button type="button" onClick={() => { setAnswerSubmitted(false); setSelectedOption(null); }}><RotateCcw size={15} /> Attempt again</button><span>{selectedOption === activeItem.correct_option ? 'Answer submitted · Correct' : 'Answer submitted · Review the concept'}</span></div>
+              </div>
+            </div>
           </div>
         )}
 
