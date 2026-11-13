@@ -526,335 +526,107 @@ export default function DashboardPage() {
           </div>
         )}
 
-        <DailyContentCarousel />
+        {/* Rose Editorial Student Homepage */}
+        <section className="sanctuary-welcome mb-5">
+          <p className="sanctuary-eyebrow">CIVIL SERVICES PREPARATION</p>
+          <h2>Steady progress, <em>{firstName}.</em></h2>
+          <p>Consistent study moves you closer to the Civil Services.</p>
+        </section>
 
-        {/* Hero Banner */}
-        <section className="dashboard-hero theme-surface relative overflow-hidden rounded-3xl p-6 sm:p-8">
-          <div className="relative grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
-            <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-[var(--app-accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--app-accent)]">
-                <Compass className="h-3.5 w-3.5" /> UPSC CSE Prelims CBT Engine v3.0
-              </span>
-              <h2 className="mt-3.5 text-2xl font-bold tracking-tight sm:text-3xl">
-                Master accuracy, statement deduction & 50-50 EV before speed.
-              </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--app-muted)]">
-                In UPSC Prelims, avoiding 6 unnecessary negative guesses saves 4
-                full marks. Use our upgraded CBT engine with interactive
-                statement True/False tags, option strike-through, and live
-                Expected Value (EV) guidance.
-              </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <button
-                  onClick={() => router.push('/quiz/upsc-gs1-polity-01')}
-                  className="inline-flex items-center gap-2 rounded-xl bg-[var(--app-accent)] px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:opacity-90"
-                >
-                  Launch Polity Simulator <ArrowRight className="h-4 w-4" />
-                </button>
-                <button
-                  onClick={() => setShowDrillModal(true)}
-                  className="inline-flex items-center gap-2 rounded-xl border border-[var(--app-border)] bg-[var(--app-surface-muted)] px-4 py-2.5 text-sm font-semibold hover:border-[var(--app-accent)]"
-                >
-                  <Zap className="h-4 w-4 text-[var(--app-accent)]" /> Build
-                  Custom Drill
-                </button>
-              </div>
+        <section className="sanctuary-mission mb-5">
+          <div className="sanctuary-mission-copy">
+            <div className="sanctuary-mission-kicker">
+              <span>TODAY'S MISSION</span>
+              <span className="sanctuary-target"><Target size={14}/> Target · 2 hrs</span>
             </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              <div className="rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface-muted)] p-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-[var(--app-muted)]">
-                    Strike Accuracy
-                  </span>
-                  <Target className="h-4 w-4 text-[var(--app-accent)]" />
-                </div>
-                <p className="mt-3 text-2xl font-bold">
-                  {attempts.length ? `${accuracyStats.accuracy}%` : '—'}
-                </p>
-                <p className="mt-1 text-[11px] text-[var(--app-muted)]">
-                  Target ≥ 70% for safe cutoff
-                </p>
-              </div>
-
-              <div className="rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface-muted)] p-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-[var(--app-muted)]">
-                    Penalty Bleed
-                  </span>
-                  <ShieldAlert className="h-4 w-4 text-amber-400" />
-                </div>
-                <p className="mt-3 text-2xl font-bold">
-                  {attempts.length ? `-${accuracyStats.netMarksLost}` : '0.0'}
-                </p>
-                <p className="mt-1 text-[11px] text-[var(--app-muted)]">
-                  Marks lost to -0.66 penalty
-                </p>
-              </div>
+            <h2>Learn something today</h2>
+            <div className="sanctuary-pills">
+              <span>Topic</span><span>Question</span><span>MCQ</span>
             </div>
+            <button onClick={() => router.push(quizzes[0] ? `/quiz/${quizzes[0].id}` : '/quizzes')} className="sanctuary-gold-button">
+              Start Daily Practice <ArrowRight size={17}/>
+            </button>
+          </div>
+          <div className="sanctuary-books-art" aria-hidden="true">
+            <span className="sanctuary-book book-one">POLITY</span>
+            <span className="sanctuary-book book-two">ECONOMY</span>
+            <span className="sanctuary-book book-three">HISTORY</span>
+            <span className="sanctuary-globe">◎</span>
           </div>
         </section>
 
-        {/* Key Metrics Strip */}
-        <section className="dashboard-metrics mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <StatCard
-            icon={BookOpen}
-            label="Tests Evaluated"
-            value={attempts.length}
-            hint="Completed Prelims & Sectional modules"
-          />
-          <StatCard
-            icon={TrendingUp}
-            label="Mean Score"
-            value={attempts.length ? `${average}%` : '—'}
-            hint={
-              average >= 55
-                ? 'Above institutional cutoff (50%)'
-                : 'Focus on revision & elimination'
-            }
-          />
-          <StatCard
-            icon={Layers}
-            label="Active Test Papers"
-            value={quizzes.length}
-            hint="Bilingual EN / HI papers ready"
-          />
-          <StatCard
-            icon={FileText}
-            label="Study Compendiums"
-            value={resourceCount}
-            hint="Standard notes & PIB digests"
-          />
+        <section className="sanctuary-duo-grid mb-5">
+          <article className="sanctuary-paper-card">
+            <div className="sanctuary-card-heading"><Layers/><h3>Preparation Progress</h3><ArrowRight/></div>
+            <div className="sanctuary-big-number">{attempts.length ? `${average}%` : '—'}</div>
+            <p className="sanctuary-muted">{attempts.length} evaluated attempts</p>
+            <div className="sanctuary-progress-track"><span style={{width:`${Math.max(0,Math.min(100,average))}%`}}/></div>
+            <p className="sanctuary-footnote">Mean score across recorded evaluations</p>
+          </article>
+          <article className="sanctuary-paper-card">
+            <div className="sanctuary-card-heading"><Target/><h3>Revision Radar</h3><ArrowRight/></div>
+            <div className="sanctuary-radar-wrap">
+              <div className="sanctuary-radar-ring"><strong>{revisionRadar.needsRevision.length}</strong><span>Topics to revisit</span></div>
+            </div>
+            <p className="sanctuary-muted">{revisionRadar.untested.length} GS pillars not yet assessed</p>
+          </article>
         </section>
 
-        {/* Preparation Intelligence — evidence-based next actions */}
-        <section className="dashboard-intelligence mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="theme-surface relative overflow-hidden rounded-3xl p-5 sm:p-6">
-            <div className="pointer-events-none absolute -right-12 -top-16 h-44 w-44 rounded-full bg-[var(--app-accent-soft)] blur-3xl" />
-            <div className="relative flex items-start justify-between gap-4">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--app-accent)]">Your next best move</p>
-                <h2 className="mt-1 text-xl font-bold tracking-tight">{nextBestAction.title}</h2>
-                <p className="mt-2 max-w-xl text-sm leading-relaxed text-[var(--app-muted)]">{nextBestAction.detail}</p>
-              </div>
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--app-border)] bg-[var(--app-accent-soft)] text-[var(--app-accent)]">
-                <Sparkles className="h-5 w-5" />
-              </span>
-            </div>
-            <div className="relative mt-5 flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => { setDrillSubject(nextBestAction.subject); setShowDrillModal(true); }}
-                className="inline-flex items-center gap-2 rounded-xl bg-[var(--app-accent)] px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-[var(--app-accent-soft)] transition hover:-translate-y-0.5"
-              >
-                {nextBestAction.action} <ArrowRight className="h-3.5 w-3.5" />
-              </button>
-              <span className="text-[11px] text-[var(--app-muted)]">Recommendation based on recorded attempts</span>
+        <section className="sanctuary-editorial mb-5">
+          <div className="sanctuary-editorial-copy">
+            <p className="sanctuary-eyebrow">CURRENT AFFAIRS EDITORIAL</p>
+            <h2>Master accuracy, statement deduction &amp; 50-50 EV before speed.</h2>
+            <p>In UPSC Prelims, avoid unnecessary negative guesses using structured elimination.</p>
+            <div className="sanctuary-actions">
+              <button onClick={() => router.push('/quiz/upsc-gs1-polity-01')}>Launch Polity Simulator <ArrowRight size={16}/></button>
+              <button className="secondary" onClick={() => setShowDrillModal(true)}><Sliders size={15}/> Build Custom Drill</button>
             </div>
           </div>
+          <div className="sanctuary-parliament-art" aria-hidden="true"><Landmark size={104}/><span>भारत</span></div>
+        </section>
 
-          <div className="theme-surface rounded-3xl p-5 sm:p-6">
-            <div className="flex items-center justify-between gap-3">
-              <div>
-                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--app-accent)]">Revision radar</p>
-                <h2 className="mt-1 text-lg font-bold">Topics to revisit</h2>
-              </div>
-              <Target className="h-5 w-5 text-[var(--app-accent)]" />
-            </div>
-            <div className="mt-4 space-y-3">
-              {revisionRadar.needsRevision.length > 0 ? revisionRadar.needsRevision.map((item) => (
-                <div key={item.subject} className="flex items-center gap-3">
-                  <span className="min-w-0 flex-1 truncate text-sm font-semibold">{item.subject}</span>
-                  <span className="text-xs tabular-nums text-[var(--app-muted)]">{item.avg}%</span>
-                  <div className="h-1.5 w-20 overflow-hidden rounded-full bg-[var(--app-surface-muted)]">
-                    <div className="h-full rounded-full bg-[var(--app-accent)]" style={{ width: `${Math.max(0, Math.min(100, item.avg ?? 0))}%` }} />
-                  </div>
+        <section className="sanctuary-stat-grid mb-5">
+          <div className="sanctuary-stat"><BookOpen/><span>Tests Evaluated</span><strong>{attempts.length}</strong></div>
+          <div className="sanctuary-stat"><TrendingUp/><span>Mean Score</span><strong>{attempts.length ? `${average}%` : '—'}</strong></div>
+          <div className="sanctuary-stat"><Layers/><span>Active Test Papers</span><strong>{quizzes.length}</strong></div>
+          <div className="sanctuary-stat"><FileText/><span>Study Compendiums</span><strong>{resourceCount}</strong></div>
+        </section>
+
+        <section className="sanctuary-duo-grid mb-5">
+          <article className="sanctuary-paper-card">
+            <div className="sanctuary-card-heading"><Target/><h3>Topics to Revisit</h3><ArrowRight/></div>
+            <div className="sanctuary-topic-list">
+              {revisionRadar.needsRevision.length ? revisionRadar.needsRevision.slice(0,3).map(item => (
+                <div className="sanctuary-topic-row" key={item.subject}>
+                  <strong>{item.subject}</strong><span className="sanctuary-topic-bar"><i style={{width:`${item.avg ?? 0}%`}}/></span><b>{item.avg}%</b>
                 </div>
-              )) : (
-                <p className="text-sm text-[var(--app-muted)]">Complete your first evaluated test to activate the revision radar.</p>
-              )}
+              )) : <p className="sanctuary-muted">Complete an evaluated test to generate your revision priorities.</p>}
             </div>
-            {revisionRadar.untested.length > 0 && (
-              <p className="mt-4 border-t border-[var(--app-border)] pt-3 text-[11px] leading-relaxed text-[var(--app-muted)]">
-                Not yet assessed: {revisionRadar.untested.slice(0, 4).map((item) => item.subject).join(' · ')}
-                {revisionRadar.untested.length > 4 ? ` +${revisionRadar.untested.length - 4} more` : ''}
-              </p>
-            )}
+          </article>
+          <article className="sanctuary-paper-card">
+            <div className="sanctuary-card-heading"><TrendingUp/><h3>Performance Snapshot</h3><ArrowRight/></div>
+            <p className="sanctuary-muted">Recent evaluations · score (%)</p>
+            {recentScores.length ? <div className="sanctuary-bars">{recentScores.slice(-6).map(a => <div key={a.id}><span>{a.score}</span><i style={{height:`${Math.max(8,Math.min(100,Number(a.score)||0))}%`}}/></div>)}</div> : <p className="sanctuary-empty-chart">Your performance chart will appear after your first evaluation.</p>}
+          </article>
+        </section>
+
+        <section className="sanctuary-paper-card sanctuary-recommended mb-5">
+          <div className="sanctuary-card-heading"><FileText/><div><h3>Recommended Tests</h3><p>Structured practice with UPSC's latest pattern.</p></div><button onClick={() => router.push('/quizzes')}>View All <ArrowRight size={14}/></button></div>
+          <div className="sanctuary-test-list">
+            {quizzes.slice(0,3).map(quiz => (
+              <article className="sanctuary-test-row" key={quiz.id}>
+                <span className="sanctuary-test-icon"><FileText/></span>
+                <div className="sanctuary-test-copy"><strong>{quiz.title}</strong><span>{quiz.category || 'General Studies'} · {Array.isArray(quiz.questions) ? quiz.questions.length : 'Practice'} Questions</span></div>
+                <button onClick={() => router.push(`/quiz/${quiz.id}`)}>Start Test <ArrowRight size={14}/></button>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* Main 2-Column Analytical Section */}
-        <div className="dashboard-analytics mt-7 grid gap-6 xl:grid-cols-[1.3fr_0.9fr]">
-          {/* Recommended Practice Modules */}
-          <section className="dashboard-practice theme-surface rounded-3xl p-5 sm:p-6">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <h2 className="text-lg font-bold">
-                  Recommended GS & CSAT Papers
-                </h2>
-                <p className="mt-0.5 text-xs text-[var(--app-muted)]">
-                  Structured practice with UPSC 1/3rd negative marking & Tutor
-                  mode
-                </p>
-              </div>
-              <button
-                onClick={() => router.push('/quizzes')}
-                className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--app-accent)] hover:underline"
-              >
-                Full Test Library <ArrowRight className="h-3.5 w-3.5" />
-              </button>
-            </div>
+        <section className="sanctuary-daily-content mb-5">
+          <DailyContentCarousel />
+        </section>
 
-            <div className="mt-5 grid gap-3.5 sm:grid-cols-2">
-              {quizzes.map((quiz) => {
-                const done = completedIds.has(quiz.id);
-                const mins = quiz.time_limit || quiz.duration || 20;
-                const qCount = Array.isArray(quiz.questions)
-                  ? quiz.questions.length
-                  : 0;
-                return (
-                  <article
-                    key={quiz.id}
-                    className="rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface-muted)] p-4 transition hover:border-[var(--app-accent)]"
-                  >
-                    <div className="flex items-start justify-between gap-2">
-                      <span className="rounded-lg border border-[var(--app-border)] bg-[var(--app-panel)] px-2.5 py-1 text-[11px] font-semibold text-[var(--app-accent)]">
-                        {quiz.category || 'GS Paper I'}
-                      </span>
-                      {done ? (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--app-accent-soft)] px-2.5 py-0.5 text-[11px] font-semibold text-[var(--app-accent)]">
-                          <CheckCircle2 className="h-3 w-3" /> Evaluated
-                        </span>
-                      ) : (
-                        <span className="text-[11px] font-medium text-[var(--app-muted)]">
-                          +2.0 / -0.66
-                        </span>
-                      )}
-                    </div>
-
-                    <h3 className="mt-3 line-clamp-1 font-bold">{quiz.title}</h3>
-                    <p className="mt-1 line-clamp-2 min-h-[2.25rem] text-xs leading-relaxed text-[var(--app-muted)]">
-                      {quiz.description ||
-                        'Bilingual statement-based questions with detailed faculty explanations.'}
-                    </p>
-
-                    <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[var(--app-border)] pt-3 text-xs text-[var(--app-muted)]">
-                      <div className="flex flex-wrap items-center gap-1.5">
-                        <button
-                          type="button"
-                          onClick={() => openWatermarkStudio(quiz, 'paper')}
-                          className="rounded-lg border border-emerald-500/35 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-bold text-emerald-300 hover:bg-emerald-400 hover:text-slate-950 transition"
-                          title="Export Watermarked Question Paper PDF"
-                        >
-                          📄 Question Paper
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => openWatermarkStudio(quiz, 'solution')}
-                          className="rounded-lg border border-sky-500/35 bg-sky-500/10 px-2.5 py-1 text-[11px] font-bold text-sky-300 hover:bg-sky-400 hover:text-slate-950 transition"
-                          title="Export Watermarked Bilingual Answer Key PDF"
-                        >
-                          🔑 Answer Key
-                        </button>
-                      </div>
-                      <button
-                        onClick={() => router.push(`/quiz/${quiz.id}`)}
-                        className="inline-flex items-center gap-1 font-bold text-[var(--app-accent)] hover:underline"
-                      >
-                        {done ? 'Re-attempt' : 'Begin Paper'}
-                        <ArrowRight className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-
-          {/* Right Column: Score Trend + GS Subject Proficiency */}
-          <div className="space-y-6">
-            <section className="theme-surface rounded-3xl p-5 sm:p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-base font-bold">
-                    Performance Trajectory
-                  </h2>
-                  <p className="mt-0.5 text-xs text-[var(--app-muted)]">
-                    Last {recentScores.length || 0} evaluations vs 50% qualifying
-                    benchmark
-                  </p>
-                </div>
-                <TrendingUp className="h-5 w-5 text-[var(--app-accent)]" />
-              </div>
-
-              {recentScores.length ? (
-                <div className="mt-5">
-                  <div className="flex h-32 items-end gap-2.5 border-b border-[var(--app-border)] pb-2">
-                    {recentScores.map((a) => (
-                      <div
-                        key={a.id}
-                        className="group flex h-full flex-1 flex-col justify-end"
-                      >
-                        <div className="mb-1 text-center text-[10px] font-semibold text-[var(--app-muted)]">
-                          {a.score}%
-                        </div>
-                        <div
-                          className="w-full rounded-t-lg bg-[var(--app-accent)] transition-all group-hover:opacity-80"
-                          style={{
-                            height: `${Math.max(
-                              12,
-                              Math.min(100, Number(a.score) || 0)
-                            )}%`,
-                          }}
-                          title={`${a.quiz_title || 'Test'} · ${a.score}%`}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-2 flex justify-between text-[10px] text-[var(--app-muted)]">
-                    <span>Earlier Attempts</span>
-                    <span>Latest Evaluation</span>
-                  </div>
-                </div>
-              ) : null}
-            </section>
-
-            {/* GS Pillar Balance */}
-            <section className="theme-surface rounded-3xl p-5 sm:p-6">
-              <div className="flex items-center justify-between mb-3">
-                <div>
-                  <h2 className="text-base font-bold">GS Pillar Performance</h2>
-                  <p className="text-xs text-[var(--app-muted)]">
-                    Evaluated scores · not a measure of syllabus completion
-                  </p>
-                </div>
-                <Award className="h-4 w-4 text-[var(--app-accent)]" />
-              </div>
-              <div className="space-y-2.5">
-                {subjectMastery.map((item) => (
-                  <div key={item.subject} className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-medium">{item.subject}</span>
-                      <span className="text-[var(--app-muted)]">
-                        {item.avg !== null
-                          ? `${item.avg}% (${item.count} tests)`
-                          : 'Ready for drill'}
-                      </span>
-                    </div>
-                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-[var(--app-surface-muted)]">
-                      <div
-                        className="h-full rounded-full bg-[var(--app-accent)] transition-all"
-                        style={{
-                          width: `${item.avg ?? 12}%`,
-                          opacity: item.avg !== null ? 1 : 0.25,
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-          </div>
-        </div>
       </main>
 
       {/* Custom Smart Drill Builder Modal */}
