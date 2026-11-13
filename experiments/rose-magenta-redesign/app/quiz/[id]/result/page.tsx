@@ -25,7 +25,7 @@ import {
 import { supabase } from '@/lib/supabaseClient';
 import { FALLBACK_ATTEMPTS, FALLBACK_QUIZZES } from '@/lib/mockData';
 import { openWatermarkStudio } from '@/lib/pdfExporter';
-import ThemeSelector from '@/components/ThemeSelector';
+import StudentPageActions from '@/components/StudentPageActions';
 
 type ReviewLanguage = 'en' | 'hi' | 'both';
 type FilterMode = 'all' | 'wrong' | 'skipped' | 'correct';
@@ -279,7 +279,7 @@ export default function QuizResultPage() {
                 {analytics.wrong + analytics.skipped})
               </button>
             )}
-            <ThemeSelector />
+            <StudentPageActions />
           </div>
         </div>
 
