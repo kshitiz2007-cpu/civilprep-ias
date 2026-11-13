@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 
 import { useEffect, useState } from 'react';
+import StudentBottomNav from '@/components/StudentBottomNav';
 import { supabase } from '@/lib/supabaseClient';
 import { FALLBACK_RESOURCES } from '@/lib/mockData';
 import { useRouter } from 'next/navigation';
@@ -378,6 +379,7 @@ export default function StudentResourcesPage() {
           </div>
         )}
       </main>
-    </div>
+          <StudentBottomNav />
+</div>
   );
 }
