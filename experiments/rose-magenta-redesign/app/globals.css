@@ -1575,3 +1575,54 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
 .daily-mission-books{width:78px}
 .daily-mission-footer{padding-right:0}
 }
+
+/* Daily MCQ flip card */
+.daily-flip-scene{width:min(100%,760px);margin-top:15px;perspective:1400px;touch-action:pan-y}
+.daily-flip-inner{position:relative;min-height:330px;transform-style:preserve-3d;transition:transform .78s cubic-bezier(.2,.75,.2,1)}
+.daily-flip-scene.is-flipped .daily-flip-inner{transform:rotateY(180deg)}
+.daily-flip-face{position:absolute;inset:0;display:flex;flex-direction:column;padding:19px 21px;border:1px solid rgba(246,213,165,.32);border-radius:19px;background:linear-gradient(145deg,rgba(255,247,230,.13),rgba(75,13,35,.28));backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:inset 0 1px rgba(255,255,255,.12),0 12px 26px rgba(25,4,14,.16)}
+.daily-flip-back{transform:rotateY(180deg);background:radial-gradient(ellipse at 100% 0,rgba(235,191,119,.16),transparent 48%),linear-gradient(145deg,#76213b,#4d142a)}
+.daily-flip-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.daily-flip-label{color:#eecb91;font-size:9px;font-weight:900;letter-spacing:.17em}
+.daily-flip-count{padding:5px 9px;border:1px solid rgba(255,230,195,.25);border-radius:99px;color:#f4dfc4;font-size:9px}
+.daily-flip-question{max-width:680px;margin-top:13px;color:#fff1dd;font:700 clamp(17px,2vw,22px)/1.28 Georgia,serif}
+.daily-flip-instruction{margin-top:10px;color:rgba(255,236,213,.65);font-size:10px}
+.daily-flip-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}
+.daily-flip-options button{display:flex;align-items:center;gap:10px;min-width:0;min-height:43px;padding:8px 11px;border:1px solid rgba(255,235,207,.24);border-radius:11px;background:rgba(255,255,255,.07);color:#fff0dd;text-align:left;transition:background .2s,border-color .2s,transform .2s}
+.daily-flip-options button:hover{border-color:rgba(245,207,137,.65);transform:translateY(-1px)}
+.daily-flip-options button.selected{border-color:#f0c777;background:rgba(240,199,119,.18);box-shadow:inset 0 0 0 1px rgba(240,199,119,.13)}
+.daily-flip-option-letter{display:grid;width:25px;height:25px;flex:none;place-items:center;border-radius:8px;background:rgba(255,255,255,.12);color:#f4d59c;font-size:10px;font-weight:900}
+.daily-flip-option-text{flex:1;min-width:0;font-size:11px;line-height:1.35}
+.daily-flip-radio{width:13px;height:13px;flex:none;border:1px solid rgba(255,235,207,.55);border-radius:50%}
+.daily-flip-options button.selected .daily-flip-radio{border:4px solid #f2cd83;background:#681a36}
+.daily-flip-submit-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:14px}
+.daily-flip-hint{color:rgba(255,235,207,.57);font-size:9px}
+.daily-flip-submit{display:inline-flex;align-items:center;gap:9px;padding:9px 16px;border-radius:99px;background:linear-gradient(110deg,#f8dc98,#e9b34f);color:#592137;font-size:11px;font-weight:900;box-shadow:0 5px 14px rgba(20,4,10,.18)}
+.daily-flip-submit:disabled{cursor:not-allowed;opacity:.42}
+.daily-flip-validation{margin-top:7px;color:#ffd4b9;font-size:10px}
+.daily-flip-result-heading{display:flex;align-items:center;gap:12px}
+.daily-flip-result-icon{display:grid;width:43px;height:43px;flex:none;place-items:center;border:1px solid rgba(255,255,255,.2);border-radius:50%}
+.daily-flip-result-icon.correct{color:#9ce0b7;background:rgba(56,189,116,.13)}
+.daily-flip-result-icon.incorrect{color:#ffb3ad;background:rgba(244,92,92,.13)}
+.daily-flip-result-heading h3{margin-top:4px;color:#fff0d7;font:700 21px Georgia,serif}
+.daily-flip-correct-answer{display:grid;gap:6px;margin-top:17px;padding:12px 14px;border:1px solid rgba(244,211,155,.3);border-radius:12px;background:rgba(255,255,255,.07)}
+.daily-flip-correct-answer>span,.daily-flip-explanation>span{color:#efc98d;font-size:9px;font-weight:900;letter-spacing:.15em}
+.daily-flip-correct-answer strong{color:#fff0d7;font:700 14px/1.4 Georgia,serif}
+.daily-flip-explanation{margin-top:13px}
+.daily-flip-explanation p{max-height:100px;overflow:auto;margin-top:6px;color:rgba(255,240,220,.83);font:12px/1.55 Georgia,serif;white-space:pre-wrap}
+.daily-flip-back-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:12px}
+.daily-flip-back-actions button{display:inline-flex;align-items:center;gap:7px;color:#ffdfa8;font-size:10px;font-weight:800}
+.daily-flip-back-actions>span{color:rgba(255,231,199,.53);font-size:9px;text-align:right}
+@media(max-width:767px){
+.daily-flip-scene{width:100%;margin-top:13px}
+.daily-flip-inner{min-height:380px}
+.daily-flip-face{padding:15px 13px;border-radius:16px}
+.daily-flip-question{font-size:17px;line-height:1.3}
+.daily-flip-options{grid-template-columns:1fr;gap:7px;margin-top:10px}
+.daily-flip-options button{min-height:40px;padding:7px 9px}
+.daily-flip-option-text{font-size:11px}
+.daily-flip-submit-row{padding-top:12px}
+.daily-flip-submit{padding:9px 13px;font-size:10px}
+.daily-flip-back-actions>span{max-width:45%}
+}
+@media(prefers-reduced-motion:reduce){.daily-flip-inner{transition:none}}
