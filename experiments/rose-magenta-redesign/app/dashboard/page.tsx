@@ -832,7 +832,7 @@ export default function DashboardPage() {
       )}
 
       {/* Mobile Bottom Navigation */}
-      <nav className="theme-surface-solid fixed inset-x-3 bottom-3 z-30 flex justify-around rounded-2xl p-2 shadow-2xl md:hidden">
+      <nav className="student-mobile-dock theme-surface-solid fixed inset-x-3 bottom-3 z-30 flex justify-around rounded-2xl p-2 shadow-2xl md:hidden">
         <MobileItem
           icon={Activity}
           label="Sanctuary"
