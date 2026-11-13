@@ -34,7 +34,6 @@ import {
 } from 'lucide-react';
 import BrandMark from '@/components/BrandMark';
 import StudentChatWidget from '@/components/StudentChatWidget';
-import DailyContentCarousel from '@/components/DailyContentCarousel';
 import ThemeSelector from '@/components/ThemeSelector';
 import StudentBottomNav from '@/components/StudentBottomNav';
 
@@ -522,13 +521,16 @@ export default function DashboardPage() {
         )}
 
         {/* Rose Editorial Student Homepage */}
-        <section className="sanctuary-welcome mb-5">
-          <p className="sanctuary-eyebrow">CIVIL SERVICES PREPARATION</p>
-          <h2>Steady progress, <em>{firstName}.</em></h2>
-          <p>Consistent study moves you closer to the Civil Services.</p>
+        <section className="sanctuary-welcome mb-6">
+          <div>
+            <p className="sanctuary-eyebrow">CIVIL SERVICES PREPARATION</p>
+            <h2>Steady progress, <em>{firstName}.</em></h2>
+            <p>Consistent study moves you closer to the Civil Services.</p>
+          </div>
+          <span className="sanctuary-welcome-seal" aria-hidden="true"><Landmark size={28}/></span>
         </section>
 
-        <section className="sanctuary-mission mb-5">
+        <section className="sanctuary-mission mb-6">
           <div className="sanctuary-mission-copy">
             <div className="sanctuary-mission-kicker">
               <span>TODAY'S MISSION</span>
@@ -550,7 +552,7 @@ export default function DashboardPage() {
           </div>
         </section>
 
-        <section className="sanctuary-duo-grid mb-5">
+        <section className="sanctuary-duo-grid mb-6">
           <article className="sanctuary-paper-card">
             <div className="sanctuary-card-heading"><Layers/><h3>Preparation Progress</h3><ArrowRight/></div>
             <div className="sanctuary-big-number">{attempts.length ? `${average}%` : '—'}</div>
@@ -567,7 +569,7 @@ export default function DashboardPage() {
           </article>
         </section>
 
-        <section className="sanctuary-editorial mb-5">
+        <section className="sanctuary-editorial mb-6">
           <div className="sanctuary-editorial-copy">
             <p className="sanctuary-eyebrow">CURRENT AFFAIRS EDITORIAL</p>
             <h2>Master accuracy, statement deduction &amp; 50-50 EV before speed.</h2>
@@ -580,14 +582,14 @@ export default function DashboardPage() {
           <div className="sanctuary-parliament-art" aria-hidden="true"><Landmark size={104}/><span>भारत</span></div>
         </section>
 
-        <section className="sanctuary-stat-grid mb-5">
+        <section className="sanctuary-stat-grid mb-6">
           <div className="sanctuary-stat"><BookOpen/><span>Tests Evaluated</span><strong>{attempts.length}</strong></div>
           <div className="sanctuary-stat"><TrendingUp/><span>Mean Score</span><strong>{attempts.length ? `${average}%` : '—'}</strong></div>
           <div className="sanctuary-stat"><Layers/><span>Active Test Papers</span><strong>{quizzes.length}</strong></div>
           <div className="sanctuary-stat"><FileText/><span>Study Compendiums</span><strong>{resourceCount}</strong></div>
         </section>
 
-        <section className="sanctuary-duo-grid mb-5">
+        <section className="sanctuary-duo-grid mb-6">
           <article className="sanctuary-paper-card">
             <div className="sanctuary-card-heading"><Target/><h3>Topics to Revisit</h3><ArrowRight/></div>
             <div className="sanctuary-topic-list">
@@ -605,7 +607,7 @@ export default function DashboardPage() {
           </article>
         </section>
 
-        <section className="sanctuary-paper-card sanctuary-recommended mb-5">
+        <section className="sanctuary-paper-card sanctuary-recommended mb-6">
           <div className="sanctuary-card-heading"><FileText/><div><h3>Recommended Tests</h3><p>Structured practice with UPSC's latest pattern.</p></div><button onClick={() => router.push('/quizzes')}>View All <ArrowRight size={14}/></button></div>
           <div className="sanctuary-test-list">
             {quizzes.slice(0,3).map(quiz => (
@@ -616,10 +618,6 @@ export default function DashboardPage() {
               </article>
             ))}
           </div>
-        </section>
-
-        <section className="sanctuary-daily-content mb-5">
-          <DailyContentCarousel />
         </section>
 
       </main>
