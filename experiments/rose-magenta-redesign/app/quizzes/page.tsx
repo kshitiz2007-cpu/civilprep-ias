@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 
 import ThemeSelector from '@/components/ThemeSelector';
+import StudentBottomNav from '@/components/StudentBottomNav';
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { FALLBACK_QUIZZES } from '@/lib/mockData';
@@ -481,6 +482,7 @@ export default function StudentQuizzesPage() {
           </div>
         )}
       </main>
-    </div>
+          <StudentBottomNav />
+</div>
   );
 }
