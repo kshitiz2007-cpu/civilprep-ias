@@ -1,7 +1,16 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight, CircleCheck, CircleX, Loader2 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  CircleCheck,
+  CircleX,
+  Loader2,
+  Target,
+} from 'lucide-react';
 import { supabase } from '@/lib/supabaseClient';
 
 export type DailyContentType = 'topic' | 'question' | 'mcq';
@@ -25,6 +34,8 @@ const SLIDES: { type: DailyContentType; label: string; eyebrow: string }[] = [
   { type: 'mcq', label: 'MCQ', eyebrow: 'MCQ of the day' },
 ];
 
+const SUBJECTS = ['POLITY', 'ECONOMY', 'HISTORY'];
+
 function localDateKey() {
   const parts = new Intl.DateTimeFormat('en-GB', {
     timeZone: 'Asia/Kolkata',
@@ -37,24 +48,16 @@ function localDateKey() {
 }
 
 export default function DailyContentCarousel() {
+  const router = useRouter();
   const [items, setItems] = useState<Partial<Record<DailyContentType, DailyContentItem>>>({});
   const [activeIndex, setActiveIndex] = useState(0);
-  const [imageIndex, setImageIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [answerSubmitted, setAnswerSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const touchStartX = useRef<number | null>(null);
   const activeSlide = SLIDES[activeIndex];
   const activeItem = items[activeSlide.type];
-
-  useEffect(() => {
-    const imageCount = activeItem?.image_paths?.length || 0;
-    if (imageCount < 2) return;
-    const timer = window.setInterval(() => {
-      setImageIndex((index) => (index + 1) % imageCount);
-    }, 5000);
-    return () => window.clearInterval(timer);
-  }, [activeItem?.id, activeItem?.image_paths?.length]);
 
   useEffect(() => {
     let active = true;
@@ -73,9 +76,7 @@ export default function DailyContentCarousel() {
       } else {
         setLoadError(null);
         const byType: Partial<Record<DailyContentType, DailyContentItem>> = {};
-        for (const item of (data || []) as DailyContentItem[]) {
-          byType[item.content_type] = item;
-        }
+        for (const item of (data || []) as DailyContentItem[]) byType[item.content_type] = item;
         setItems(byType);
       }
       setLoading(false);
@@ -84,11 +85,7 @@ export default function DailyContentCarousel() {
     void loadItems();
     const channel = supabase
       .channel(`daily-carousel-${today}`)
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'daily_carousel_content' },
-        () => void loadItems()
-      )
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'daily_carousel_content' }, () => void loadItems())
       .subscribe();
 
     return () => {
@@ -97,212 +94,144 @@ export default function DailyContentCarousel() {
     };
   }, []);
 
-  function moveSlide(direction: -1 | 1) {
-    setActiveIndex((index) => (index + direction + SLIDES.length) % SLIDES.length);
-    setImageIndex(0);
+  function selectSlide(index: number) {
+    setActiveIndex((index + SLIDES.length) % SLIDES.length);
     setSelectedOption(null);
     setAnswerSubmitted(false);
   }
 
-  function selectSlide(index: number) {
-    setActiveIndex(index);
-    setImageIndex(0);
-    setSelectedOption(null);
-    setAnswerSubmitted(false);
+  function moveSlide(direction: -1 | 1) {
+    selectSlide(activeIndex + direction);
   }
+
+  function onTouchStart(event: React.TouchEvent<HTMLElement>) {
+    touchStartX.current = event.changedTouches[0]?.clientX ?? null;
+  }
+
+  function onTouchEnd(event: React.TouchEvent<HTMLElement>) {
+    if (touchStartX.current === null) return;
+    const delta = event.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 45) moveSlide(delta < 0 ? 1 : -1);
+    touchStartX.current = null;
+  }
+
+  const publicAssetUrl = (path: string) =>
+    supabase.storage.from('daily-carousel-assets').getPublicUrl(path).data.publicUrl;
 
   return (
     <section
       aria-label="Daily learning carousel"
-      className="mb-7 overflow-hidden rounded-3xl border border-[var(--app-border)] bg-[var(--app-panel-strong)]"
+      className="daily-mission-carousel mb-6"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--app-border)] px-5 py-4 sm:px-6">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-[var(--app-accent)]">
-            Daily practice
-          </p>
-          <h2 className="mt-1 text-lg font-bold text-[var(--app-text)]">Learn something today</h2>
+      <div className="daily-mission-copy">
+        <div className="daily-mission-topline">
+          <span className="daily-mission-kicker">TODAY'S MISSION</span>
+          <span className="daily-mission-target"><Target size={16} /> Target · 2 hrs</span>
         </div>
-        <div className="flex items-center gap-2">
-          {SLIDES.map((slide, index) => (
-            <button
-              key={slide.type}
-              type="button"
-              onClick={() => selectSlide(index)}
-              aria-current={activeIndex === index ? 'step' : undefined}
-              className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
-                activeIndex === index
-                  ? 'bg-[var(--app-accent)] text-slate-950'
-                  : 'bg-[var(--app-surface-muted)] text-[var(--app-muted)] hover:text-[var(--app-text)]'
-              }`}
-            >
-              {slide.label}
-            </button>
-          ))}
-          <button
-            type="button"
-            onClick={() => moveSlide(-1)}
-            aria-label="Previous daily item"
-            className="ml-1 rounded-full border border-[var(--app-border)] p-2 text-[var(--app-muted)] hover:text-[var(--app-text)]"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => moveSlide(1)}
-            aria-label="Next daily item"
-            className="rounded-full border border-[var(--app-border)] p-2 text-[var(--app-muted)] hover:text-[var(--app-text)]"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
-      </div>
 
-      <div className="grid min-h-64 gap-6 p-5 sm:p-6 md:grid-cols-[minmax(0,1fr)_minmax(240px,0.8fr)] md:items-center">
-        <div className="min-w-0">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--app-secondary)]">
-            {activeSlide.eyebrow}
-          </p>
+        <div className="daily-mission-heading">
+          <p>{activeSlide.eyebrow}</p>
+          <h2>{activeItem?.title || 'Learn something today'}</h2>
           {loading ? (
-            <div className="mt-8 flex items-center gap-2 text-sm text-[var(--app-muted)]">
-              <Loader2 className="h-4 w-4 animate-spin" /> Loading today’s content
-            </div>
+            <div className="daily-mission-status"><Loader2 size={15} className="animate-spin" /> Loading today's learning plan</div>
           ) : loadError ? (
-            <p role="status" className="mt-4 text-sm text-[var(--app-muted)]">
-              Daily content is temporarily unavailable.
-            </p>
-          ) : !activeItem ? (
-            <p className="mt-4 text-sm text-[var(--app-muted)]">
-              This daily item has not been published yet.
-            </p>
+            <p className="daily-mission-status">Today's content is temporarily unavailable.</p>
+          ) : activeItem ? (
+            <p className="daily-mission-body">{activeItem.body}</p>
           ) : (
-            <>
-              <h3 className="mt-2 text-xl font-bold leading-snug text-[var(--app-text)] sm:text-2xl">
-                {activeItem.title}
-              </h3>
-              <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-[var(--app-muted)]">
-                {activeItem.body}
-              </p>
-
-              {activeSlide.type === 'mcq' && (
-                <div className="mt-5 grid gap-2 sm:grid-cols-2">
-                  {activeItem.options.map((option, index) => {
-                    const isCorrect = index === activeItem.correct_option;
-                    const isSelected = selectedOption === index;
-                    const resultStyle = answerSubmitted
-                      ? isCorrect
-                        ? 'border-emerald-400/60 bg-emerald-500/10 text-emerald-200'
-                        : isSelected
-                          ? 'border-rose-400/60 bg-rose-500/10 text-rose-200'
-                          : 'border-[var(--app-border)] text-[var(--app-muted)]'
-                      : isSelected
-                        ? 'border-[var(--app-accent)] bg-[var(--app-accent-soft)] text-[var(--app-text)]'
-                        : 'border-[var(--app-border)] text-[var(--app-text)] hover:border-[var(--app-accent)]';
-                    return (
-                      <button
-                        key={`${activeItem.id}-${index}`}
-                        type="button"
-                        disabled={answerSubmitted}
-                        onClick={() => setSelectedOption(index)}
-                        className={`flex items-center gap-2 rounded-xl border px-3 py-2.5 text-left text-sm transition ${resultStyle}`}
-                      >
-                        <span className="font-bold">{String.fromCharCode(65 + index)}.</span>
-                        <span>{option}</span>
-                        {answerSubmitted && isCorrect && <CircleCheck className="ml-auto h-4 w-4 shrink-0" />}
-                        {answerSubmitted && isSelected && !isCorrect && <CircleX className="ml-auto h-4 w-4 shrink-0" />}
-                      </button>
-                    );
-                  })}
-                  {!answerSubmitted ? (
-                    <button
-                      type="button"
-                      disabled={selectedOption === null}
-                      onClick={() => setAnswerSubmitted(true)}
-                      className="w-fit rounded-xl bg-[var(--app-accent)] px-4 py-2.5 text-sm font-bold text-slate-950 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      Check answer
-                    </button>
-                  ) : (
-                    <p role="status" className="text-sm font-semibold text-[var(--app-text)]">
-                      {selectedOption === activeItem.correct_option ? 'Correct answer.' : 'Review the correct answer.'}
-                      {activeItem.explanation && (
-                        <span className="mt-1 block font-normal text-[var(--app-muted)]">{activeItem.explanation}</span>
-                      )}
-                    </p>
-                  )}
-                </div>
-              )}
-            </>
+            <p className="daily-mission-body">A focused topic, a thoughtful question and one MCQ — your daily step towards mastery.</p>
           )}
         </div>
-        <div className="space-y-3">
-          {activeItem?.image_paths?.length ? (
-            <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[var(--app-border)] bg-[var(--app-bg-elevated)]">
-              <img
-                src={supabase.storage.from('daily-carousel-assets').getPublicUrl(activeItem.image_paths[imageIndex]).data.publicUrl}
-                alt={`${activeItem.title} image ${imageIndex + 1}`}
-                className="h-full w-full object-cover"
-              />
-              {activeItem.image_paths.length > 1 && (
-                <>
-                  <button
-                    type="button"
-                    onClick={() => setImageIndex((index) => (index - 1 + activeItem.image_paths.length) % activeItem.image_paths.length)}
-                    aria-label="Previous image"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/75 p-2 text-white"
-                  >
-                    <ChevronLeft className="h-4 w-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setImageIndex((index) => (index + 1) % activeItem.image_paths.length)}
-                    aria-label="Next image"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-slate-950/75 p-2 text-white"
-                  >
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                  <span className="absolute bottom-2 right-2 rounded-full bg-slate-950/75 px-2 py-1 text-[10px] text-white">
-                    {imageIndex + 1} / {activeItem.image_paths.length}
-                  </span>
-                </>
-              )}
-            </div>
-          ) : (
-            <div className="grid aspect-[16/10] place-items-center rounded-xl border border-dashed border-[var(--app-border)] bg-[var(--app-surface-muted)] text-xs text-[var(--app-muted)]">
-              No image notes uploaded
-            </div>
-          )}
 
-          {activeItem?.pdf_paths?.length ? (
-            <div className="flex flex-wrap gap-2">
-              {activeItem.pdf_paths.map((path, index) => (
-                <a
-                  key={path}
-                  href={supabase.storage.from('daily-carousel-assets').getPublicUrl(path).data.publicUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-lg border border-[var(--app-border)] bg-[var(--app-surface-muted)] px-3 py-2 text-xs font-semibold text-[var(--app-text)] hover:border-[var(--app-accent)]"
-                >
-                  Open PDF note {index + 1}
-                </a>
-              ))}
-            </div>
-          ) : (
-            <p className="text-xs text-[var(--app-muted)]">No PDF notes uploaded</p>
-          )}
-
-          <div className="flex items-center justify-center gap-1.5">
+        <div className="daily-mission-controls">
+          <div className="daily-mission-tabs" role="tablist" aria-label="Daily content type">
             {SLIDES.map((slide, index) => (
-              <span
+              <button
                 key={slide.type}
-                aria-hidden="true"
-                className={`h-1.5 rounded-full transition-all ${
-                  activeIndex === index ? 'w-8 bg-[var(--app-accent)]' : 'w-3 bg-[var(--app-border-strong)]'
-                }`}
-              />
+                type="button"
+                role="tab"
+                aria-selected={activeIndex === index}
+                onClick={() => selectSlide(index)}
+                className={activeIndex === index ? 'active' : ''}
+              >
+                {slide.label}
+              </button>
+            ))}
+          </div>
+          <div className="daily-mission-arrows">
+            <button type="button" onClick={() => moveSlide(-1)} aria-label="Previous daily slide"><ChevronLeft size={17} /></button>
+            <button type="button" onClick={() => moveSlide(1)} aria-label="Next daily slide"><ChevronRight size={17} /></button>
+          </div>
+        </div>
+
+        {activeSlide.type === 'mcq' && activeItem && (
+          <div className="daily-mission-mcq">
+            {activeItem.options.map((option, index) => {
+              const correct = index === activeItem.correct_option;
+              const selected = selectedOption === index;
+              const stateClass = answerSubmitted
+                ? correct ? 'correct' : selected ? 'incorrect' : ''
+                : selected ? 'selected' : '';
+              return (
+                <button
+                  key={`${activeItem.id}-${index}`}
+                  type="button"
+                  disabled={answerSubmitted}
+                  onClick={() => setSelectedOption(index)}
+                  className={stateClass}
+                >
+                  <span>{String.fromCharCode(65 + index)}</span>
+                  <span>{option}</span>
+                  {answerSubmitted && correct && <CircleCheck size={16} />}
+                  {answerSubmitted && selected && !correct && <CircleX size={16} />}
+                </button>
+              );
+            })}
+            {!answerSubmitted ? (
+              <button type="button" className="daily-mission-check" disabled={selectedOption === null} onClick={() => setAnswerSubmitted(true)}>Check answer</button>
+            ) : (
+              <p className="daily-mission-explanation">
+                {selectedOption === activeItem.correct_option ? 'Correct answer.' : 'Review the correct answer.'}
+                {activeItem.explanation ? ` ${activeItem.explanation}` : ''}
+              </p>
+            )}
+          </div>
+        )}
+
+        {activeItem?.pdf_paths?.length ? (
+          <div className="daily-mission-pdfs">
+            {activeItem.pdf_paths.map((path, index) => (
+              <a key={path} href={publicAssetUrl(path)} target="_blank" rel="noreferrer">Open PDF note {index + 1}</a>
+            ))}
+          </div>
+        ) : null}
+
+        <div className="daily-mission-footer">
+          <button type="button" className="daily-mission-cta" onClick={() => router.push('/quizzes')}>
+            Start Daily Practice <ArrowRight size={20} />
+          </button>
+          <div className="daily-mission-pagination" aria-label={`Slide ${activeIndex + 1} of ${SLIDES.length}`}>
+            {SLIDES.map((slide, index) => (
+              <button key={slide.type} type="button" aria-label={`Go to ${slide.label}`} aria-current={activeIndex === index ? 'step' : undefined} onClick={() => selectSlide(index)} className={activeIndex === index ? 'active' : ''} />
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="daily-mission-art" aria-label="Featured subjects">
+        <div className="daily-mission-orbit" aria-hidden="true">◎</div>
+        {activeItem?.image_paths?.length ? (
+          <div className="daily-mission-feature-image">
+            <img src={publicAssetUrl(activeItem.image_paths[0])} alt={activeItem.title} />
+          </div>
+        ) : (
+          <div className="daily-mission-books">
+            {SUBJECTS.map((subject, index) => <span key={subject} className={`daily-mission-book book-${index + 1}`}>{subject}</span>)}
+          </div>
+        )}
+        <span className="daily-mission-art-caption">A LITTLE PROGRESS, EVERY DAY</span>
       </div>
     </section>
   );
