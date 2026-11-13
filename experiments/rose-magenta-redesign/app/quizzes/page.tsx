@@ -175,7 +175,7 @@ export default function StudentQuizzesPage() {
   }
 
   return (
-    <div className="app-theme text-[var(--app-text)] min-h-screen">
+    <div className="app-theme student-page text-[var(--app-text)] min-h-screen">
       {/* Desktop Sidebar */}
       <aside className="theme-surface-solid fixed inset-y-0 left-0 z-20 hidden w-64 flex-col border-r border-[var(--app-border)] px-5 py-6 md:flex">
         <div className="flex items-center gap-3 px-2">
