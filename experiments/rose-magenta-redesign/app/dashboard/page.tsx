@@ -477,9 +477,9 @@ export default function DashboardPage() {
       </aside>
 
       {/* Main Content */}
-      <main className="relative z-10 mx-auto max-w-7xl px-5 pb-28 pt-6 md:ml-64 md:px-10 md:py-9">
+      <main className="dashboard-main relative z-10 mx-auto max-w-7xl px-5 pb-28 pt-6 md:ml-64 md:px-10 md:py-9">
         {/* Top Header */}
-        <header className="mb-7 flex flex-wrap items-center justify-between gap-4">
+        <header className="dashboard-header mb-7 flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--app-accent)]">
               Civil Services Academic Sanctuary
@@ -518,7 +518,7 @@ export default function DashboardPage() {
         <DailyContentCarousel />
 
         {/* Hero Banner */}
-        <section className="theme-surface relative overflow-hidden rounded-3xl p-6 sm:p-8">
+        <section className="dashboard-hero theme-surface relative overflow-hidden rounded-3xl p-6 sm:p-8">
           <div className="relative grid gap-6 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-[var(--app-accent-soft)] px-3 py-1 text-xs font-semibold text-[var(--app-accent)]">
@@ -585,7 +585,7 @@ export default function DashboardPage() {
         </section>
 
         {/* Key Metrics Strip */}
-        <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="dashboard-metrics mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard
             icon={BookOpen}
             label="Tests Evaluated"
@@ -617,7 +617,7 @@ export default function DashboardPage() {
         </section>
 
         {/* Preparation Intelligence — evidence-based next actions */}
-        <section className="mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+        <section className="dashboard-intelligence mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="theme-surface relative overflow-hidden rounded-3xl p-5 sm:p-6">
             <div className="pointer-events-none absolute -right-12 -top-16 h-44 w-44 rounded-full bg-[var(--app-accent-soft)] blur-3xl" />
             <div className="relative flex items-start justify-between gap-4">
@@ -672,9 +672,9 @@ export default function DashboardPage() {
         </section>
 
         {/* Main 2-Column Analytical Section */}
-        <div className="mt-7 grid gap-6 xl:grid-cols-[1.3fr_0.9fr]">
+        <div className="dashboard-analytics mt-7 grid gap-6 xl:grid-cols-[1.3fr_0.9fr]">
           {/* Recommended Practice Modules */}
-          <section className="theme-surface rounded-3xl p-5 sm:p-6">
+          <section className="dashboard-practice theme-surface rounded-3xl p-5 sm:p-6">
             <div className="flex items-end justify-between gap-4">
               <div>
                 <h2 className="text-lg font-bold">
