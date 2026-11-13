@@ -481,17 +481,12 @@ export default function DashboardPage() {
       <main className="dashboard-main relative z-10 mx-auto max-w-7xl px-5 pb-28 pt-6 md:ml-64 md:px-10 md:py-9">
         {/* Top Header */}
         <header className="dashboard-header mb-7 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--app-accent)]">
-              Civil Services Academic Sanctuary
-            </p>
-            <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-3xl">
-              Steady progress, {firstName}.
-            </h1>
-            <p className="mt-1 text-sm text-[var(--app-muted)]">
-              Consistent daily revision and negative-marking discipline build
-              Prelims confidence.
-            </p>
+          <div className="sanctuary-brand-lockup">
+            <BrandMark size={18} />
+            <div>
+              <p className="font-serif text-base font-bold leading-none text-[#552334]">Gyankunj IAS</p>
+              <p className="mt-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-[#987b76]">Civil Services Preparation</p>
+            </div>
           </div>
           <div className="flex items-center gap-2.5">
             <button
