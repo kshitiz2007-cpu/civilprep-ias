@@ -1078,3 +1078,18 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
  .sanctuary-editorial-copy{max-width:100%}
  .sanctuary-parliament-art{display:none}
 }
+
+.student-page .dashboard-header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.student-page .sanctuary-brand-lockup{display:flex;align-items:center;gap:10px}
+.student-page .sanctuary-brand-lockup>div{display:flex;flex-direction:column}
+.student-page .dashboard-header>div:last-child{width:auto;flex-wrap:nowrap}
+@media(max-width:640px){
+ .student-page .dashboard-header{flex-wrap:nowrap;padding:3px 0 7px}
+ .student-page .sanctuary-brand-lockup{gap:7px}
+ .student-page .sanctuary-brand-lockup p:first-child{font-size:14px}
+ .student-page .sanctuary-brand-lockup p:last-child{font-size:7px}
+ .student-page .dashboard-header>div:last-child{width:auto;gap:6px}
+ .student-page .dashboard-header>div:last-child>button:first-child{display:none}
+ .student-page .dashboard-header .theme-selector{max-width:42px}
+ .student-page .dashboard-header button[aria-label="Sign out of your account"]{padding:9px}
+}
