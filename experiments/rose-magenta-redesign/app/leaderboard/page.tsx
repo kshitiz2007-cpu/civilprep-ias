@@ -13,7 +13,7 @@ import {
   Loader2,
   Award,
 } from 'lucide-react';
-import ThemeSelector from '@/components/ThemeSelector';
+import StudentPageActions from '@/components/StudentPageActions';
 
 interface LeaderboardEntry {
   user_id: string;
@@ -180,7 +180,7 @@ export default function LeaderboardPage() {
               </h1>
             </div>
           </div>
-          <ThemeSelector />
+          <StudentPageActions />
         </div>
 
         <div className="space-y-3">
