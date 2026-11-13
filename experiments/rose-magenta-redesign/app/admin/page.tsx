@@ -275,7 +275,7 @@ export default function AdminPage() {
   return (
     <div className="app-theme relative flex min-h-screen w-full flex-col font-sans md:flex-row text-[var(--app-text)]">
       {/* Sidebar Navigation */}
-      <aside className="theme-surface-solid relative z-20 flex w-full shrink-0 flex-col border-b border-[var(--app-border)] md:h-screen md:w-72 md:border-b-0 md:border-r">
+      <aside className="theme-surface-solid relative z-20 flex w-full shrink-0 flex-col border-b border-[var(--app-border)] md:sticky md:top-0 md:h-screen md:w-72 md:border-b-0 md:border-r">
         <div className="flex items-center justify-between p-4 md:block md:p-6 md:pb-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -303,7 +303,7 @@ export default function AdminPage() {
           </button>
         </div>
 
-        <nav className="flex flex-row md:flex-col gap-1.5 overflow-x-auto md:overflow-y-auto px-4 pb-3 md:px-4 md:py-2 md:flex-1 custom-scrollbar">
+        <nav aria-label="Admin sections" className="admin-nav-rail flex flex-row md:flex-col gap-1.5 overflow-x-auto md:overflow-y-auto px-4 pb-3 md:px-4 md:py-2 md:flex-1 custom-scrollbar">
           {ADMIN_TABS.map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
@@ -311,7 +311,8 @@ export default function AdminPage() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-shrink-0 md:w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs md:text-sm transition-all border ${
+                aria-current={isActive ? 'page' : undefined}
+                className={`admin-nav-item flex-shrink-0 md:w-full flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-xs md:text-sm transition-all border ${
                   isActive
                     ? 'bg-[var(--app-accent-soft)] text-[var(--app-accent)] border-[var(--app-border)] font-bold'
                     : 'text-[var(--app-muted)] border-transparent hover:bg-[var(--app-surface-muted)] hover:text-[var(--app-text)] font-medium'
@@ -340,7 +341,7 @@ export default function AdminPage() {
       </aside>
 
       {/* Main Content Area */}
-      <main className="relative z-10 h-screen w-full flex-1 overflow-y-auto p-4 md:p-8">
+      <main className="relative z-10 min-h-[calc(100dvh-7.5rem)] w-full flex-1 overflow-y-auto px-4 pb-8 pt-5 md:h-screen md:min-h-0 md:p-8">
         <div className="max-w-7xl mx-auto w-full">
           {activeTab === 'overview' && (
             <AdminOverview setActiveTab={setActiveTab} />
