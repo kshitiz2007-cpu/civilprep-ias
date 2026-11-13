@@ -39,7 +39,7 @@ import {
 import { supabase } from '@/lib/supabaseClient';
 import { FALLBACK_QUIZZES } from '@/lib/mockData';
 import { openWatermarkStudio } from '@/lib/pdfExporter';
-import ThemeSelector from '@/components/ThemeSelector';
+import StudentPageActions from '@/components/StudentPageActions';
 
 type ConfidenceLevel = 'sure' | 'fifty' | 'guess';
 type LanguageMode = 'en' | 'hi' | 'split';
@@ -789,7 +789,7 @@ export default function QuizPlayerPage() {
               </span>
             </button>
 
-            <ThemeSelector compact />
+            <StudentPageActions />
 
             {/* Timer + Pause Control */}
             <div className="inline-flex items-center rounded-xl border border-[var(--app-border)] bg-[var(--app-panel)] p-0.5">
