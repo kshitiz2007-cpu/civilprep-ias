@@ -645,7 +645,7 @@ export default function QuizPlayerPage() {
   };
 
   return (
-    <div className="app-theme min-h-screen flex flex-col">
+    <div className="app-theme student-page exam-room min-h-screen flex flex-col">
       {/* Non-blocking Toast Banner */}
       {toastMsg && (
         <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-2xl border border-[var(--app-border-strong)] bg-[var(--app-panel-strong)] px-4 py-3 text-xs font-bold text-[var(--app-text)] shadow-2xl">
