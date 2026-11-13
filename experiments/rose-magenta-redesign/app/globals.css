@@ -638,3 +638,63 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
 .student-mobile-dock button{min-width:52px;min-height:48px;border-radius:14px;color:#927b88}
 .student-mobile-dock button[aria-current=page]{background:linear-gradient(145deg,rgba(200,62,125,.13),rgba(222,179,119,.12));color:#a92b69}
 @media(max-width:767px){.app-theme main{scroll-margin-top:1rem}.admin-mobile-dock~*{scroll-margin-bottom:6rem}}
+
+/* Dashboard refinement — calm hierarchy, compact mobile rhythm */
+.dashboard-main{max-width:1320px}
+.dashboard-header{align-items:center;margin-bottom:1.25rem}
+.dashboard-header h1{font-size:clamp(1.65rem,3vw,2.45rem);letter-spacing:-.055em}
+.dashboard-header>div:first-child>p:last-child{max-width:38rem;line-height:1.55}
+.dashboard-hero{border-radius:1.65rem;background:linear-gradient(118deg,rgba(255,255,255,.97),rgba(255,246,248,.96) 58%,rgba(250,239,225,.92));box-shadow:0 20px 58px -38px rgba(128,48,82,.3),inset 0 1px rgba(255,255,255,.98)}
+.dashboard-hero h2{max-width:15ch;font-size:clamp(1.55rem,3vw,2.45rem);line-height:1.12}
+.dashboard-hero .grid.grid-cols-2>div{background:rgba(255,255,255,.76);border-color:rgba(174,105,132,.13)}
+.dashboard-metrics{gap:.7rem}
+.dashboard-metrics>div{min-width:0;border-radius:1.2rem;padding:1rem 1.1rem;background:rgba(255,255,255,.88);box-shadow:0 10px 30px -26px rgba(91,38,63,.3)}
+.dashboard-metrics>div p:last-child{white-space:normal;line-height:1.35}
+.dashboard-intelligence>div,.dashboard-practice,.dashboard-analytics>div>section{border-radius:1.4rem}
+.dashboard-practice article{background:rgba(255,250,250,.9);border-color:rgba(174,105,132,.13);border-radius:1.1rem;padding:1rem}
+.dashboard-practice article h3{font-size:.95rem;line-height:1.35}
+.dashboard-analytics .h-32{height:9rem}
+.student-mobile-dock{left:50%;right:auto;width:min(460px,calc(100% - 24px));transform:translateX(-50%);border-radius:20px}
+.student-mobile-dock button{flex:1;min-width:0;min-height:48px}
+@media(max-width:767px){
+.dashboard-main{padding:1rem 14px 7.5rem}
+.dashboard-header{gap:.75rem;margin-bottom:1rem}
+.dashboard-header>div:first-child{width:100%}
+.dashboard-header>div:first-child>p:first-child{font-size:.58rem;letter-spacing:.12em}
+.dashboard-header h1{font-size:1.55rem;line-height:1.15;margin-top:.35rem}
+.dashboard-header>div:first-child>p:last-child{font-size:.76rem;max-width:32rem}
+.dashboard-header>div:last-child{width:100%;justify-content:space-between}
+.dashboard-header>div:last-child>button:first-child{padding:.58rem .85rem;font-size:.72rem}
+.dashboard-main>section{margin-top:1rem}
+.dashboard-hero{padding:1.15rem;border-radius:1.35rem}
+.dashboard-hero>div{gap:1rem}
+.dashboard-hero h2{max-width:22ch;font-size:1.45rem;line-height:1.16}
+.dashboard-hero p{font-size:.78rem;line-height:1.55}
+.dashboard-hero .mt-5{margin-top:.9rem}
+.dashboard-hero .grid.grid-cols-2{gap:.55rem}
+.dashboard-hero .grid.grid-cols-2>div{padding:.75rem;border-radius:1rem}
+.dashboard-hero .grid.grid-cols-2>div p.mt-3{margin-top:.55rem;font-size:1.35rem}
+.dashboard-metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+.dashboard-metrics>div{padding:.85rem;border-radius:1rem}
+.dashboard-metrics>div p:nth-of-type(1){font-size:1.35rem;margin-top:.4rem}
+.dashboard-metrics>div p:last-child{font-size:.63rem}
+.dashboard-intelligence{grid-template-columns:1fr;gap:.7rem}
+.dashboard-intelligence>div{padding:1rem;border-radius:1.2rem}
+.dashboard-intelligence h2{font-size:1.05rem}
+.dashboard-practice{padding:1rem;border-radius:1.2rem}
+.dashboard-practice>div:first-of-type{align-items:flex-start}
+.dashboard-practice h2{font-size:1rem;line-height:1.3}
+.dashboard-practice>div:last-child{grid-template-columns:1fr;gap:.65rem;margin-top:.85rem}
+.dashboard-practice article{padding:.9rem}
+.dashboard-practice article p{font-size:.7rem}
+.dashboard-practice article>div:last-child{gap:.55rem}
+.dashboard-practice article button{font-size:.65rem}
+.dashboard-analytics{grid-template-columns:1fr;gap:.75rem;margin-top:1rem}
+.dashboard-analytics>div{display:grid;grid-template-columns:1fr;gap:.75rem}
+.dashboard-analytics>div>section{padding:1rem;border-radius:1.2rem}
+.dashboard-analytics h2{font-size:.98rem}
+.dashboard-analytics .h-32{height:7.5rem}
+.student-mobile-dock{bottom:max(8px,env(safe-area-inset-bottom));padding:6px}
+.student-mobile-dock button{gap:3px;font-size:9px}
+}
+@media(min-width:768px) and (max-width:1100px){.dashboard-main{padding-left:2rem;padding-right:2rem}.dashboard-practice>div:last-child{grid-template-columns:1fr}}
