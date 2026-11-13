@@ -235,7 +235,7 @@ export default function QuizResultPage() {
   });
 
   return (
-    <main className="app-theme min-h-screen px-4 py-6 sm:px-6 md:py-10 text-[var(--app-text)]">
+    <main className="app-theme student-page min-h-screen px-4 py-6 sm:px-6 md:py-10 text-[var(--app-text)]">
       <div className="mx-auto max-w-5xl pb-12">
         {/* Top Bar */}
         <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
