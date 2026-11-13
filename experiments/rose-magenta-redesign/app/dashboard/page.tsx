@@ -501,6 +501,16 @@ export default function DashboardPage() {
               <Sliders className="h-3.5 w-3.5" /> Custom Smart Drill
             </button>
             <ThemeSelector />
+            <button
+              type="button"
+              onClick={logout}
+              title="Sign out"
+              aria-label="Sign out of your account"
+              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-[var(--app-border)] bg-white/70 px-3 py-2 text-xs font-semibold text-[var(--app-muted)] shadow-sm transition hover:border-[var(--app-accent)] hover:bg-[var(--app-accent-soft)] hover:text-[var(--app-accent)]"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="hidden sm:inline">Sign out</span>
+            </button>
           </div>
         </header>
 
