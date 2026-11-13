@@ -864,7 +864,7 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
 /* Tablet and phone: remove the legacy fixed rail completely and use a true full-width canvas. */
 @media(max-width:1100px){
  .app-theme>aside.fixed{display:none!important}
- .app-theme main[class*=md\\:ml-64]{margin-left:0!important;width:100%;max-width:100%;padding-left:clamp(14px,3.2vw,28px);padding-right:clamp(14px,3.2vw,28px)}
+ .app-theme main[class*="md:ml-64"]{margin-left:0!important;width:100%;max-width:100%;padding-left:clamp(14px,3.2vw,28px);padding-right:clamp(14px,3.2vw,28px)}
  .student-bottom-nav{display:grid}
  .student-mobile-dock{display:flex!important;left:50%;right:auto;width:min(520px,calc(100% - 22px));transform:translateX(-50%);bottom:max(9px,env(safe-area-inset-bottom));z-index:79}
  .student-mobile-dock button{flex:1;min-width:0;min-height:50px;border-radius:15px}
@@ -872,7 +872,7 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
 }
 @media(max-width:640px){
  .app-theme{overflow-x:clip}
- .app-theme main[class*=md\\:ml-64]{padding:1.05rem 14px 7.5rem!important}
+ .app-theme main[class*="md:ml-64"]{padding:1.05rem 14px 7.5rem!important}
  .dashboard-main{max-width:none;width:100%;padding:1rem 14px 8rem!important}
  .dashboard-header{align-items:flex-start}
  .dashboard-header h1{font-size:1.65rem}
@@ -895,16 +895,16 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
  .app-theme main .gap-4{gap:.75rem}
  .app-theme main .text-sm{line-height:1.5}
  .app-theme main input,.app-theme main select,.app-theme main textarea{font-size:16px}
- .app-theme main .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
- .app-theme main .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3>button{padding:.9rem;border-radius:1.15rem}
- .app-theme main .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3>button .mb-4{margin-bottom:.65rem}
- .app-theme main .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3>button .w-6{width:1.15rem;height:1.15rem}
+ .app-theme main .grid[class*="sm:grid-cols-2"][class*="lg:grid-cols-3"]{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem}
+ .app-theme main .grid[class*="sm:grid-cols-2"][class*="lg:grid-cols-3"]>button{padding:.9rem;border-radius:1.15rem}
+ .app-theme main .grid[class*="sm:grid-cols-2"][class*="lg:grid-cols-3"]>button .mb-4{margin-bottom:.65rem}
+ .app-theme main .grid[class*="sm:grid-cols-2"][class*="lg:grid-cols-3"]>button .w-6{width:1.15rem;height:1.15rem}
  .app-theme main .flex.flex-wrap{row-gap:.6rem}
  .app-theme main button{min-height:40px}
  .student-feature-card{border-radius:1.25rem}
 }
 @media(max-width:380px){
- .app-theme main .grid.grid-cols-1.sm\\:grid-cols-2.lg\\:grid-cols-3{grid-template-columns:1fr}
+ .app-theme main .grid[class*="sm:grid-cols-2"][class*="lg:grid-cols-3"]{grid-template-columns:1fr}
  .student-bottom-nav a span{font-size:8px}
 }
 @media(min-width:1101px){
