@@ -36,6 +36,7 @@ import BrandMark from '@/components/BrandMark';
 import StudentChatWidget from '@/components/StudentChatWidget';
 import ThemeSelector from '@/components/ThemeSelector';
 import StudentBottomNav from '@/components/StudentBottomNav';
+import DailyContentCarousel from '@/components/DailyContentCarousel';
 
 type Attempt = {
   id: string;
@@ -530,27 +531,7 @@ export default function DashboardPage() {
           <span className="sanctuary-welcome-seal" aria-hidden="true"><Landmark size={28}/></span>
         </section>
 
-        <section className="sanctuary-mission mb-6">
-          <div className="sanctuary-mission-copy">
-            <div className="sanctuary-mission-kicker">
-              <span>TODAY'S MISSION</span>
-              <span className="sanctuary-target"><Target size={14}/> Target · 2 hrs</span>
-            </div>
-            <h2>Learn something today</h2>
-            <div className="sanctuary-pills">
-              <span>Topic</span><span>Question</span><span>MCQ</span>
-            </div>
-            <button onClick={() => router.push(quizzes[0] ? `/quiz/${quizzes[0].id}` : '/quizzes')} className="sanctuary-gold-button">
-              Start Daily Practice <ArrowRight size={17}/>
-            </button>
-          </div>
-          <div className="sanctuary-books-art" aria-hidden="true">
-            <span className="sanctuary-book book-one">POLITY</span>
-            <span className="sanctuary-book book-two">ECONOMY</span>
-            <span className="sanctuary-book book-three">HISTORY</span>
-            <span className="sanctuary-globe">◎</span>
-          </div>
-        </section>
+        <DailyContentCarousel />
 
         <section className="sanctuary-duo-grid mb-6">
           <article className="sanctuary-paper-card">
