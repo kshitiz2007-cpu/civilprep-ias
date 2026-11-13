@@ -2,6 +2,7 @@
 export const dynamic = 'force-dynamic';
 
 import { useEffect, useState } from 'react';
+import StudentBottomNav from '@/components/StudentBottomNav';
 import { supabase } from '@/lib/supabaseClient';
 import { FALLBACK_ATTEMPTS, FALLBACK_QUIZZES } from '@/lib/mockData';
 import { openWatermarkStudio } from '@/lib/pdfExporter';
@@ -291,6 +292,7 @@ export default function HistoryPage() {
           })}
         </div>
       </main>
-    </div>
+          <StudentBottomNav />
+</div>
   );
 }
