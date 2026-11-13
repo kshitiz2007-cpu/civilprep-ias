@@ -315,6 +315,39 @@ export default function DashboardPage() {
     });
   }, [attempts]);
 
+
+  const revisionRadar = useMemo(() => {
+    const attempted = subjectMastery.filter((item) => item.count > 0);
+    const untested = subjectMastery.filter((item) => item.count === 0);
+    const needsRevision = [...attempted]
+      .sort((a, b) => (a.avg ?? 0) - (b.avg ?? 0))
+      .slice(0, 3);
+    return { attempted, untested, needsRevision };
+  }, [subjectMastery]);
+
+  const nextBestAction = useMemo(() => {
+    const weakest = revisionRadar.needsRevision[0];
+    if (weakest) return {
+      title: `Rebuild ${weakest.subject} accuracy`,
+      detail: `Your current average is ${weakest.avg ?? 0}% across ${weakest.count} evaluated test(s). Revise errors, then take a focused drill.`,
+      subject: weakest.subject,
+      action: 'Start focused drill',
+    };
+    const next = revisionRadar.untested[0];
+    if (next) return {
+      title: `Establish a ${next.subject} baseline`,
+      detail: 'There is no evaluated attempt for this pillar yet. A short diagnostic will establish your starting point.',
+      subject: next.subject,
+      action: 'Take diagnostic drill',
+    };
+    return {
+      title: 'Keep your revision cycle consistent',
+      detail: 'Your tracked GS pillars have evaluation data. Review recent mistakes and retest the lowest-scoring topic.',
+      subject: 'All Subjects',
+      action: 'Build mixed drill',
+    };
+  }, [revisionRadar]);
+
   const recentScores = useMemo(() => attempts.slice(0, 7).reverse(), [attempts]);
   const completedIds = new Set(attempts.map((item) => item.quiz_id));
   const firstName =
@@ -583,6 +616,61 @@ export default function DashboardPage() {
           />
         </section>
 
+        {/* Preparation Intelligence — evidence-based next actions */}
+        <section className="mt-6 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="theme-surface relative overflow-hidden rounded-3xl p-5 sm:p-6">
+            <div className="pointer-events-none absolute -right-12 -top-16 h-44 w-44 rounded-full bg-[var(--app-accent-soft)] blur-3xl" />
+            <div className="relative flex items-start justify-between gap-4">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--app-accent)]">Your next best move</p>
+                <h2 className="mt-1 text-xl font-bold tracking-tight">{nextBestAction.title}</h2>
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-[var(--app-muted)]">{nextBestAction.detail}</p>
+              </div>
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[var(--app-border)] bg-[var(--app-accent-soft)] text-[var(--app-accent)]">
+                <Sparkles className="h-5 w-5" />
+              </span>
+            </div>
+            <div className="relative mt-5 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => { setDrillSubject(nextBestAction.subject); setShowDrillModal(true); }}
+                className="inline-flex items-center gap-2 rounded-xl bg-[var(--app-accent)] px-4 py-2.5 text-xs font-bold text-white shadow-lg shadow-[var(--app-accent-soft)] transition hover:-translate-y-0.5"
+              >
+                {nextBestAction.action} <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+              <span className="text-[11px] text-[var(--app-muted)]">Recommendation based on recorded attempts</span>
+            </div>
+          </div>
+
+          <div className="theme-surface rounded-3xl p-5 sm:p-6">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--app-accent)]">Revision radar</p>
+                <h2 className="mt-1 text-lg font-bold">Topics to revisit</h2>
+              </div>
+              <Target className="h-5 w-5 text-[var(--app-accent)]" />
+            </div>
+            <div className="mt-4 space-y-3">
+              {revisionRadar.needsRevision.length > 0 ? revisionRadar.needsRevision.map((item) => (
+                <div key={item.subject} className="flex items-center gap-3">
+                  <span className="min-w-0 flex-1 truncate text-sm font-semibold">{item.subject}</span>
+                  <span className="text-xs tabular-nums text-[var(--app-muted)]">{item.avg}%</span>
+                  <div className="h-1.5 w-20 overflow-hidden rounded-full bg-[var(--app-surface-muted)]">
+                    <div className="h-full rounded-full bg-[var(--app-accent)]" style={{ width: `${Math.max(0, Math.min(100, item.avg ?? 0))}%` }} />
+                  </div>
+                </div>
+              )) : (
+                <p className="text-sm text-[var(--app-muted)]">Complete your first evaluated test to activate the revision radar.</p>
+              )}
+            </div>
+            {revisionRadar.untested.length > 0 && (
+              <p className="mt-4 border-t border-[var(--app-border)] pt-3 text-[11px] leading-relaxed text-[var(--app-muted)]">
+                Not yet assessed: {revisionRadar.untested.slice(0, 4).map((item) => item.subject).join(' · ')}
+                {revisionRadar.untested.length > 4 ? ` +${revisionRadar.untested.length - 4} more` : ''}
+              </p>
+            )}
+          </div>
+        </section>
+
         {/* Main 2-Column Analytical Section */}
         <div className="mt-7 grid gap-6 xl:grid-cols-[1.3fr_0.9fr]">
           {/* Recommended Practice Modules */}
@@ -723,9 +811,9 @@ export default function DashboardPage() {
             <section className="theme-surface rounded-3xl p-5 sm:p-6">
               <div className="flex items-center justify-between mb-3">
                 <div>
-                  <h2 className="text-base font-bold">GS Syllabus Coverage</h2>
+                  <h2 className="text-base font-bold">GS Pillar Performance</h2>
                   <p className="text-xs text-[var(--app-muted)]">
-                    Subject-wise average across UPSC pillars
+                    Evaluated scores · not a measure of syllabus completion
                   </p>
                 </div>
                 <Award className="h-4 w-4 text-[var(--app-accent)]" />
