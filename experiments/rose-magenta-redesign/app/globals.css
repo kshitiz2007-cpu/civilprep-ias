@@ -625,3 +625,16 @@ html[data-theme=magenta]{--app-accent:#bd2d83;--app-accent-strong:#9f216d;--app-
  .admin-nav-item span{font-size:11px}
 }
 @media(min-width:768px){.admin-mobile-dock{display:none}}
+
+
+.student-mobile-dock{
+ bottom:max(10px,env(safe-area-inset-bottom));
+ padding:7px 8px calc(7px + env(safe-area-inset-bottom));
+ border-color:rgba(174,105,132,.22);
+ background:rgba(255,255,255,.88);
+ box-shadow:0 16px 44px rgba(91,38,63,.18),inset 0 1px rgba(255,255,255,.95);
+ backdrop-filter:blur(24px) saturate(1.25);-webkit-backdrop-filter:blur(24px) saturate(1.25)
+}
+.student-mobile-dock button{min-width:52px;min-height:48px;border-radius:14px;color:#927b88}
+.student-mobile-dock button[aria-current=page]{background:linear-gradient(145deg,rgba(200,62,125,.13),rgba(222,179,119,.12));color:#a92b69}
+@media(max-width:767px){.app-theme main{scroll-margin-top:1rem}.admin-mobile-dock~*{scroll-margin-bottom:6rem}}
