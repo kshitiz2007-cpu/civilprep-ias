@@ -130,9 +130,9 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="app-theme min-h-screen flex flex-col justify-between p-4 md:p-8 relative overflow-hidden">
+    <div className="app-theme landing-page min-h-screen flex flex-col justify-between p-4 md:p-8 relative overflow-hidden">
       {/* Top Bar */}
-      <header className="relative z-10 max-w-6xl w-full mx-auto flex items-center justify-between py-2">
+      <header className="landing-header relative z-10 max-w-6xl w-full mx-auto flex items-center justify-between py-2">
         <div className="flex items-center gap-3">
           <BrandMark size={21} />
           <div>
@@ -156,15 +156,15 @@ export default function LoginPage() {
       </header>
 
       {/* Main Content */}
-      <main className="relative z-10 max-w-6xl w-full mx-auto my-auto grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center py-8">
+      <main className="landing-main relative z-10 max-w-6xl w-full mx-auto my-auto grid gap-8 lg:grid-cols-[1.2fr_0.8fr] items-center py-8">
         {/* Left Institutional Overview */}
-        <section className="space-y-6 pr-0 lg:pr-6">
+        <section className="landing-intro space-y-6 pr-0 lg:pr-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-[var(--app-panel)] px-3.5 py-1.5 text-xs font-semibold text-[var(--app-accent)]">
             <Compass className="w-3.5 h-3.5" />
             <span>UPSC CSE · Prelims · CSAT · Learning Studio</span>
           </div>
 
-          <h1 className="kinetic-title text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]">
+          <h1 className="landing-title kinetic-title text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08]">
             Precision OMR telemetry & calm preparation for the{' '}
             <span className="kinetic-gradient block mt-1">
               Civil Services Examination.
@@ -178,7 +178,7 @@ export default function LoginPage() {
             Hindi split-view, and 360° negative-marking calibration.
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-3.5 pt-2">
+          <div className="landing-features grid sm:grid-cols-3 gap-3.5 pt-2">
             <div className="theme-surface rounded-2xl p-4">
               <div className="flex items-center gap-2 text-sm font-bold">
                 <Scale className="w-4 h-4 text-[var(--app-accent)]" />
@@ -213,7 +213,7 @@ export default function LoginPage() {
         </section>
 
         {/* Right Sign-In & Instant Simulator Card */}
-        <section className="theme-surface rounded-3xl p-7 sm:p-9 w-full max-w-md mx-auto">
+        <section className="landing-login glass-glow-card theme-surface rounded-3xl p-7 sm:p-9 w-full max-w-md mx-auto">
           <div className="w-13 h-13 rounded-2xl bg-[var(--app-accent-soft)] border border-[var(--app-border)] flex items-center justify-center mb-5 text-[var(--app-accent)]">
             <Landmark className="w-6 h-6" />
           </div>
@@ -301,7 +301,7 @@ export default function LoginPage() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 max-w-6xl w-full mx-auto text-center sm:text-left flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--app-muted)] py-2 gap-2">
+      <footer className="landing-footer relative z-10 max-w-6xl w-full mx-auto text-center sm:text-left flex flex-col sm:flex-row items-center justify-between text-xs text-[var(--app-muted)] py-2 gap-2">
         <span>Gyankunj Civil Services Institution · Academic Evaluation Suite</span>
         <span>GS Paper I–IV · CSAT · All-India Prelims Simulator</span>
       </footer>
