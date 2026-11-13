@@ -20,7 +20,7 @@ import {
   LogOut,
   Landmark,
 } from 'lucide-react';
-import ThemeSelector from '@/components/ThemeSelector';
+import StudentPageActions from '@/components/StudentPageActions';
 
 export default function HistoryPage() {
   const router = useRouter();
@@ -176,7 +176,7 @@ export default function HistoryPage() {
               </h1>
             </div>
           </div>
-          <ThemeSelector />
+          <StudentPageActions />
         </header>
 
         <div className="theme-surface rounded-3xl overflow-hidden divide-y divide-[var(--app-border)]">
