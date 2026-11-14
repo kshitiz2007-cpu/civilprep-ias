@@ -20,7 +20,7 @@ const territories = [
 
 export default function StudentStudioPrototypePage() {
   const [active, setActive] = useState(territories[0]);
-  const [atlasOpen, setAtlasOpen] = useState(false);
+  const [selectedTopic, setSelectedTopic] = useState(territories[0].topics[0]);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -102,8 +102,8 @@ export default function StudentStudioPrototypePage() {
             <h3>{active.name}</h3>
             <p>{active.detail}</p>
             <div className="at-topic-label">PATHWAYS TO EXPLORE</div>
-            <div className="at-topic-list">{active.topics.map((topic,i)=><button key={topic} onClick={()=>setAtlasOpen(!atlasOpen)}><span>0{i+1}</span>{topic}<ArrowUpRightIcon/></button>)}</div>
-            {atlasOpen && <div className="at-path-note">This pathway opens a connected sequence of concepts, source notes and practice questions in the full atlas.</div>}
+            <div className="at-topic-list">{active.topics.map((topic,i)=><button key={topic} className={selectedTopic===topic?"is-selected":""} onClick={()=>setSelectedTopic(topic)}><span>0{i+1}</span>{topic}<ArrowUpRightIcon/></button>)}</div>
+            <div className="at-path-note"><span>SELECTED LINE OF INQUIRY</span><strong>{selectedTopic}</strong><p>Trace the constitutional idea, identify the institution involved, then test how the principle works in a real governance situation.</p><div><Link href="/resources">Read related notes <ArrowRight size={13}/></Link><Link href="/quizzes">Test your understanding <ArrowRight size={13}/></Link></div></div>
           </div>
         </div>
       </section>
