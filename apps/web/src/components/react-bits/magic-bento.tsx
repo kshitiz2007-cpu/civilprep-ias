@@ -36,7 +36,7 @@ const defaults: BentoItem[] = [
 export function MagicBento({ items = defaults }: { items?: BentoItem[] }) {
   const gridRef = useRef<HTMLDivElement>(null);
 
-  const moveGlow = (event: PointerEvent<HTMLDivElement>) => {
+  const moveGlow = (event: PointerEvent<HTMLElement>) => {
     if (event.pointerType === "touch") return;
     const rect = event.currentTarget.getBoundingClientRect();
     event.currentTarget.style.setProperty("--pointer-x", (event.clientX - rect.left) + "px");
@@ -77,7 +77,7 @@ export function MagicBento({ items = defaults }: { items?: BentoItem[] }) {
             key={item.title}
             className={"rb-bento-card rb-bento-" + (item.accent || "rose") + " rb-bento-" + (item.size || "standard")}
             onPointerMove={moveGlow}
-            style={{ ["--bento-order" as string]: index }}
+            style={{ "--bento-order": index } as CSSProperties}
           >
             {content}
           </article>

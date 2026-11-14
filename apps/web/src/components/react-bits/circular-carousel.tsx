@@ -20,7 +20,7 @@ export function CircularCarousel({ items = defaultItems }: { items?: CarouselIte
   const count = items.length;
   const change = (direction: number) => setActive((value) => (value + direction + count) % count);
   const onTouchStart = (event: TouchEvent<HTMLDivElement>) => setTouchStart(event.touches[0]?.clientX ?? null);
-  const onTouchEnd = (event: React.TouchEvent<HTMLDivElement>) => {
+  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
     if (touchStart === null) return;
     const delta = (event.changedTouches[0]?.clientX ?? touchStart) - touchStart;
     if (Math.abs(delta) > 42) change(delta < 0 ? 1 : -1);
