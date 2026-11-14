@@ -1,0 +1,12 @@
+.rb-slide-wrap { width:100%; }
+.rb-slide-track { position:relative; display:flex; align-items:center; min-height:54px; padding:5px; overflow:hidden; border:1px solid rgba(200,62,125,.2); border-radius:999px; background:linear-gradient(110deg,#fff1f5,#fff9f6); color:#a64a70; }
+.rb-slide-label { position:absolute; inset:0; display:grid; place-items:center; padding:0 65px; font-size:10px; font-weight:800; letter-spacing:.04em; text-align:center; pointer-events:none; }
+.rb-slide-thumb { position:relative; z-index:2; display:grid; width:44px;height:44px;flex:0 0 44px;place-items:center;border:1px solid rgba(255,255,255,.85);border-radius:50%;background:linear-gradient(145deg,#cf4d86,#a82b69);color:white;box-shadow:0 5px 14px rgba(157,42,97,.25);cursor:grab;touch-action:pan-y; }
+.rb-slide-thumb:active { cursor:grabbing; }
+.rb-slide-loading { background:#fbf3e9;color:#98723e; }
+.rb-slide-success { border-color:rgba(73,143,101,.25);background:#edf6ef;color:#3d8054; }
+.rb-slide-success .rb-slide-thumb { background:linear-gradient(145deg,#5ca775,#33794d); }
+.rb-slide-error { margin:6px 0 0 12px;color:#bd3c65;font-size:10px; }
+.rb-slide-spin { animation:rb-slide-spin 1s linear infinite; }
+@keyframes rb-slide-spin { to { transform:rotate(360deg); } }
+@media(prefers-reduced-motion:reduce) { .rb-slide-spin { animation:none; } }

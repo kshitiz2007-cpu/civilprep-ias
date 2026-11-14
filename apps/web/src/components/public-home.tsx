@@ -1,13 +1,102 @@
-import { ArrowRight, BookOpen, ChartNoAxesCombined, ChevronRight, Globe2, Menu, Newspaper, ShieldCheck, Sparkles, Target } from "lucide-react";
-const highlights=[{icon:BookOpen,title:"Build deep understanding",text:"A connected knowledge library mapped to UPSC and State PCS syllabi."},{icon:Newspaper,title:"Think with current affairs",text:"Daily intelligence linking news to concepts, issues and examination themes."},{icon:Target,title:"Practise with purpose",text:"Daily drills, PYQs, full-length tests and structured Mains answer writing."},{icon:ChartNoAxesCombined,title:"Improve with insight",text:"Feedback on consistency, strengths, gaps and your next best action."}];
-const subjects=["Polity & Governance","Indian Economy","History & Culture","Geography","Environment","Science & Technology"];
-export function PublicHome(){return <main className="public-site">
-<header className="public-nav"><a className="public-brand" href="/"><span className="brand-mark">✦</span><span><b>CivilPrep IAS</b><small>UPSC · PCS · BEYOND</small></span></a><nav><a href="/our-approach">Our approach</a><a href="/programs">Programs</a><a href="/current-affairs">Current affairs</a><a href="/resources">Resources</a><a href="/faculty">Faculty</a></nav><div className="nav-ctas"><a className="nav-login" href="/login">Log in</a><a className="button button-primary" href="/register">Get started <ArrowRight size={15}/></a></div><a className="mobile-menu" href="/programs" aria-label="Explore programs"><Menu/></a></header>
-<section className="public-hero"><div className="hero-copy"><span className="eyebrow">A NEW WAY TO PREPARE</span><h1>Prepare beyond<br/><em>the syllabus.</em></h1><p className="hero-lede">Build clarity. Connect ideas. Think independently. A thoughtful learning ecosystem for India's next generation of civil servants.</p><div className="hero-actions"><a className="button button-primary" href="/register">Start your journey <ArrowRight size={16}/></a><a className="button button-quiet" href="/our-approach">Explore our approach <ChevronRight size={16}/></a></div><div className="hero-proof"><span><ShieldCheck size={16}/> Structured, syllabus-led learning</span><span><Globe2 size={16}/> Hindi + English</span></div></div><div className="hero-art-wrap"><div className="hero-art-label">INDIA · IDEAS · IN ACTION</div><div className="hero-art"><div className="sun-disc"/><div className="art-hill hill-one"/><div className="art-hill hill-two"/><div className="art-building"><div className="building-dome"/><div className="building-roof"/><div className="building-columns">{Array.from({length:7},(_,i)=><i key={i}/>)}</div><div className="building-base"/></div><div className="art-tree tree-one"/><div className="art-tree tree-two"/><div className="art-orbit orbit-one"/><span className="art-caption">ज्ञान · विवेक · सेवा</span></div><div className="hero-note"><Sparkles size={17}/><span><b>Learn to connect the dots.</b><small>Not just collect information.</small></span></div></div></section>
-<section className="public-intro"><div><span className="section-kicker">THE CIVILPREP DIFFERENCE</span><h2>Preparation should<br/><em>change how you see.</em></h2></div><p>Competitive examinations test more than memory. They reward perspective, judgement and the ability to connect knowledge with the world around you. CivilPrep brings every part of that journey into one coherent learning experience.</p></section>
-<section className="feature-section"><div className="section-heading"><div><span className="section-kicker">A CONNECTED LEARNING ECOSYSTEM</span><h2>Every step has a purpose.</h2></div><a href="/our-approach">See how it works <ArrowRight size={15}/></a></div><div className="feature-grid">{highlights.map(({icon:Icon,title,text},i)=><article className={"feature-card feature-"+(i+1)} key={title}><span className="feature-icon"><Icon size={22}/></span><span className="feature-index">0{i+1}</span><h3>{title}</h3><p>{text}</p><a href="/our-approach">Explore <ArrowRight size={14}/></a></article>)}</div></section>
-<section className="subject-section"><div className="subject-intro"><span className="section-kicker">THE KNOWLEDGE MAP</span><h2>One connected<br/><em>world of ideas.</em></h2><p>Move from foundational concepts to exam-specific application without losing the bigger picture.</p><a href="/resources" className="inline-link">Explore the library <ArrowRight size={15}/></a></div><div className="subject-grid">{subjects.map((s,i)=><a href="/resources" className={"subject-tile tile-"+(i+1)} key={s}><span>0{i+1}</span><b>{s}</b><ArrowRight size={17}/></a>)}</div></section>
-<section className="editorial-band"><div className="editorial-number">01 / PERSPECTIVE</div><div><span className="section-kicker">CIVILPREP CURRENT AFFAIRS</span><h2>Go beyond the headline.</h2><p>Understand the context, constitutional values, competing interests and long-term implications behind today's most important issues.</p><a className="button button-light" href="/current-affairs">Explore current affairs <ArrowRight size={15}/></a></div><div className="editorial-stamp">READ<br/>THINK<br/>CONNECT</div></section>
-<section className="journey-section"><span className="section-kicker">YOUR PREPARATION, WITH DIRECTION</span><h2>From first principles<br/><em>to confident answers.</em></h2><div className="journey-steps">{[{n:"01",t:"Discover",d:"Find your syllabus, priorities and learning path."},{n:"02",t:"Understand",d:"Build strong concepts through connected resources."},{n:"03",t:"Practise",d:"Apply ideas through questions, tests and writing."},{n:"04",t:"Reflect",d:"Use feedback to revise and improve consistently."}].map(x=><div className="journey-step" key={x.n}><span>{x.n}</span><b>{x.t}</b><p>{x.d}</p></div>)}</div></section>
-<section className="enrol-band"><div><span className="section-kicker">YOUR NEXT CHAPTER STARTS HERE</span><h2>Prepare with clarity.<br/><em>Progress with purpose.</em></h2></div><a className="button button-primary" href="/register">Create your learning space <ArrowRight size={16}/></a></section>
-<footer className="public-footer"><a className="public-brand" href="/"><span className="brand-mark">✦</span><span><b>CivilPrep IAS</b><small>UPSC · PCS · BEYOND</small></span></a><p>Thoughtful preparation for a changing India.</p><div><a href="/about">About</a><a href="/help">Help</a><a href="/contact">Contact</a><a href="/pricing">Pricing</a></div><small>© 2026 CivilPrep IAS. Built for curious minds.</small></footer></main>}
+import { ArrowRight, ArrowUpRight, Globe2, Menu, ShieldCheck, Sparkles } from "lucide-react";
+import { BrandMark } from "./brand-mark";
+import { ZenithThemeControl } from "./zenith-theme-provider";
+import { GradientText } from "./react-bits/gradient-text";
+import { MagicBento } from "./react-bits/magic-bento";
+import { CircularCarousel } from "./react-bits/circular-carousel";
+import { ScrollStack, ScrollStackItem } from "./react-bits/scroll-stack";
+
+export function PublicHome() {
+  return (
+    <main className="rose-site">
+      <header className="rose-nav">
+        <a className="rose-brand" href="/" aria-label="CivilPrep IAS home">
+          <BrandMark size={23}/>
+          <span><b>CivilPrep</b><small>IAS · UPSC / PCS</small></span>
+        </a>
+        <nav aria-label="Main navigation">
+          <a href="/our-approach">Our approach</a>
+          <a href="/programs">Programs</a>
+          <a href="/current-affairs">Current affairs</a>
+          <a href="/resources">Knowledge library</a>
+        </nav>
+        <div className="rose-nav-actions">
+          <ZenithThemeControl/><a className="rose-login" href="/login">Log in</a>
+          <a className="rose-button rose-button-primary" href="/register">Begin your journey <ArrowUpRight size={16}/></a>
+        </div>
+        <a className="rose-mobile-menu" href="/programs" aria-label="Explore programs"><Menu size={21}/></a>
+      </header>
+
+      <section className="rose-hero">
+        <div className="rose-hero-copy">
+          <span className="rose-eyebrow"><i/> A MORE INTELLIGENT WAY TO PREPARE</span>
+          <h1>Study with intent.<br/><GradientText>Think with depth.</GradientText></h1>
+          <p className="rose-hero-lede">A connected learning environment for civil services aspirants. Build strong foundations, understand the world around you and turn knowledge into confident answers.</p>
+          <div className="rose-hero-actions">
+            <a className="rose-button rose-button-primary" href="/register">Explore your learning space <ArrowRight size={16}/></a>
+            <a className="rose-button rose-button-quiet" href="/our-approach">Discover the approach</a>
+          </div>
+          <div className="rose-proof">
+            <span><ShieldCheck size={15}/> Syllabus-led learning</span>
+            <span><Globe2 size={15}/> Hindi + English</span>
+            <span><Sparkles size={15}/> Learn, practise, improve</span>
+          </div>
+        </div>
+        <div className="rose-hero-art" aria-label="Abstract rose-gold editorial illustration">
+          <div className="rose-art-orbit orbit-one"/><div className="rose-art-orbit orbit-two"/>
+          <div className="rose-art-disc"/>
+          <div className="rose-art-book"><span/><i/><b/></div>
+          <div className="rose-art-glass"/>
+          <div className="rose-art-caption caption-top">KNOWLEDGE / 01</div>
+          <div className="rose-art-caption caption-bottom">CLARITY IS A PRACTICE</div>
+          <div className="rose-art-stamp">C<br/>P</div>
+          <div className="rose-art-note"><small>THE CIVILPREP METHOD</small><b>Connect every idea.</b><span>From concept to context to application.</span></div>
+        </div>
+        <div className="rose-hero-index">01 — 04 <span>PREPARATION, REIMAGINED</span></div>
+      </section>
+
+      <section className="rose-intro">
+        <div><span className="rose-section-label">THE CIVILPREP DIFFERENCE</span><h2>Preparation that changes<br/><GradientText>how you see the world.</GradientText></h2></div>
+        <p>Competitive examinations reward more than recall. They demand perspective, judgement and the ability to connect knowledge with real-world developments. CivilPrep brings the entire learning journey into one coherent system.</p>
+      </section>
+
+      <section className="rose-section rose-capabilities">
+        <div className="rose-section-heading"><div><span className="rose-section-label">A CONNECTED LEARNING ECOSYSTEM</span><h2>Every layer has a purpose.</h2></div><span className="rose-section-aside">01 / CAPABILITIES</span></div>
+        <MagicBento/>
+      </section>
+
+      <section className="rose-section rose-subject-section">
+        <div className="rose-section-heading"><div><span className="rose-section-label">THE KNOWLEDGE MAP</span><h2>Explore your world of ideas.</h2></div><span className="rose-section-aside">02 / SUBJECT DOMAINS</span></div>
+        <CircularCarousel/>
+      </section>
+
+      <section className="rose-process">
+        <div className="rose-process-heading"><span className="rose-section-label">A BETTER WAY TO MOVE FORWARD</span><h2>From first principles<br/>to <GradientText>confident application.</GradientText></h2><p>Progress is not a straight line. It is a thoughtful cycle of discovery, understanding, practice and reflection.</p></div>
+        <ScrollStack className="rose-process-stack">
+          <ScrollStackItem index={0}><span className="rb-stack-number">01</span><div><h3>Discover with direction.</h3><p>Make the syllabus navigable. Identify priorities, map concepts and know where each topic belongs in the larger picture.</p></div><span className="rb-stack-meta">ORIENT</span></ScrollStackItem>
+          <ScrollStackItem index={1}><span className="rb-stack-number">02</span><div><h3>Understand the connections.</h3><p>Build durable foundations through structured explanations, current context, examples and bilingual learning resources.</p></div><span className="rb-stack-meta">UNDERSTAND</span></ScrollStackItem>
+          <ScrollStackItem index={2}><span className="rb-stack-number">03</span><div><h3>Practise with precision.</h3><p>Apply what you know through daily drills, previous-year questions, full-length tests and guided answer writing.</p></div><span className="rb-stack-meta">APPLY</span></ScrollStackItem>
+          <ScrollStackItem index={3}><span className="rb-stack-number">04</span><div><h3>Reflect. Refine. Repeat.</h3><p>Use meaningful feedback to understand gaps, strengthen weak areas and make each next study session more intentional.</p></div><span className="rb-stack-meta">IMPROVE</span></ScrollStackItem>
+        </ScrollStack>
+      </section>
+
+      <section className="rose-editorial">
+        <div className="rose-editorial-index">03 / PERSPECTIVE</div>
+        <div><span className="rose-section-label">CURRENT AFFAIRS, WITH CONTEXT</span><h2>Go beyond<br/>the headline.</h2><p>Understand the institutions, constitutional values, competing interests and long-term implications behind the news that matters.</p><a className="rose-editorial-link" href="/current-affairs">Explore Daily Crux <ArrowUpRight size={16}/></a></div>
+        <div className="rose-editorial-seal">READ<br/>THINK<br/>CONNECT</div>
+      </section>
+
+      <section className="rose-enrol">
+        <div><span className="rose-section-label">YOUR NEXT CHAPTER STARTS HERE</span><h2>Prepare with clarity.<br/><GradientText>Progress with purpose.</GradientText></h2><p>Bring your preparation into focus with a learning space designed around the way civil services aspirants actually learn.</p></div>
+        <a className="rose-button rose-button-primary" href="/register">Create your learning space <ArrowRight size={16}/></a>
+      </section>
+
+      <footer className="rose-footer">
+        <a className="rose-brand" href="/"><BrandMark size={21}/><span><b>CivilPrep</b><small>IAS · UPSC / PCS</small></span></a>
+        <p>Thoughtful preparation for a changing India.</p>
+        <div><a href="/about">About</a><a href="/help">Help</a><a href="/contact">Contact</a><a href="/pricing">Pricing</a></div>
+        <small>© 2026 CivilPrep IAS · Learn with perspective.</small>
+      </footer>
+    </main>
+  );
+}

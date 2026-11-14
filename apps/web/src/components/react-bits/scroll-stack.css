@@ -1,0 +1,11 @@
+.rb-scroll-stack { position:relative; display:grid; gap:18px; padding-bottom:8px; }
+.rb-scroll-stack-item { position:sticky; top:calc(96px + var(--stack-index,0) * 13px); min-height:190px; display:grid; grid-template-columns:90px minmax(0,1fr) auto; align-items:center; gap:25px; padding:28px 32px; border:1px solid rgba(157,79,111,.16); border-radius:24px; background:rgba(255,255,255,.88); box-shadow:0 20px 55px -42px rgba(99,36,67,.36),inset 0 1px 0 white; transform-origin:top center; }
+.rb-scroll-stack-item:nth-child(2) { background:linear-gradient(115deg,#fff 0%,#fff5f7 100%); }
+.rb-scroll-stack-item:nth-child(3) { background:linear-gradient(115deg,#fff 0%,#f8f1e6 100%); }
+.rb-scroll-stack-item:nth-child(4) { background:linear-gradient(115deg,#fff 0%,#f2edf5 100%); }
+.rb-stack-number { display:grid; width:72px;height:72px;place-items:center;border:1px solid rgba(200,62,125,.18);border-radius:22px;background:#faeaf0;color:#b53e75;font:italic 27px "Instrument Serif",Georgia,serif; }
+.rb-scroll-stack-item h3 { margin:0 0 8px;color:#422637;font:700 clamp(23px,3vw,32px)/1.08 "Instrument Serif",Georgia,serif; }
+.rb-scroll-stack-item p { max-width:610px;margin:0;color:#806b77;font-size:12px;line-height:1.8; }
+.rb-stack-meta { color:#b04475;font-size:9px;font-weight:900;letter-spacing:.13em;white-space:nowrap; }
+@media(max-width:650px) { .rb-scroll-stack { gap:12px; } .rb-scroll-stack-item { top:calc(70px + var(--stack-index,0) * 8px); min-height:0; grid-template-columns:48px minmax(0,1fr); gap:13px; padding:17px 15px; border-radius:17px; } .rb-stack-number { width:44px;height:44px;border-radius:14px;font-size:20px; } .rb-scroll-stack-item h3 { font-size:23px; } .rb-scroll-stack-item p { font-size:11px; } .rb-stack-meta { grid-column:2; } }
+@media(prefers-reduced-motion:reduce) { .rb-scroll-stack-item { scroll-behavior:auto; } }
