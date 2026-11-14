@@ -4,7 +4,6 @@ export const dynamic = 'force-dynamic';
 import { useEffect, useMemo, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { FALLBACK_ATTEMPTS, FALLBACK_QUIZZES } from '@/lib/mockData';
-import { openWatermarkStudio } from '@/lib/pdfExporter';
 import { useRouter } from 'next/navigation';
 import {
   Activity,
@@ -273,30 +272,6 @@ export default function DashboardPage() {
       )
     : 0;
 
-  const accuracyStats = useMemo(() => {
-    let totalCorrect = 0;
-    let totalWrong = 0;
-    let totalQuestions = 0;
-    attempts.forEach((a) => {
-      totalCorrect += Number(a.correct || 0);
-      totalWrong += Number(a.wrong || 0);
-      totalQuestions += Number(a.total || 0);
-    });
-    const totalAttempted = totalCorrect + totalWrong;
-    const accuracy = totalAttempted
-      ? Math.round((totalCorrect / totalAttempted) * 100)
-      : average;
-    const netMarksLost = +(totalWrong * 0.66).toFixed(1);
-    return {
-      accuracy,
-      netMarksLost,
-      totalCorrect,
-      totalWrong,
-      totalAttempted,
-      totalQuestions,
-    };
-  }, [attempts, average]);
-
   const subjectMastery = useMemo(() => {
     return GS_PILLARS.map((subject) => {
       const subAttempts = attempts.filter(
@@ -347,14 +322,8 @@ export default function DashboardPage() {
     };
   }, [revisionRadar]);
 
-  const recentScores = useMemo(() => attempts.slice(0, 7).reverse(), [attempts]);
-  const completedIds = new Set(attempts.map((item) => item.quiz_id));
   const firstName =
     user?.name?.split(' ')[0] || user?.email?.split('@')[0] || 'Aspirant';
-  const focusFormatted = `${String(Math.floor(focusSeconds / 60)).padStart(
-    2,
-    '0'
-  )}:${String(focusSeconds % 60).padStart(2, '0')}`;
 
   if (loading)
     return (
@@ -410,48 +379,6 @@ export default function DashboardPage() {
             onClick={() => router.push('/leaderboard')}
           />
         </nav>
-
-        {/* Calm Deep Focus Widget inside Sidebar */}
-        <div className="mt-auto rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface-muted)] p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[var(--app-accent)]">
-              Calm Study Timer
-            </span>
-            <Clock3 className="h-3.5 w-3.5 text-[var(--app-muted)]" />
-          </div>
-          <p className="mt-2 font-mono-tabular text-2xl font-bold tracking-tight">
-            {focusFormatted}
-          </p>
-          <p className="mt-0.5 text-[11px] text-[var(--app-muted)]">
-            25-min distraction-free GS revision block
-          </p>
-          <div className="mt-3 flex items-center gap-2">
-            <button
-              onClick={() => setFocusRunning((r) => !r)}
-              className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-[var(--app-accent)] px-3 py-2 text-xs font-bold text-slate-950 transition hover:opacity-90"
-            >
-              {focusRunning ? (
-                <>
-                  <Pause className="h-3.5 w-3.5" /> Pause
-                </>
-              ) : (
-                <>
-                  <Play className="h-3.5 w-3.5" /> Start Focus
-                </>
-              )}
-            </button>
-            <button
-              onClick={() => {
-                setFocusRunning(false);
-                setFocusSeconds(25 * 60);
-              }}
-              className="rounded-xl border border-[var(--app-border)] p-2 text-[var(--app-muted)] hover:text-[var(--app-text)]"
-              title="Reset timer"
-            >
-              <RotateCcw className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        </div>
 
         <div className="mt-5 flex items-center gap-3 border-t border-[var(--app-border)] pt-4">
           <div className="grid h-9 w-9 place-items-center rounded-full bg-[var(--app-accent-soft)] text-sm font-bold text-[var(--app-accent)]">
