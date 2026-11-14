@@ -250,3 +250,8 @@
 @media(prefers-reduced-motion:reduce){
  .student-studio *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
+
+/* Shell integration with the legacy desktop rail */
+.student-shell-main{min-width:0;min-height:100svh;max-width:none!important;padding:0!important;background:var(--ss-paper)}
+.student-page:has(.student-studio){background:var(--ss-paper)!important}
+@media(max-width:1100px){.student-shell-main{margin-left:0!important;width:100%!important}}

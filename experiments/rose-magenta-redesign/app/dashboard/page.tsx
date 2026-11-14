@@ -32,6 +32,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
+import BrandMark from '@/components/BrandMark';
 import StudentChatWidget from '@/components/StudentChatWidget';
 import StudentStudyHome from '@/components/student/StudentStudyHome';
 
@@ -475,7 +476,7 @@ export default function DashboardPage() {
       </aside>
 
       {/* Main Content */}
-      <main className="dashboard-main relative z-10 mx-auto max-w-7xl px-5 pb-28 pt-6 md:ml-64 md:px-10 md:py-9">
+      <main className="student-shell-main relative z-10 w-full flex-1 md:ml-64">
         <StudentStudyHome
           firstName={firstName}
           quizzes={quizzes}
