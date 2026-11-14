@@ -32,11 +32,8 @@ import {
   X,
   Zap,
 } from 'lucide-react';
-import BrandMark from '@/components/BrandMark';
 import StudentChatWidget from '@/components/StudentChatWidget';
-import ThemeSelector from '@/components/ThemeSelector';
-import StudentBottomNav from '@/components/StudentBottomNav';
-import DailyContentCarousel from '@/components/DailyContentCarousel';
+import StudentStudyHome from '@/components/student/StudentStudyHome';
 
 type Attempt = {
   id: string;
@@ -479,128 +476,27 @@ export default function DashboardPage() {
 
       {/* Main Content */}
       <main className="dashboard-main relative z-10 mx-auto max-w-7xl px-5 pb-28 pt-6 md:ml-64 md:px-10 md:py-9">
-        {/* Top Header */}
-        <header className="dashboard-header mb-7 flex flex-wrap items-center justify-between gap-4">
-          <div className="sanctuary-brand-lockup">
-            <BrandMark size={18} />
-            <div>
-              <p className="font-serif text-base font-bold leading-none text-[#552334]">Gyankunj IAS</p>
-              <p className="mt-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-[#987b76]">Civil Services Preparation</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2.5">
-            <button
-              onClick={() => setShowDrillModal(true)}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-[var(--app-accent)] px-3.5 py-2 text-xs font-bold text-slate-950 hover:opacity-90 transition"
-            >
-              <Sliders className="h-3.5 w-3.5" /> Custom Smart Drill
-            </button>
-            <ThemeSelector />
-            <button
-              type="button"
-              onClick={logout}
-              title="Sign out"
-              aria-label="Sign out of your account"
-              className="inline-flex min-h-10 items-center justify-center gap-2 rounded-xl border border-[var(--app-border)] bg-white/70 px-3 py-2 text-xs font-semibold text-[var(--app-muted)] shadow-sm transition hover:border-[var(--app-accent)] hover:bg-[var(--app-accent-soft)] hover:text-[var(--app-accent)]"
-            >
-              <LogOut className="h-4 w-4" />
-              <span className="hidden sm:inline">Sign out</span>
-            </button>
-          </div>
-        </header>
-
-        {/* Optional Institutional Broadcast Notice */}
-        {broadcastNotice && (
-          <div className="mb-6 flex items-center justify-between gap-3 rounded-2xl border border-[var(--app-border)] bg-[var(--app-accent-soft)] px-4 py-3 text-xs sm:text-sm">
-            <div className="flex items-center gap-2.5">
-              <Sparkles className="h-4 w-4 shrink-0 text-[var(--app-accent)]" />
-              <span>
-                <strong>Academic Notice:</strong> {broadcastNotice}
-              </span>
-            </div>
-          </div>
-        )}
-
-        {/* Rose Editorial Student Homepage */}
-        <section className="sanctuary-welcome mb-6">
-          <div>
-            <p className="sanctuary-eyebrow">CIVIL SERVICES PREPARATION</p>
-            <h2>Steady progress, <em>{firstName}.</em></h2>
-            <p>Consistent study moves you closer to the Civil Services.</p>
-          </div>
-          <span className="sanctuary-welcome-seal" aria-hidden="true"><Landmark size={28}/></span>
-        </section>
-
-        <DailyContentCarousel />
-
-        <section className="sanctuary-duo-grid mb-6">
-          <article className="sanctuary-paper-card">
-            <div className="sanctuary-card-heading"><Layers/><h3>Preparation Progress</h3><ArrowRight/></div>
-            <div className="sanctuary-big-number">{attempts.length ? `${average}%` : '—'}</div>
-            <p className="sanctuary-muted">{attempts.length} evaluated attempts</p>
-            <div className="sanctuary-progress-track"><span style={{width:`${Math.max(0,Math.min(100,average))}%`}}/></div>
-            <p className="sanctuary-footnote">Mean score across recorded evaluations</p>
-          </article>
-          <article className="sanctuary-paper-card">
-            <div className="sanctuary-card-heading"><Target/><h3>Revision Radar</h3><ArrowRight/></div>
-            <div className="sanctuary-radar-wrap">
-              <div className="sanctuary-radar-ring"><strong>{revisionRadar.needsRevision.length}</strong><span>Topics to revisit</span></div>
-            </div>
-            <p className="sanctuary-muted">{revisionRadar.untested.length} GS pillars not yet assessed</p>
-          </article>
-        </section>
-
-        <section className="sanctuary-editorial mb-6">
-          <div className="sanctuary-editorial-copy">
-            <p className="sanctuary-eyebrow">CURRENT AFFAIRS EDITORIAL</p>
-            <h2>Master accuracy, statement deduction &amp; 50-50 EV before speed.</h2>
-            <p>In UPSC Prelims, avoid unnecessary negative guesses using structured elimination.</p>
-            <div className="sanctuary-actions">
-              <button onClick={() => router.push('/quiz/upsc-gs1-polity-01')}>Launch Polity Simulator <ArrowRight size={16}/></button>
-              <button className="secondary" onClick={() => setShowDrillModal(true)}><Sliders size={15}/> Build Custom Drill</button>
-            </div>
-          </div>
-          <div className="sanctuary-parliament-art" aria-hidden="true"><Landmark size={104}/><span>भारत</span></div>
-        </section>
-
-        <section className="sanctuary-stat-grid mb-6">
-          <div className="sanctuary-stat"><BookOpen/><span>Tests Evaluated</span><strong>{attempts.length}</strong></div>
-          <div className="sanctuary-stat"><TrendingUp/><span>Mean Score</span><strong>{attempts.length ? `${average}%` : '—'}</strong></div>
-          <div className="sanctuary-stat"><Layers/><span>Active Test Papers</span><strong>{quizzes.length}</strong></div>
-          <div className="sanctuary-stat"><FileText/><span>Study Compendiums</span><strong>{resourceCount}</strong></div>
-        </section>
-
-        <section className="sanctuary-duo-grid mb-6">
-          <article className="sanctuary-paper-card">
-            <div className="sanctuary-card-heading"><Target/><h3>Topics to Revisit</h3><ArrowRight/></div>
-            <div className="sanctuary-topic-list">
-              {revisionRadar.needsRevision.length ? revisionRadar.needsRevision.slice(0,3).map(item => (
-                <div className="sanctuary-topic-row" key={item.subject}>
-                  <strong>{item.subject}</strong><span className="sanctuary-topic-bar"><i style={{width:`${item.avg ?? 0}%`}}/></span><b>{item.avg}%</b>
-                </div>
-              )) : <p className="sanctuary-muted">Complete an evaluated test to generate your revision priorities.</p>}
-            </div>
-          </article>
-          <article className="sanctuary-paper-card">
-            <div className="sanctuary-card-heading"><TrendingUp/><h3>Performance Snapshot</h3><ArrowRight/></div>
-            <p className="sanctuary-muted">Recent evaluations · score (%)</p>
-            {recentScores.length ? <div className="sanctuary-bars">{recentScores.slice(-6).map(a => <div key={a.id}><span>{a.score}</span><i style={{height:`${Math.max(8,Math.min(100,Number(a.score)||0))}%`}}/></div>)}</div> : <p className="sanctuary-empty-chart">Your performance chart will appear after your first evaluation.</p>}
-          </article>
-        </section>
-
-        <section className="sanctuary-paper-card sanctuary-recommended mb-6">
-          <div className="sanctuary-card-heading"><FileText/><div><h3>Recommended Tests</h3><p>Structured practice with UPSC's latest pattern.</p></div><button onClick={() => router.push('/quizzes')}>View All <ArrowRight size={14}/></button></div>
-          <div className="sanctuary-test-list">
-            {quizzes.slice(0,3).map(quiz => (
-              <article className="sanctuary-test-row" key={quiz.id}>
-                <span className="sanctuary-test-icon"><FileText/></span>
-                <div className="sanctuary-test-copy"><strong>{quiz.title}</strong><span>{quiz.category || 'General Studies'} · {Array.isArray(quiz.questions) ? quiz.questions.length : 'Practice'} Questions</span></div>
-                <button onClick={() => router.push(`/quiz/${quiz.id}`)}>Start Test <ArrowRight size={14}/></button>
-              </article>
-            ))}
-          </div>
-        </section>
-
+        <StudentStudyHome
+          firstName={firstName}
+          quizzes={quizzes}
+          attempts={attempts}
+          resourceCount={resourceCount}
+          meanScore={average}
+          subjects={subjectMastery}
+          recommendation={nextBestAction}
+          focusSeconds={focusSeconds}
+          focusRunning={focusRunning}
+          broadcastNotice={broadcastNotice}
+          onOpenQuiz={(id) => router.push(`/quiz/${id}`)}
+          onOpenQuizzes={() => router.push('/quizzes')}
+          onOpenLibrary={() => router.push('/resources')}
+          onOpenResults={() => router.push('/history')}
+          onOpenMerit={() => router.push('/leaderboard')}
+          onOpenDrill={(subject) => { setDrillSubject(subject || 'All Subjects'); setShowDrillModal(true); }}
+          onToggleFocus={() => setFocusRunning((running) => !running)}
+          onResetFocus={() => { setFocusRunning(false); setFocusSeconds(25 * 60); }}
+          onLogout={logout}
+        />
       </main>
 
       {/* Custom Smart Drill Builder Modal */}
@@ -675,9 +571,6 @@ export default function DashboardPage() {
           </div>
         </div>
       )}
-
-      {/* Mobile Bottom Navigation */}
-      <StudentBottomNav />
 
 
       <StudentChatWidget user={user} />

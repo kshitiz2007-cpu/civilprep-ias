@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./student-studio.css";
 
 export const metadata: Metadata = {
   title: "Gyankunj IAS — Civil Services Learning & Evaluation Studio",
